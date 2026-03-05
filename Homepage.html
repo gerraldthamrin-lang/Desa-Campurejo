@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Desa Campurejo - Beranda</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --primary: #296374;
+      --primary-hover: #1f525d;
+      --secondary: #A8DADC;
+      --bg-dark: #629FAD;
+      --bg-light: #EDEDCE;
+      --bg-white: #F7F7F2;
+      --text-dark: #1a3d47;
+      --text-light: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      color: var(--text-dark);
+      background-color: var(--bg-light);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .font-serif {
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+
+    /* Navbar (Matches CampurejoNEW) */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(41, 99, 116, 0.95);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 5%;
+      z-index: 1000;
+      border-bottom-left-radius: 12px;
+      border-bottom-right-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-brand {
+      color: #fff;
+      font-size: 2rem;
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 400;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: var(--secondary);
+      bottom: -5px;
+      left: 0;
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    /* Hero Section with Custom Slider */
+    .hero-section {
+      position: relative;
+      min-height: 100vh;
+      background: var(--bg-dark);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8rem 5% 4rem;
+      color: var(--text-light);
+    }
+
+    .hero-text {
+      flex: 1;
+      padding-right: 5%;
+      z-index: 2;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 1s ease forwards;
+    }
+
+    .hero-text h1 {
+      font-size: 5rem;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      color: #fff;
+    }
+
+    .hero-text p {
+      font-size: 1.25rem;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 1.5rem;
+      border-radius: 12px;
+      border-left: 4px solid var(--secondary);
+      backdrop-filter: blur(5px);
+    }
+
+    .hero-slider-container {
+      flex: 1;
+      position: relative;
+      height: 60vh;
+      max-height: 600px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 1s ease forwards 0.3s;
+    }
+
+    .slider-wrapper {
+      width: 90%;
+      height: 100%;
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 4px solid rgba(255, 255, 255, 0.8);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+      background: #ccc;
+    }
+
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+      transform: scale(1.05);
+      /* subtle zoom effect */
+      background-size: cover;
+      background-position: center;
+    }
+
+    .slide.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .slider-controls {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 10;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.4);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .dot.active {
+      background: #fff;
+      transform: scale(1.3);
+    }
+
+    /* Wavy Transition */
+    .wave-container {
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      z-index: 5;
+    }
+
+    .wave-container-top {
+      top: -1px;
+      bottom: auto;
+      transform: rotate(180deg);
+    }
+
+    .wave-container svg {
+      display: block;
+      width: calc(100% + 1.3px);
+      height: 120px;
+    }
+
+    /* Data Desa Section */
+    .data-section {
+      position: relative;
+      min-height: 100vh;
+      background: var(--bg-light);
+      display: flex;
+      align-items: center;
+      padding: 8rem 5% 6rem;
+    }
+
+    .data-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 4rem;
+      width: 100%;
+    }
+
+    .data-image {
+      flex: 0 0 40%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .data-frame {
+      width: 100%;
+      max-width: 360px;
+      aspect-ratio: 9/16;
+      background-color: #ddd;
+      background-image: url('Images/Campurejo1.jpg');
+      background-size: cover;
+      background-position: center;
+      border: 8px solid #fff;
+      border-radius: 10px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+      transform: rotate(-3deg);
+      transition: transform 0.4s ease;
+    }
+
+    .data-frame:hover {
+      transform: rotate(0) scale(1.02);
+    }
+
+    .data-text {
+      flex: 1;
+    }
+
+    .data-text h2 {
+      font-size: 3.5rem;
+      color: var(--primary);
+      margin-bottom: 2rem;
+      line-height: 1.2;
+    }
+
+    .data-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .data-card {
+      background: rgba(255, 255, 255, 0.6);
+      padding: 1.5rem;
+      border-radius: 12px;
+      border-left: 4px solid var(--primary);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .data-card:hover {
+      transform: translateY(-5px);
+      background: #fff;
+    }
+
+    .data-card strong {
+      display: block;
+      color: var(--primary);
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Culture Section */
+    .culture-section {
+      position: relative;
+      background: var(--bg-white);
+      padding: 8rem 5% 8rem;
+    }
+
+    .culture-header {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 4rem;
+    }
+
+    .culture-header h2 {
+      font-size: 4rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+    }
+
+    .culture-header p {
+      font-size: 1.2rem;
+      color: var(--text-dark);
+    }
+
+    .culture-layout {
+      display: flex;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      align-items: flex-start;
+    }
+
+    .culture-sidebar {
+      flex: 0 0 300px;
+      position: sticky;
+      top: 100px;
+      /* Offset for navbar */
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .culture-sidebar ul {
+      list-style: none;
+    }
+
+    .culture-sidebar li {
+      margin-bottom: 0.5rem;
+    }
+
+    .culture-sidebar a {
+      display: block;
+      padding: 0.8rem 1.2rem;
+      color: var(--text-dark);
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .culture-sidebar a:hover,
+    .culture-sidebar a.active-link {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .culture-main {
+      flex: 1;
+      background: #fff;
+      border-radius: 16px;
+      padding: 2.5rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      /* Creating an inner scrollable area so the sidebar stays sticky elegantly */
+      max-height: 80vh;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--primary) #eee;
+    }
+
+    .culture-main::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .culture-main::-webkit-scrollbar-track {
+      background: #eee;
+      border-radius: 4px;
+    }
+
+    .culture-main::-webkit-scrollbar-thumb {
+      background: var(--secondary);
+      border-radius: 4px;
+    }
+
+    .culture-item {
+      margin-bottom: 4rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid #eee;
+      scroll-margin-top: 2rem;
+      /* Give breathing room inside the scroll container */
+    }
+
+    .culture-item:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .culture-item h3 {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+    }
+
+    .culture-item-img {
+      width: 100%;
+      height: 350px;
+      background: #ddd;
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+      object-fit: cover;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .culture-item p {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+
+    .btn-know-more {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.8rem 1.5rem;
+      background: var(--secondary);
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-know-more:hover {
+      background: var(--primary);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* Floating Nav Bottom */
+    #switch-container {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      background: var(--primary);
+      border-radius: 30px;
+      padding: 5px;
+      box-shadow: 0 10px 25px rgba(41, 99, 116, 0.4);
+      z-index: 1000;
+    }
+
+    .switch-btn {
+      color: rgba(255, 255, 255, 0.7);
+      padding: 10px 25px;
+      text-decoration: none;
+      border-radius: 25px;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .switch-btn.active,
+    .switch-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+    }
+
+    .separator {
+      width: 1px;
+      height: 20px;
+      background: rgba(255, 255, 255, 0.3);
+      margin: 0 5px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero-text h1 {
+        font-size: 4rem;
+      }
+
+      .data-content {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .data-image {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+      }
+
+      .data-text h2 {
+        font-size: 3rem;
+      }
+
+      .culture-layout {
+        flex-direction: column;
+      }
+
+      .culture-sidebar {
+        position: relative;
+        top: 0;
+        width: 100%;
+        flex: auto;
+        margin-bottom: 2rem;
+      }
+
+      .culture-main {
+        max-height: none;
+        overflow: visible;
+        padding: 1.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-section {
+        flex-direction: column;
+        padding-top: 8rem;
+        text-align: center;
+      }
+
+      .hero-text {
+        padding-right: 0;
+        margin-bottom: 3rem;
+      }
+
+      .hero-text h1 {
+        font-size: 3rem;
+      }
+
+      .hero-slider-container {
+        width: 100%;
+        height: 40vh;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .culture-header h2 {
+        font-size: 3rem;
+      }
+
+      .culture-item h3 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="Homepage.html" class="navbar-brand font-serif">Campurejo</a>
+    <ul class="nav-links">
+      <li><a href="#Mengenal">Mengenal Campurejo</a></li>
+      <li><a href="CampurejoNEW.html#umkm">UMKM</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-text">
+      <h1 class="font-serif">Desa Campurejo</h1>
+      <p>Desa Campurejo merupakan desa pesisir yang berada di Kabupaten Gresik, Jawa Timur. Sebagian besar masyarakatnya
+        bekerja sebagai nelayan dan bergantung pada hasil laut sebagai sumber utama pendapatan. Desa ini memiliki
+        potensi ekonomi di bidang perikanan dan kelautan, namun masih menghadapi tantangan dalam pengembangan dan
+        pemanfaatan sumber daya secara optimal.</p>
+    </div>
+
+    <!-- Custom Slider -->
+    <div class="hero-slider-container">
+      <div class="slider-wrapper" id="customSlider">
+        <!-- Fallback background colors in case images fail to load -->
+        <div class="slide active" style="background-image: url('Images/P9/img1.jpg'); background-color: #296374;"></div>
+        <div class="slide" style="background-image: url('Images/P9/img2.jpg'); background-color: #629FAD;"></div>
+        <div class="slide" style="background-image: url('Images/P9/img5.webp'); background-color: #A8DADC;"></div>
+        <div class="slide" style="background-image: url('Images/P9/img4.jpg'); background-color: #296374;"></div>
+        <div class="slide" style="background-image: url('Images/P9/img7.jpg'); background-color: #629FAD;"></div>
+        <div class="slide" style="background-image: url('Images/P9/img9.webp'); background-color: #A8DADC;"></div>
+
+        <div class="slider-controls" id="sliderControls">
+          <!-- Dots generated via JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Wave down to Bg Light -->
+    <div class="wave-container">
+      <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+        <path d="M0,60 C320,120 420,0 720,60 C1020,120 1120,0 1440,60 L1440,120 L0,120 Z" fill="#EDEDCE" />
+      </svg>
+    </div>
+  </section>
+
+  <!-- Data Desa Section -->
+  <section class="data-section">
+    <div class="data-content reveal">
+      <div class="data-image">
+        <div class="data-frame"></div>
+      </div>
+      <div class="data-text">
+        <h2 class="font-serif">Data Desa Campurejo</h2>
+
+        <div class="data-grid">
+          <div class="data-card">
+            <strong>Lokasi</strong>
+            Kecamatan Panceng,<br>Kabupaten Gresik, Jawa Timur
+          </div>
+          <div class="data-card">
+            <strong>Populasi</strong>
+            1.200 Jiwa
+          </div>
+          <div class="data-card">
+            <strong>Kepala Desa</strong>
+            Amudi, S.Pd
+          </div>
+          <div class="data-card">
+            <strong>Sekretaris Desa</strong>
+            Mohammad Zaim
+          </div>
+          <div class="data-card">
+            <strong>Kaur Keuangan</strong>
+            Ilma Hadiyah
+          </div>
+          <div class="data-card">
+            <strong>Kasi Pemerintahan</strong>
+            M. Kholis Farihin
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Wave down to Bg White -->
+    <div class="wave-container">
+      <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+        <path d="M0,60 C320,120 420,0 720,60 C1020,120 1120,0 1440,60 L1440,120 L0,120 Z" fill="#F7F7F2" />
+      </svg>
+    </div>
+  </section>
+
+  <!-- Culture Section -->
+  <section id="Mengenal" class="culture-section">
+    <div class="culture-header reveal">
+      <h2 class="font-serif">Budaya Campurejo</h2>
+      <p>Desa Campurejo memiliki warisan budaya lokal yang kaya, meliputi tradisi laut, upacara adat, kesenian, dan
+        kerajinan tangan. Berikut beberapa aspek budaya yang menonjol beserta penjelasan tiap item.</p>
+    </div>
+
+    <div class="culture-layout reveal">
+      <!-- Sidebar Navigation -->
+      <aside class="culture-sidebar">
+        <ul id="cultureNavList">
+          <li><a href="#item-1" class="active-link">Petik Laut</a></li>
+          <li><a href="#item-2">Gotong Royong</a></li>
+          <li><a href="#item-3">Peran Karang Taruna</a></li>
+          <li><a href="#item-4">Pasar Segoro</a></li>
+        </ul>
+      </aside>
+
+      <!-- Scrollable Main Content -->
+      <div class="culture-main" id="cultureScrollArea">
+
+        <article id="item-1" class="culture-item">
+          <h3 class="font-serif">Petik Laut</h3>
+          <!-- Using placeholder background if image is broken -->
+          <img src="Images/Petik Laut1.jpg" alt="Upacara Laut Campurejo" class="culture-item-img"
+            onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNkZGQiLz48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiM2NjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5bIEltYWdlIFBsYWNlaG9sZGVyIF08L3RleHQ+PC9zdmc+'">
+          <p>Tradisi tahunan masyarakat nelayan sebagai bentuk syukur atas hasil laut dan doa keselamatan saat melaut.
+          </p>
+          <a href="Mengenal-Campurejo.html/Petik_Laut.html" class="btn-know-more">Lihat Selengkapnya</a>
+        </article>
+
+        <article id="item-2" class="culture-item">
+          <h3 class="font-serif">Gotong Royong</h3>
+          <img src="Images/P9/culture2.jpg" alt="Gotong Royong Campurejo" class="culture-item-img"
+            onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNkZGQiLz48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiM2NjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5bIEltYWdlIFBsYWNlaG9sZGVyIF08L3RleHQ+PC9zdmc+'">
+          <p>Kegiatan kerja bersama warga menjaga lingkungan desa.</p>
+          <a href="#" class="btn-know-more">Lihat Selengkapnya</a>
+        </article>
+
+        <article id="item-3" class="culture-item">
+          <h3 class="font-serif">Peran Karang Taruna</h3>
+          <img src="Images/P9/culture3.jpg" alt="Kerajinan Lokal Campurejo" class="culture-item-img"
+            onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNkZGQiLz48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiM2NjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5bIEltYWdlIFBsYWNlaG9sZGVyIF08L3RleHQ+PC9zdmc+'">
+          <p>Organisasi pemuda yang aktif dalam kegiatan sosial dan pembangunan desa.</p>
+          <a href="#" class="btn-know-more">Lihat Selengkapnya</a>
+        </article>
+
+        <article id="item-4" class="culture-item">
+          <h3 class="font-serif">Pasar Segoro</h3>
+          <img src="Images/Pasar Segoro1.jpg" alt="Pasar Segoro Campurejo" class="culture-item-img"
+            onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNkZGQiLz48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiM2NjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5bIEltYWdlIFBsYWNlaG9sZGVyIF08L3RleHQ+PC9zdmc+'">
+          <p>Pasar budaya kreatif yang menggunakan karang sebagai cara untuk mengangkat ekonomi lokal dan identitas
+            pesisir Desa Campurejo.</p>
+          <a href="#" class="btn-know-more">Lihat Selengkapnya</a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Floating Bottom Switch -->
+  <div id="switch-container">
+    <a href="#" class="switch-btn active">Beranda</a>
+    <span class="separator"></span>
+    <a href="CampurejoNEW.html" class="switch-btn">Potensi Desa</a>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+      // --- 1. Reveal Elements on Scroll ---
+      const reveals = document.querySelectorAll('.reveal');
+      const revealOnScroll = () => {
+        const windowHeight = window.innerHeight;
+        const elementVisible = 150;
+        reveals.forEach(reveal => {
+          const elementTop = reveal.getBoundingClientRect().top;
+          if (elementTop < windowHeight - elementVisible) {
+            reveal.classList.add('active');
+          }
+        });
+      };
+      window.addEventListener('scroll', revealOnScroll);
+      revealOnScroll();
+
+      // --- 2. Custom Slider Logic ---
+      const slides = document.querySelectorAll('.slide');
+      const controlsContainer = document.getElementById('sliderControls');
+      let currentSlide = 0;
+      const slideIntervalDelay = 5000;
+
+      // Generate dots
+      slides.forEach((_, index) => {
+        const dot = document.createElement('div');
+        dot.classList.add('dot');
+        if (index === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goToSlide(index));
+        controlsContainer.appendChild(dot);
+      });
+
+      const dots = document.querySelectorAll('.dot');
+
+      function goToSlide(index) {
+        slides[currentSlide].classList.remove('active');
+        dots[currentSlide].classList.remove('active');
+        currentSlide = index;
+        slides[currentSlide].classList.add('active');
+        dots[currentSlide].classList.add('active');
+      }
+
+      function nextSlide() {
+        const next = (currentSlide + 1) % slides.length;
+        goToSlide(next);
+      }
+
+      // Auto advance
+      setInterval(nextSlide, slideIntervalDelay);
+
+      // --- 3. Culture Internal Scroll Spy ---
+      const scrollArea = document.getElementById('cultureScrollArea');
+      const cultureItems = document.querySelectorAll('.culture-item');
+      const cultureLinks = document.querySelectorAll('.culture-sidebar a');
+
+      scrollArea.addEventListener('scroll', () => {
+        let current = '';
+        const scrollPos = scrollArea.scrollTop;
+
+        cultureItems.forEach(item => {
+          // Offset calculation to detect which element is near the top
+          // minus 50 provides a small threshold.
+          if (item.offsetTop - 50 <= scrollPos) {
+            current = item.getAttribute('id');
+          }
+        });
+
+        if (current) {
+          cultureLinks.forEach(link => {
+            link.classList.remove('active-link');
+            if (link.getAttribute('href') === `#${current}`) {
+              link.classList.add('active-link');
+            }
+          });
+        }
+      });
+
+      // Smooth scrolling for sidebar links inside the scrollArea
+      cultureLinks.forEach(link => {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href').substring(1);
+          const targetEl = document.getElementById(targetId);
+
+          if (targetEl) {
+            scrollArea.scrollTo({
+              top: targetEl.offsetTop,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+
+    });
+  </script>
+</body>
+
+</html>
