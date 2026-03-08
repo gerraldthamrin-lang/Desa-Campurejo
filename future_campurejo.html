@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Future</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --navy: #002366;
+            --gold: #FFBF00;
+            --sand: #F5F5F0;
+            --white: #ffffff;
+            --teal: #0096A0;
+            --dark: #0a0f1e;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: var(--dark, #0a0f1e);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        p {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* BOTTOM SWITCH CSS */
+        .bottom-switch-container {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--white, #ffffff);
+            padding: 6px;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(0, 35, 102, 0.15);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            z-index: 1000;
+            border: 1px solid rgba(0, 35, 102, 0.05);
+        }
+
+        .bottom-switch-btn {
+            padding: 10px 24px;
+            border-radius: 40px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--navy, #002366);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .bottom-switch-btn.active {
+            background: var(--navy, #002366);
+            color: var(--white, #ffffff);
+            box-shadow: 0 4px 15px rgba(0, 35, 102, 0.2);
+        }
+
+        .bottom-switch-btn:not(.active):hover {
+            background: rgba(0, 35, 102, 0.05);
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1 class="serif">The Future</h1>
+        <p>This is the futuristic portal of Desa Campurejo. The journey to 2030 begins here.</p>
+    </div>
+
+    <div class="bottom-switch-container">
+        <a href="index.html" class="bottom-switch-btn">Campurejo</a>
+        <a href="future_campurejo.html" class="bottom-switch-btn active">The Future</a>
+    </div>
+</body>
+
+</html>
