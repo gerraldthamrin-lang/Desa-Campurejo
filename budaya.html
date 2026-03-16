@@ -1,702 +1,264 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Segoro & Tradisi — Desa Campurejo</title>
-    <meta name="description"
-        content="Budaya dan tradisi pesisir Desa Campurejo: Pasar Segoro, Petik Laut, Ngayom Jagad.">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Inter:wght@300;400;500;600&display=swap"
-        rel="stylesheet">
+    <title>Tradisi & Budaya — Desa Campurejo</title>
+    <meta name="description" content="Warisan budaya dan tradisi pesisir Desa Campurejo: Petik Laut, Pasar Segoro, Reog Pantura, dan Kirab Nelayan.">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --navy: #002366;
-            --navy-light: #003580;
-            --sand: #F5F5F0;
-            --gold: #FFBF00;
-            --teal: #0096A0;
+            --navy: #002B5B;
+            --navy-mid: #003a7a;
+            --teal: #1a7a7a;
+            --teal-light: #2da5a5;
+            --sand: #f5efd8;
+            --sand-light: #faf6ec;
+            --gold: #c8a84b;
+            --gold-light: #e8c96a;
+            --coral: #d4604a;
             --white: #ffffff;
-            --dark: #0a0f1e;
-            --glass: rgba(255, 255, 255, 0.08);
-            --glass-border: rgba(255, 255, 255, 0.18);
-        }
-
-        *,
-        *::before,
-        *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--sand);
-            color: var(--navy);
-            overflow-x: hidden;
-        }
-
-        .serif {
-            font-family: 'Playfair Display', serif;
-        }
-
-        /* NAV */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 9000;
-            background: rgba(0, 35, 102, .95);
-            backdrop-filter: blur(12px);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: .9rem 5%;
-            border-bottom: 1px solid rgba(255, 191, 0, .2);
-        }
-
-        .nav-logo {
-            color: #fff;
-            text-decoration: none;
-            font-size: 1.5rem;
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 1.8rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: rgba(255, 255, 255, .8);
-            text-decoration: none;
-            font-size: .92rem;
-            font-weight: 500;
-            transition: color .2s;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--gold);
-        }
-
-        .nav-back {
-            color: var(--gold);
-            text-decoration: none;
-            font-size: .9rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: .4rem;
-        }
-
-        /* PAGE HERO */
-        .page-hero {
-            min-height: 55vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(160deg, #001a4d 0%, #002a6b 50%, #0d5c5c 100%);
-            padding: 8rem 5% 4rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .page-hero::after {
-            content: '🌊';
-            font-size: 18rem;
-            position: absolute;
-            bottom: -4rem;
-            right: -2rem;
-            opacity: .04;
-            pointer-events: none;
-        }
-
-        .page-hero-content {
-            position: relative;
-            z-index: 2;
-            color: #fff;
-        }
-
-        .page-eyebrow {
-            font-size: .82rem;
-            letter-spacing: .22em;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 1rem;
-        }
-
-        .page-title {
-            font-size: clamp(2.5rem, 6vw, 5rem);
-            line-height: 1.1;
-            margin-bottom: 1rem;
-        }
-
-        .page-desc {
-            font-size: 1.05rem;
-            max-width: 560px;
-            margin: 0 auto;
-            opacity: .8;
-            line-height: 1.8;
-        }
-
-        .wave-divider {
-            line-height: 0;
-            position: relative;
-            z-index: 2;
-        }
-
-        .wave-divider svg {
-            display: block;
-            width: 100%;
-        }
-
-        /* SECTIONS */
-        section {
-            padding: 5rem 5%;
-        }
-
-        .inner {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .section-tag {
-            font-size: .8rem;
-            letter-spacing: .2em;
-            text-transform: uppercase;
-            color: var(--teal);
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .section-title {
-            font-size: clamp(2rem, 4vw, 3.2rem);
-            color: var(--navy);
-            margin-bottom: 1rem;
-        }
-
-        .section-desc {
-            font-size: 1.05rem;
-            line-height: 1.8;
-            opacity: .8;
-            max-width: 600px;
-            margin-bottom: 2.5rem;
-        }
-
-        /* PASAR MAP */
-        .market-map-wrap {
-            background: #fff;
-            border-radius: 24px;
-            padding: 2rem;
-            box-shadow: 0 8px 30px rgba(0, 35, 102, .08);
-        }
-
-        .market-map {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 16/9;
-            background: linear-gradient(135deg, #e8f4e8 0%, #d4e8d4 100%);
-            border-radius: 16px;
-            overflow: hidden;
-            border: 2px solid #c8dfc8;
-        }
-
-        .map-bg-text {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 8rem;
-            opacity: .06;
-        }
-
-        .map-stall {
-            position: absolute;
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            cursor: pointer;
-            transition: transform .3s;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, .2);
-        }
-
-        .map-stall:hover {
-            transform: scale(1.2);
-        }
-
-        .map-stall:hover .stall-tooltip {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .stall-tooltip {
-            position: absolute;
-            bottom: calc(100% + 8px);
-            left: 50%;
-            transform: translateX(-50%) translateY(5px);
-            background: var(--navy);
-            color: #fff;
-            font-size: .75rem;
-            padding: .5rem .9rem;
-            border-radius: 8px;
-            white-space: nowrap;
-            opacity: 0;
-            transition: all .3s;
-            border: 1px solid var(--gold);
-            pointer-events: none;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .map-legend {
-            display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            margin-top: 1.5rem;
-        }
-
-        .map-legend-item {
-            display: flex;
-            align-items: center;
-            gap: .5rem;
-            font-size: .88rem;
-        }
-
-        /* SHELL CONVERTER */
-        .converter-box {
-            background: var(--navy);
-            border-radius: 24px;
-            padding: 2.5rem;
-            color: #fff;
-            max-width: 500px;
-        }
-
-        .converter-box h3 {
-            margin-bottom: .5rem;
-            font-size: 1.5rem;
-        }
-
-        .converter-box p {
-            opacity: .7;
-            margin-bottom: 2rem;
-            font-size: .92rem;
-        }
-
-        .conv-input-wrap {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .conv-input {
-            flex: 1;
-            min-width: 140px;
-            padding: .9rem 1.2rem;
-            border: 1px solid rgba(255, 255, 255, .2);
-            border-radius: 12px;
-            background: rgba(255, 255, 255, .08);
-            color: #fff;
-            font-size: 1rem;
-            font-family: 'Inter', sans-serif;
-            outline: none;
-            transition: border .3s;
-        }
-
-        .conv-input:focus {
-            border-color: var(--gold);
-        }
-
-        .conv-input::placeholder {
-            color: rgba(255, 255, 255, .4);
-        }
-
-        .conv-btn {
-            padding: .9rem 1.6rem;
-            background: var(--gold);
-            color: var(--navy);
-            border: none;
-            border-radius: 12px;
-            font-weight: 700;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: all .3s;
-        }
-
-        .conv-btn:hover {
-            background: #fff;
-        }
-
-        .conv-result {
-            margin-top: 1.5rem;
-            padding: 1.2rem;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, .08);
-            border: 1px solid rgba(255, 191, 0, .3);
-            min-height: 60px;
-            font-size: 1.15rem;
-            color: var(--gold);
-            display: flex;
-            align-items: center;
-            gap: .6rem;
-        }
-
-        /* GALLERY */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 1rem;
-        }
-
-        .gallery-item {
-            aspect-ratio: 4/3;
-            border-radius: 14px;
-            overflow: hidden;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            transition: transform .3s, box-shadow .3s;
-            position: relative;
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.04);
-            box-shadow: 0 12px 30px rgba(0, 35, 102, .2);
-        }
-
-        .gallery-item::after {
-            content: attr(data-label);
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(0, 20, 60, .8));
-            color: #fff;
-            padding: 1.5rem .8rem .8rem;
-            font-size: .82rem;
-            font-weight: 600;
-            opacity: 0;
-            transition: opacity .3s;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .gallery-item:hover::after {
-            opacity: 1;
-        }
-
-        /* LIGHTBOX */
-        #lightbox {
-            position: fixed;
-            inset: 0;
-            z-index: 9999;
-            background: rgba(0, 0, 0, .92);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            gap: 1rem;
-            padding: 2rem;
-        }
-
-        #lightbox.open {
-            display: flex;
-        }
-
-        #lb-content {
-            font-size: 8rem;
-            text-align: center;
-        }
-
-        #lb-label {
-            color: #fff;
-            font-size: 1.2rem;
-            font-family: 'Playfair Display', serif;
-        }
-
-        #lb-close {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, .3);
-            color: #fff;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            font-size: 1.2rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* ZERO PLASTIC */
-        .plastic-card {
-            background: linear-gradient(135deg, #064e3b, #0f766e);
-            border-radius: 24px;
-            padding: 2.5rem;
-            color: #fff;
-            text-align: center;
-        }
-
-        .plastic-num {
-            font-size: 4rem;
-            font-weight: 800;
-            color: #6ee7b7;
-            margin: .5rem 0;
-        }
-
-        .plastic-sub {
-            opacity: .8;
-            font-size: .92rem;
-        }
-
-        /* NGAYOM */
-        .ngayom-card {
-            background: #fff;
-            border-radius: 24px;
-            padding: 2.5rem;
-            box-shadow: 0 8px 30px rgba(0, 35, 102, .08);
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .ngayom-icon {
-            font-size: 6rem;
-            text-align: center;
-        }
-
-        .ngayom-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: .5rem;
-            margin-top: 1.5rem;
-            background: var(--navy);
-            color: #fff;
-            text-decoration: none;
-            padding: .9rem 2rem;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all .3s;
-        }
-
-        .ngayom-cta:hover {
-            background: var(--gold);
-            color: var(--navy);
-        }
-
-        /* REVEAL */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all .8s cubic-bezier(.25, .8, .25, 1);
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* FAB */
-        #compass-btn {
-            position: fixed;
-            top: 72px;
-            right: 24px;
-            z-index: 8500;
-            width: 52px;
-            height: 52px;
-            background: var(--navy);
-            border: 2px solid var(--gold);
-            border-radius: 50%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-            cursor: pointer;
-            box-shadow: 0 4px 20px rgba(0, 35, 102, .45);
-            transition: transform .3s;
-        }
-
-        #compass-btn:hover {
-            transform: scale(1.1);
-        }
-
-        .c-line {
-            width: 22px;
-            height: 2px;
-            background: var(--gold);
-            border-radius: 2px;
-        }
-
-        .c-line.mid {
-            width: 14px;
-        }
-
-        #compass-overlay {
-            position: fixed;
-            inset: 0;
-            z-index: 8400;
-            background: rgba(0, 10, 30, .82);
-            backdrop-filter: blur(18px);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-        }
-
-        #compass-overlay.open {
-            display: flex;
-        }
-
-        .compass-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            max-width: 760px;
-            width: 100%;
-        }
-
-        .compass-wing {
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 2rem;
-            transition: background .3s, transform .3s;
-        }
-
-        .compass-wing:hover {
-            background: rgba(255, 255, 255, .14);
-            transform: translateY(-4px);
-        }
-
-        .compass-wing h3 {
-            color: var(--gold);
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .compass-wing a {
-            display: block;
-            color: rgba(255, 255, 255, .8);
-            text-decoration: none;
-            padding: .4rem 0;
-            font-size: .95rem;
-            border-bottom: 1px solid rgba(255, 255, 255, .08);
-            transition: color .2s;
-        }
-
-        .compass-wing a:hover {
-            color: var(--gold);
-        }
-
-        .compass-wing a:last-child {
-            border-bottom: none;
-        }
-
-        #overlay-close {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            background: transparent;
-            border: 1px solid var(--glass-border);
-            color: #fff;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            font-size: 1.2rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        footer {
-            background: var(--dark);
-            color: rgba(255, 255, 255, .7);
-            padding: 3rem 5% 1.5rem;
-            text-align: center;
-        }
-
-        footer a {
-            color: var(--gold);
-            text-decoration: none;
-        }
-
-        @media(max-width:768px) {
-            .ngayom-card {
-                grid-template-columns: 1fr;
-            }
-
-            .compass-grid {
-                grid-template-columns: 1fr;
-                max-width: 360px;
-            }
-
-            .nav-links {
-                display: none;
-            }
+            --dark: #050e1f;
+            --wood: #6b4423;
+            --glass: rgba(255,255,255,0.07);
+            --glass-border: rgba(255,255,255,0.15);
+        }
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+        html{scroll-behavior:smooth;}
+        body{font-family:'Inter',sans-serif;background:var(--sand-light);color:var(--navy);overflow-x:hidden;}
+        .serif{font-family:'Playfair Display',serif;}
+
+        /* ── NAV ── */
+        nav{position:fixed;top:0;left:0;width:100%;z-index:9000;background:rgba(0,43,91,.96);backdrop-filter:blur(14px);display:flex;align-items:center;justify-content:space-between;padding:.85rem 5%;border-bottom:1px solid rgba(200,168,75,.25);}
+        .nav-logo{color:#fff;text-decoration:none;font-size:1.45rem;font-family:'Playfair Display',serif;font-weight:700;letter-spacing:.02em;}
+        .nav-links{display:flex;gap:1.8rem;list-style:none;}
+        .nav-links a{color:rgba(255,255,255,.75);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .2s;}
+        .nav-links a:hover,.nav-links a.active{color:var(--gold-light);}
+        .nav-back{color:var(--gold-light);text-decoration:none;font-size:.88rem;font-weight:600;}
+
+        /* ── HERO ── */
+        .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;background:linear-gradient(170deg,#001833 0%,#002B5B 45%,#0a4a4a 100%);}
+        .hero-bg-pattern{position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(200,168,75,.04) 61px),repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(200,168,75,.04) 61px);pointer-events:none;}
+        .hero-wave-bottom{position:absolute;bottom:0;left:0;width:100%;line-height:0;z-index:2;}
+        .hero-wave-bottom svg{display:block;width:100%;}
+        .hero-content{position:relative;z-index:3;color:#fff;padding:7rem 2rem 6rem;}
+        .hero-eyebrow{font-size:.78rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-light);margin-bottom:1.2rem;display:flex;align-items:center;justify-content:center;gap:.8rem;}
+        .hero-eyebrow::before,.hero-eyebrow::after{content:'';display:block;width:40px;height:1px;background:var(--gold);}
+        .hero-title{font-size:clamp(3rem,7vw,6.5rem);line-height:1.05;margin-bottom:1.5rem;text-shadow:0 4px 30px rgba(0,0,0,.4);}
+        .hero-title em{color:var(--gold-light);font-style:italic;}
+        .hero-sub{font-size:1.1rem;max-width:540px;margin:0 auto 2.5rem;opacity:.8;line-height:1.8;}
+        .hero-scroll{display:inline-flex;flex-direction:column;align-items:center;gap:.5rem;color:rgba(255,255,255,.5);font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;animation:float 2.5s ease-in-out infinite;}
+        .hero-scroll-arrow{width:28px;height:28px;border:1px solid rgba(255,255,255,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;}
+        @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(6px);}}
+
+        /* ── ROPE DIVIDER ── */
+        .rope-divider{width:100%;height:28px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='28'%3E%3Cpath d='M0 14 Q10 4 20 14 Q30 24 40 14' stroke='%23c8a84b' stroke-width='1.5' fill='none' opacity='.35'/%3E%3C/svg%3E") repeat-x center;opacity:.7;}
+
+        /* ── SECTIONS ── */
+        section{padding:5.5rem 5%;}
+        .inner{max-width:1140px;margin:0 auto;}
+        .section-tag{font-size:.76rem;letter-spacing:.22em;text-transform:uppercase;color:var(--teal-light);font-weight:600;margin-bottom:.9rem;}
+        .section-title{font-size:clamp(2rem,4vw,3.2rem);color:var(--navy);margin-bottom:1rem;line-height:1.15;}
+        .section-desc{font-size:1.03rem;line-height:1.85;opacity:.78;max-width:580px;margin-bottom:2.5rem;}
+
+        /* ── REVEAL ── */
+        .reveal{opacity:0;transform:translateY(36px);transition:all .85s cubic-bezier(.25,.8,.25,1);}
+        .reveal.visible{opacity:1;transform:translateY(0);}
+
+        /* ══════════════════════════════════
+           SECTION 1 ── PETIK LAUT SPLIT
+        ══════════════════════════════════ */
+        .petik-wrap{display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:28px;overflow:hidden;box-shadow:0 20px 60px rgba(0,43,91,.18);}
+        .petik-left{background:linear-gradient(155deg,#001833 0%,#002B5B 60%,#063a3a 100%);padding:3.5rem;color:#fff;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;}
+        .petik-left::before{content:'🕌';position:absolute;bottom:-2rem;right:-1rem;font-size:10rem;opacity:.05;pointer-events:none;}
+        .petik-right{background:linear-gradient(155deg,#0a4a4a 0%,#1a7a7a 100%);padding:3.5rem;color:#fff;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;}
+        .petik-right::before{content:'⛵';position:absolute;bottom:-2rem;right:-1rem;font-size:10rem;opacity:.07;pointer-events:none;}
+        .petik-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(200,168,75,.2);border:1px solid rgba(200,168,75,.4);color:var(--gold-light);font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;padding:.45rem 1rem;border-radius:50px;margin-bottom:1.2rem;}
+        .petik-panel-title{font-size:clamp(1.6rem,3vw,2.4rem);margin-bottom:1rem;line-height:1.2;}
+        .petik-panel-desc{font-size:.96rem;line-height:1.8;opacity:.82;margin-bottom:1.5rem;}
+        .petik-items{list-style:none;display:flex;flex-direction:column;gap:.7rem;}
+        .petik-items li{display:flex;align-items:center;gap:.8rem;font-size:.92rem;opacity:.9;}
+        .petik-items li::before{content:'';width:6px;height:6px;background:var(--gold-light);border-radius:50%;flex-shrink:0;}
+        .petik-divider{width:4px;background:linear-gradient(180deg,var(--gold) 0%,transparent 100%);opacity:.4;}
+
+        /* ══════════════════════════════════
+           SECTION 2 ── PASAR SEGORO
+        ══════════════════════════════════ */
+        #pasar{background:var(--sand-light);}
+        .pasar-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
+
+        /* Flip card */
+        .flip-card-scene{width:100%;max-width:380px;height:340px;perspective:900px;cursor:pointer;margin:0 auto;}
+        .flip-card-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.45,.05,.55,.95);}
+        .flip-card-scene:hover .flip-card-inner{transform:rotateY(180deg);}
+        .flip-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2.5rem;text-align:center;}
+        .flip-front{background:linear-gradient(145deg,var(--navy) 0%,var(--navy-mid) 100%);color:#fff;box-shadow:0 16px 48px rgba(0,43,91,.3);}
+        .flip-back{background:linear-gradient(145deg,var(--teal) 0%,#0a5a5a 100%);color:#fff;transform:rotateY(180deg);box-shadow:0 16px 48px rgba(26,122,122,.3);}
+        .flip-shell-icon{font-size:4rem;margin-bottom:1rem;filter:drop-shadow(0 4px 12px rgba(200,168,75,.4));}
+        .flip-title{font-size:1.6rem;margin-bottom:.6rem;}
+        .flip-rate{font-size:2.8rem;font-weight:900;color:var(--gold-light);margin:.5rem 0;}
+        .flip-hint{font-size:.8rem;opacity:.6;letter-spacing:.1em;text-transform:uppercase;}
+
+        /* Menu cards */
+        .menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem;}
+        .menu-card{background:#fff;border-radius:16px;padding:1.4rem;box-shadow:0 4px 20px rgba(0,43,91,.07);border:1px solid rgba(0,43,91,.06);transition:transform .3s,box-shadow .3s;position:relative;overflow:hidden;}
+        .menu-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--teal-light));}
+        .menu-card:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,43,91,.12);}
+        .menu-emoji{font-size:2rem;margin-bottom:.6rem;}
+        .menu-name{font-weight:700;font-size:.95rem;color:var(--navy);margin-bottom:.3rem;}
+        .menu-price{font-size:.82rem;color:var(--teal);font-weight:600;}
+
+        /* ══════════════════════════════════
+           SECTION 3 ── REOG GALLERY
+        ══════════════════════════════════ */
+        #reog{background:#fff;}
+        .masonry-grid{columns:3 220px;column-gap:1.2rem;}
+        .polaroid{break-inside:avoid;background:#fefefe;padding:1rem 1rem .6rem;box-shadow:0 6px 24px rgba(0,43,91,.12);border:1px solid rgba(0,0,0,.06);margin-bottom:1.2rem;transition:transform .35s,box-shadow .35s;cursor:pointer;position:relative;}
+        .polaroid:hover{transform:rotate(0deg) translateY(-6px);box-shadow:0 16px 40px rgba(0,43,91,.2);}
+        .polaroid:nth-child(odd){transform:rotate(-1.5deg);}
+        .polaroid:nth-child(even){transform:rotate(1.2deg);}
+        .polaroid:nth-child(odd):hover,.polaroid:nth-child(even):hover{transform:rotate(0deg) translateY(-6px);}
+        .polaroid-img{width:100%;aspect-ratio:4/3;background:linear-gradient(135deg,#1e3a5f,#0a5a5a);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:3.5rem;margin-bottom:.8rem;overflow:hidden;position:relative;}
+        .polaroid-img::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(200,168,75,.08),transparent);}
+        .polaroid-caption{text-align:center;font-size:.8rem;color:#555;font-family:'Playfair Display',serif;font-style:italic;padding:.2rem 0 .4rem;}
+        /* net overlay corner effect */
+        .polaroid-img::before{content:'';position:absolute;bottom:0;right:0;width:60px;height:60px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Cpath d='M0 0 L20 20 M10 0 L20 10 M0 10 L10 20' stroke='rgba(255,255,255,0.12)' stroke-width='1'/%3E%3C/svg%3E") repeat;opacity:.5;z-index:1;}
+
+        /* ══════════════════════════════════
+           SECTION 4 ── KIRAB TIMELINE
+        ══════════════════════════════════ */
+        #kirab{background:linear-gradient(160deg,var(--navy) 0%,#003a7a 60%,var(--teal) 100%);color:#fff;overflow:hidden;position:relative;}
+        #kirab::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.015) 0px,rgba(255,255,255,.015) 1px,transparent 1px,transparent 30px);pointer-events:none;}
+        .timeline-scroll-wrapper{overflow-x:auto;padding-bottom:1.5rem;scrollbar-width:thin;scrollbar-color:rgba(200,168,75,.5) transparent;}
+        .timeline-scroll-wrapper::-webkit-scrollbar{height:4px;}
+        .timeline-scroll-wrapper::-webkit-scrollbar-track{background:rgba(255,255,255,.1);border-radius:2px;}
+        .timeline-scroll-wrapper::-webkit-scrollbar-thumb{background:var(--gold);border-radius:2px;}
+        .timeline-track{display:flex;gap:0;position:relative;min-width:max-content;padding:2rem 0 1rem;}
+        .timeline-track::before{content:'';position:absolute;top:50%;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold) 10%,var(--gold) 90%,transparent);opacity:.4;transform:translateY(-50%);z-index:0;}
+        .tl-item{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:1rem;width:180px;flex-shrink:0;}
+        .tl-dot{width:56px;height:56px;border-radius:50%;background:var(--glass);border:2px solid rgba(200,168,75,.5);display:flex;align-items:center;justify-content:center;font-size:1.5rem;backdrop-filter:blur(8px);transition:transform .3s,background .3s;}
+        .tl-item:hover .tl-dot{transform:scale(1.15);background:rgba(200,168,75,.2);}
+        .tl-time{font-size:.72rem;color:var(--gold-light);letter-spacing:.12em;text-transform:uppercase;font-weight:600;}
+        .tl-label{font-size:.85rem;text-align:center;opacity:.9;line-height:1.4;max-width:140px;}
+        .tl-item:nth-child(even){flex-direction:column-reverse;}
+        .tl-item:nth-child(even) .tl-time{order:-1;}
+
+        /* ══════════════════════════════════
+           SECTION 5 ── NGAYOM JAGAD
+        ══════════════════════════════════ */
+        #ngayom{background:var(--sand-light);}
+        .ngayom-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
+        .ngayom-visual{position:relative;height:380px;}
+        .ngayom-big-icon{font-size:9rem;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);filter:drop-shadow(0 8px 24px rgba(0,43,91,.2));}
+        .ngayom-orbit{position:absolute;inset:0;border-radius:50%;border:1px dashed rgba(0,43,91,.15);animation:spin 20s linear infinite;}
+        .ngayom-orbit-item{position:absolute;font-size:1.6rem;}
+        @keyframes spin{to{transform:rotate(360deg);}}
+        .ngayom-tags{display:flex;flex-wrap:wrap;gap:.6rem;margin:1.5rem 0;}
+        .ngayom-tag{background:#fff;border:1px solid rgba(0,43,91,.1);padding:.45rem 1rem;border-radius:50px;font-size:.85rem;color:var(--navy);font-weight:500;box-shadow:0 2px 8px rgba(0,43,91,.06);}
+        .cta-btn{display:inline-flex;align-items:center;gap:.6rem;background:var(--navy);color:#fff;text-decoration:none;padding:.9rem 2.2rem;border-radius:50px;font-weight:600;font-size:.95rem;transition:all .3s;box-shadow:0 6px 20px rgba(0,43,91,.3);}
+        .cta-btn:hover{background:var(--gold);color:var(--navy);transform:translateY(-2px);box-shadow:0 10px 28px rgba(200,168,75,.35);}
+
+        /* ══════════════════════════════════
+           SHELL CONVERTER
+        ══════════════════════════════════ */
+        #converter{background:#fff;}
+        .converter-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
+        .converter-box{background:linear-gradient(145deg,var(--navy) 0%,#003a7a 100%);border-radius:24px;padding:2.5rem;color:#fff;box-shadow:0 16px 48px rgba(0,43,91,.25);}
+        .converter-box h3{margin-bottom:.4rem;font-size:1.4rem;}
+        .converter-box p.sub{opacity:.65;font-size:.9rem;margin-bottom:1.8rem;}
+        .conv-input{width:100%;padding:.9rem 1.2rem;border:1px solid rgba(255,255,255,.2);border-radius:12px;background:rgba(255,255,255,.08);color:#fff;font-size:1rem;font-family:'Inter',sans-serif;outline:none;transition:border .3s;margin-bottom:1rem;}
+        .conv-input:focus{border-color:var(--gold-light);}
+        .conv-input::placeholder{color:rgba(255,255,255,.35);}
+        .conv-btn{width:100%;padding:.9rem;background:var(--gold);color:var(--navy);border:none;border-radius:12px;font-weight:700;cursor:pointer;font-size:1rem;transition:all .3s;}
+        .conv-btn:hover{background:var(--gold-light);}
+        .conv-result{margin-top:1.2rem;padding:1.1rem;border-radius:12px;background:rgba(255,255,255,.08);border:1px solid rgba(200,168,75,.3);font-size:1.1rem;color:var(--gold-light);min-height:54px;display:flex;align-items:center;gap:.5rem;}
+
+        /* ── LIGHTBOX ── */
+        #lightbox{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;flex-direction:column;gap:1rem;padding:2rem;}
+        #lightbox.open{display:flex;}
+        #lb-content{font-size:8rem;text-align:center;}
+        #lb-label{color:#fff;font-size:1.2rem;font-family:'Playfair Display',serif;margin-top:.5rem;}
+        #lb-close{position:absolute;top:1.5rem;right:1.5rem;background:transparent;border:1px solid rgba(255,255,255,.3);color:#fff;width:44px;height:44px;border-radius:50%;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+
+        /* ── FAB ── */
+        #compass-btn{position:fixed;top:72px;right:24px;z-index:8500;width:52px;height:52px;background:var(--navy);border:2px solid var(--gold);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;box-shadow:0 4px 20px rgba(0,43,91,.45);transition:transform .3s;}
+        #compass-btn:hover{transform:scale(1.1);}
+        .c-line{width:22px;height:2px;background:var(--gold);border-radius:2px;}
+        .c-line.mid{width:14px;}
+        #compass-overlay{position:fixed;inset:0;z-index:8400;background:rgba(0,10,30,.85);backdrop-filter:blur(18px);display:none;align-items:center;justify-content:center;padding:2rem;}
+        #compass-overlay.open{display:flex;}
+        .compass-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;max-width:760px;width:100%;}
+        .compass-wing{background:var(--glass);border:1px solid var(--glass-border);border-radius:20px;padding:2rem;transition:background .3s,transform .3s;}
+        .compass-wing:hover{background:rgba(255,255,255,.12);transform:translateY(-4px);}
+        .compass-wing h3{color:var(--gold-light);font-size:1rem;font-weight:600;margin-bottom:1rem;}
+        .compass-wing a{display:block;color:rgba(255,255,255,.8);text-decoration:none;padding:.4rem 0;font-size:.95rem;border-bottom:1px solid rgba(255,255,255,.08);transition:color .2s;}
+        .compass-wing a:hover{color:var(--gold-light);}
+        .compass-wing a:last-child{border-bottom:none;}
+        #overlay-close{position:absolute;top:1.5rem;right:1.5rem;background:transparent;border:1px solid var(--glass-border);color:#fff;width:40px;height:40px;border-radius:50%;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+
+        /* ── FOOTER ── */
+        footer{background:var(--dark);color:rgba(255,255,255,.6);padding:3.5rem 5% 2rem;text-align:center;position:relative;overflow:hidden;}
+        footer::before{content:'';position:absolute;top:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+        .footer-wave{width:100%;height:32px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='32'%3E%3Cpath d='M0 16 Q15 4 30 16 Q45 28 60 16' stroke='rgba(200,168,75,0.2)' stroke-width='1.5' fill='none'/%3E%3C/svg%3E") repeat-x center;margin-bottom:1.5rem;}
+        footer p{font-size:.9rem;}
+        footer a{color:var(--gold);text-decoration:none;}
+
+        /* ── BOTTOM SWITCH ── */
+        .bottom-switch-container{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:#fff;padding:6px;border-radius:50px;box-shadow:0 10px 30px rgba(0,43,91,.15);display:flex;align-items:center;gap:5px;z-index:1000;border:1px solid rgba(0,43,91,.06);}
+        .bottom-switch-btn{padding:10px 24px;border-radius:40px;font-size:.95rem;font-weight:600;color:var(--navy);text-decoration:none;transition:all .3s;cursor:pointer;}
+        .bottom-switch-btn.active{background:var(--navy);color:#fff;box-shadow:0 4px 15px rgba(0,43,91,.2);}
+        .bottom-switch-btn:not(.active):hover{background:rgba(0,43,91,.06);}
+
+        /* ── RESPONSIVE ── */
+        @media(max-width:900px){
+            .petik-wrap{grid-template-columns:1fr;}
+            .petik-divider{display:none;}
+            .pasar-grid,.converter-wrap,.ngayom-wrap{grid-template-columns:1fr;}
+            .masonry-grid{columns:2 180px;}
+            .compass-grid{grid-template-columns:1fr;max-width:360px;}
+            .nav-links{display:none;}
+            .flip-card-scene{max-width:100%;}
+        }
+        @media(max-width:560px){
+            .masonry-grid{columns:1;}
+            .menu-grid{grid-template-columns:1fr;}
+            .tl-item{width:140px;}
         }
     </style>
 </head>
-
 <body>
 
+    <!-- NAV -->
     <nav>
         <a href="index.html" class="nav-logo">Campurejo</a>
         <ul class="nav-links">
-            <li><a href="budaya.html" class="active">Segoro & Tradisi</a></li>
-            <li><a href="program.html">Ekonomi Biru</a></li>
+            <li><a href="budaya.html" class="active">Budaya & Tradisi</a></li>
+            <li><a href="program.html">Program Desa</a></li>
             <li><a href="jelajah.html">Jelajah</a></li>
         </ul>
         <a href="index.html" class="nav-back">← Beranda</a>
     </nav>
 
     <!-- FAB -->
-    <div id="compass-btn">
-        <div class="c-line"></div>
-        <div class="c-line mid"></div>
-        <div class="c-line"></div>
-    </div>
+    <div id="compass-btn"><div class="c-line"></div><div class="c-line mid"></div><div class="c-line"></div></div>
     <div id="compass-overlay">
         <button id="overlay-close">✕</button>
         <div class="compass-grid">
             <div class="compass-wing">
                 <h3>🏛️ PEMERINTAHAN</h3>
-                <a href="index.html">Beranda</a><a href="index.html#data">Data Demografis</a><a
-                    href="index.html">Tentang Desa</a>
+                <a href="index.html">Beranda</a><a href="index.html#data">Data Demografis</a><a href="index.html">Tentang Desa</a>
             </div>
             <div class="compass-wing">
-                <h3>👥 WARGA</h3><a href="jelajah.html#borderline">13 Rumah Batas</a><a href="#ngayom">Ngayom
-                    Jagad</a><a href="index.html#data">Data Demografis</a>
+                <h3>👥 WARGA</h3>
+                <a href="jelajah.html#borderline">13 Rumah Batas</a><a href="#ngayom">Ngayom Jagad</a><a href="index.html#data">Data Demografis</a>
             </div>
             <div class="compass-wing">
-                <h3>🛒 PASAR / UMKM</h3><a href="#pasar">Pasar Segoro</a><a href="#converter">Kalkulator Shell</a><a
-                    href="program.html">Katalog UMKM</a>
+                <h3>🛒 PASAR / UMKM</h3>
+                <a href="#pasar">Pasar Segoro</a><a href="#converter">Kalkulator Shell</a><a href="program.html">Katalog UMKM</a>
             </div>
             <div class="compass-wing">
-                <h3>🌊 PLESIR</h3><a href="jelajah.html">Pantai Hippo</a><a href="jelajah.html#mangrove">Jalur
-                    Mangrove</a><a href="program.html#tpi">TPI Campurejo</a>
+                <h3>🌊 PLESIR</h3>
+                <a href="jelajah.html">Pantai Hippo</a><a href="jelajah.html#mangrove">Jalur Mangrove</a><a href="program.html#tpi">TPI Campurejo</a>
             </div>
         </div>
     </div>
@@ -708,255 +270,324 @@
         <div id="lb-label"></div>
     </div>
 
-    <!-- PAGE HERO -->
-    <div class="page-hero">
-        <div class="page-hero-content">
-            <div class="page-eyebrow">Budaya & Tradisi</div>
-            <h1 class="page-title serif">Segoro &amp; Tradisi</h1>
-            <p class="page-desc">Warisan leluhur yang hidup di tepi Laut Jawa — dari Pasar Segoro hingga Petik Laut yang
-                sakral.</p>
+    <!-- ══ HERO ══ -->
+    <div class="hero">
+        <div class="hero-bg-pattern"></div>
+        <div class="hero-content">
+            <div class="hero-eyebrow">Desa Campurejo · Warisan Pesisir</div>
+            <h1 class="hero-title serif">Tradisi &amp;<br><em>Budaya</em><br>Campurejo</h1>
+            <p class="hero-sub">Di tepi Laut Jawa, leluhur kami merawat tradisi yang menyatukan laut, tanah, dan manusia — dari sesaji Petik Laut hingga sorak Reog Pantura.</p>
+            <div class="hero-scroll">
+                <div class="hero-scroll-arrow">↓</div>
+                Jelajahi
+            </div>
+        </div>
+        <div class="hero-wave-bottom">
+            <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0,40 C240,80 480,0 720,50 C960,80 1200,10 1440,50 L1440,80 L0,80Z" fill="#f5efd8"/>
+            </svg>
         </div>
     </div>
-    <div class="wave-divider"><svg viewBox="0 0 1440 60" preserveAspectRatio="none">
-            <path d="M0,30 C360,60 1080,0 1440,40 L1440,60 L0,60Z" fill="#F5F5F0" />
-        </svg></div>
 
-    <!-- PASAR SEGORO MAP -->
-    <section id="pasar">
-        <div class="inner">
-            <div class="reveal">
-                <p class="section-tag">Pasar Budaya</p>
-                <h2 class="section-title serif">Peta Pasar Segoro</h2>
-                <p class="section-desc">Arahkan kursor ke lapak untuk melihat apa yang tersedia di pasar tematik pesisir
-                    ini.</p>
-            </div>
-            <div class="market-map-wrap reveal">
-                <div class="market-map" id="market-map">
-                    <div class="map-bg-text">🐚</div>
-                    <!-- Stalls -->
-                    <div class="map-stall" style="background:#fde68a;top:20%;left:15%;" title="Jajanan">🍢<div
-                            class="stall-tooltip">Geplak & Onde-onde Pesisir</div>
-                    </div>
-                    <div class="map-stall" style="background:#bbf7d0;top:45%;left:30%;" title="Seafood">🐟<div
-                            class="stall-tooltip">Ikan Bakar & Kerupuk Gajah</div>
-                    </div>
-                    <div class="map-stall" style="background:#bfdbfe;top:20%;left:50%;" title="Kerajinan">🪡<div
-                            class="stall-tooltip">Kerajinan Jaring & Anyaman</div>
-                    </div>
-                    <div class="map-stall" style="background:#fecaca;top:55%;left:60%;" title="Minuman">🥥<div
-                            class="stall-tooltip">Es Kelapa Muda & Dawet</div>
-                    </div>
-                    <div class="map-stall" style="background:#e9d5ff;top:25%;left:75%;" title="Produk">🫙<div
-                            class="stall-tooltip">Petis Cap Truck & Terasi</div>
-                    </div>
-                    <div class="map-stall" style="background:#fed7aa;top:65%;left:20%;" title="Sayur">🥬<div
-                            class="stall-tooltip">Sayur Hidroponik Greenhouse</div>
-                    </div>
-                    <div class="map-stall" style="background:#a7f3d0;top:70%;left:75%;" title="Seni">🎭<div
-                            class="stall-tooltip">Pertunjukan Reog Pantura</div>
-                    </div>
-                </div>
-                <div class="map-legend">
-                    <div class="map-legend-item">🍢 Jajanan Tradisional</div>
-                    <div class="map-legend-item">🐟 Produk Laut</div>
-                    <div class="map-legend-item">🪡 Kerajinan</div>
-                    <div class="map-legend-item">🥥 Minuman Segar</div>
-                    <div class="map-legend-item">🫙 Produk Olahan</div>
-                    <div class="map-legend-item">🥬 Hasil Tani</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SHELL CONVERTER -->
-    <section id="converter" style="background:#fff;padding:5rem 5%;">
-        <div class="inner" style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;">
-            <div class="reveal">
-                <p class="section-tag">Kurs Eksklusif</p>
-                <h2 class="section-title serif">Kalkulator<br>Shell Segoro</h2>
-                <p class="section-desc">Pasar Segoro menggunakan "Shell" sebagai mata uang unik. Berapa Rupiah yang kamu
-                    butuhkan?</p>
-            </div>
-            <div class="converter-box reveal">
-                <h3 class="serif">💱 Konversi Shell</h3>
-                <p>1 Shell = Rp 2.000</p>
-                <div style="margin-bottom:1.5rem;">
-                    <label style="font-size:.85rem;opacity:.7;display:block;margin-bottom:.5rem;">Masukkan Rupiah
-                        (IDR)</label>
-                    <div class="conv-input-wrap">
-                        <input type="number" class="conv-input" id="idr-input" placeholder="contoh: 10000" min="0">
-                        <button class="conv-btn" onclick="convertShell()">Hitung</button>
-                    </div>
-                </div>
-                <div class="conv-result" id="conv-result">
-                    <span>Masukkan nominal IDR di atas 👆</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PETIK LAUT GALLERY -->
+    <!-- ══ PETIK LAUT — SPLIT SCREEN ══ -->
     <section id="petiklaut">
         <div class="inner">
-            <div class="reveal">
-                <p class="section-tag">Tradisi Sakral</p>
-                <h2 class="section-title serif">Galeri Petik Laut</h2>
-                <p class="section-desc">Upacara syukur tahunan nelayan — ratusan perahu berhias berlayar bersama dalam
-                    parade warna-warni.</p>
+            <div class="reveal" style="text-align:center;margin-bottom:2.5rem;">
+                <p class="section-tag">Ritual Syukur Nelayan</p>
+                <h2 class="section-title serif" style="text-align:center;">Petik Laut</h2>
+                <p class="section-desc" style="margin:0 auto;">Perayaan tahunan paling sakral di Campurejo — antara doa, seni, dan laut biru Jawa.</p>
             </div>
-            <div class="gallery-grid reveal">
-                <div class="gallery-item" style="background:linear-gradient(135deg,#1e3a5f,#0096A0);"
-                    data-label="Armada Perahu Berhias" data-emoji="⛵"
-                    onclick="openLightbox('⛵','Armada Perahu Berhias — Petik Laut 2025')">⛵</div>
-                <div class="gallery-item" style="background:linear-gradient(135deg,#7c2d12,#ea580c);"
-                    data-label="Sesaji ke Laut" data-emoji="🎋"
-                    onclick="openLightbox('🎋','Sesaji ke Laut — Ritual Tahunan Nelayan')">🎋</div>
-                <div class="gallery-item" style="background:linear-gradient(135deg,#14532d,#22c55e);"
-                    data-label="Doa Keselamatan" data-emoji="🙏"
-                    onclick="openLightbox('🙏','Doa Keselamatan Nelayan — Dipimpin Tokoh Agama')">🙏</div>
-                <div class="gallery-item" style="background:linear-gradient(135deg,#4c1d95,#7c3aed);"
-                    data-label="Reog Pantura" data-emoji="🎭"
-                    onclick="openLightbox('🎭','Reog Pantura — Kesenian Pengiring Petik Laut')">🎭</div>
-                <div class="gallery-item" style="background:linear-gradient(135deg,#0c4a6e,#0284c7);"
-                    data-label="Perahu Kepala Desa" data-emoji="🚢"
-                    onclick="openLightbox('🚢','Perahu Kepala Desa — Memimpin Armada Petik Laut')">🚢</div>
-                <div class="gallery-item" style="background:linear-gradient(135deg,#78350f,#d97706);"
-                    data-label="Malam Pesta Pantai" data-emoji="🎆"
-                    onclick="openLightbox('🎆','Malam Pesta Pantai — Penutupan Petik Laut')">🎆</div>
+            <div class="petik-wrap reveal">
+                <div class="petik-left">
+                    <div class="petik-badge">🕯️ Sisi Spiritual</div>
+                    <h3 class="petik-panel-title serif">Tumpeng &amp;<br>Doa Laut</h3>
+                    <p class="petik-panel-desc">Ritual dimulai dengan tumpeng raksasa yang dibaca doa bersama para tokoh agama dan tetua adat. Sesaji berisi hasil bumi dan laut dihanyutkan sebagai ucapan syukur kepada Sang Pencipta.</p>
+                    <ul class="petik-items">
+                        <li>Pembacaan doa lintas agama di tepi pantai</li>
+                        <li>Tumpeng & sesaji hasil laut dan bumi</li>
+                        <li>Kirab warga berpakaian adat pesisir</li>
+                        <li>Slametan bersama seluruh nelayan desa</li>
+                    </ul>
+                </div>
+                <div class="petik-right">
+                    <div class="petik-badge">⛵ Sisi Perayaan</div>
+                    <h3 class="petik-panel-title serif">Parade<br>Perahu Hias</h3>
+                    <p class="petik-panel-desc">Puluhan perahu nelayan dihias dengan bendera warna-warni, lampion, dan ukiran khas pesisir. Armada berlayar beriringan di Laut Jawa, disaksikan ribuan warga dari pesisir pantai.</p>
+                    <ul class="petik-items">
+                        <li>30+ perahu berhias bendera & lampion</li>
+                        <li>Parade armada di Teluk Campurejo</li>
+                        <li>Pertunjukan Reog Pantura di atas kapal</li>
+                        <li>Pagelaran seni pesisir semalam suntuk</li>
+                    </ul>
+                </div>
             </div>
-            <p style="margin-top:1rem;font-size:.85rem;opacity:.6;">✨ Klik foto untuk melihat penuh</p>
         </div>
     </section>
 
-    <!-- ZERO PLASTIC + NGAYOM -->
-    <section style="background:#fff;padding:5rem 5%;">
+    <div class="rope-divider"></div>
+
+    <!-- ══ PASAR SEGORO ══ -->
+    <section id="pasar">
         <div class="inner">
-            <div style="display:grid;grid-template-columns:1fr 2fr;gap:2rem;align-items:start;margin-bottom:3rem;">
-                <div class="plastic-card reveal">
-                    <p style="font-size:.85rem;opacity:.8;margin-bottom:.3rem;">♻️ Estimasi Plastik Terhemat</p>
-                    <div class="plastic-num" id="plastic-count">0</div>
-                    <p class="plastic-sub">kantong plastik diganti <em>pincuk</em> daun pisang sejak 2024</p>
-                    <p style="margin-top:1rem;font-size:.8rem;opacity:.6;">*estimasi berdasarkan rata-rata pengunjung
-                        Pasar Segoro</p>
-                </div>
-                <div id="ngayom" class="ngayom-card reveal">
-                    <div>
-                        <p class="section-tag">Gerakan Pemuda</p>
-                        <h2 class="section-title serif" style="font-size:2.2rem;">Ngayom Jagad</h2>
-                        <p style="line-height:1.8;opacity:.8;margin-bottom:.5rem;">Komunitas pemuda Karang Taruna Desa
-                            Campurejo yang aktif dalam menjaga budaya, lingkungan, dan ekonomi kreatif pesisir. Dari
-                            Pasar Segoro hingga program Zero-Plastik.</p>
-                        <ul style="list-style:none;margin-top:1rem;display:flex;flex-wrap:wrap;gap:.6rem;">
-                            <li style="background:var(--sand);padding:.4rem .9rem;border-radius:50px;font-size:.85rem;">
-                                🌊 Bersih Pantai</li>
-                            <li style="background:var(--sand);padding:.4rem .9rem;border-radius:50px;font-size:.85rem;">
-                                🎪 Pasar Segoro</li>
-                            <li style="background:var(--sand);padding:.4rem .9rem;border-radius:50px;font-size:.85rem;">
-                                🌿 Zero Plastik</li>
-                            <li style="background:var(--sand);padding:.4rem .9rem;border-radius:50px;font-size:.85rem;">
-                                🎭 Reog Pantura</li>
-                        </ul>
-                        <a href="index.html" class="ngayom-cta">🤝 Bergabung Sekarang</a>
+            <div class="pasar-grid">
+                <div class="reveal">
+                    <p class="section-tag">Pasar Budaya Tematik</p>
+                    <h2 class="section-title serif">Pasar Segoro</h2>
+                    <p class="section-desc">Pasar unik bertema pesisir yang menggunakan <strong>Shell</strong> sebagai mata uang eksklusif. Arahkan kursor ke kartu untuk melihat kurs!</p>
+                    <div class="menu-grid">
+                        <div class="menu-card">
+                            <div class="menu-emoji">🍚</div>
+                            <div class="menu-name">Sego Karak</div>
+                            <div class="menu-price">🐚 3 Shell (Rp 6.000)</div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="menu-emoji">🍌</div>
+                            <div class="menu-name">Klepon Pisang</div>
+                            <div class="menu-price">🐚 2 Shell (Rp 4.000)</div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="menu-emoji">🐟</div>
+                            <div class="menu-name">Ikan Bakar Segar</div>
+                            <div class="menu-price">🐚 8 Shell (Rp 16.000)</div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="menu-emoji">🥥</div>
+                            <div class="menu-name">Es Kelapa Muda</div>
+                            <div class="menu-price">🐚 2 Shell (Rp 4.000)</div>
+                        </div>
                     </div>
-                    <div class="ngayom-icon">🧑‍🤝‍🧑</div>
+                </div>
+                <div class="reveal" style="display:flex;flex-direction:column;align-items:center;gap:1rem;">
+                    <div class="flip-card-scene" title="Hover untuk lihat kurs">
+                        <div class="flip-card-inner">
+                            <div class="flip-face flip-front">
+                                <div class="flip-shell-icon">🐚</div>
+                                <h3 class="flip-title serif">Shell Segoro</h3>
+                                <p style="opacity:.65;font-size:.88rem;margin-bottom:.5rem;">Mata uang eksklusif Pasar Segoro</p>
+                                <p class="flip-hint">Arahkan kursor untuk lihat kurs</p>
+                            </div>
+                            <div class="flip-face flip-back">
+                                <div class="flip-shell-icon">💱</div>
+                                <h3 class="flip-title serif">Kurs Resmi</h3>
+                                <div class="flip-rate">1 🐚</div>
+                                <p style="font-size:1.3rem;font-weight:700;margin:.3rem 0;">=&nbsp; Rp 2.000</p>
+                                <p class="flip-hint">Tukarkan di loket masuk pasar</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p style="font-size:.8rem;opacity:.55;text-align:center;">💡 Sentuh kartu untuk melihat kurs (mobile)</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <div class="rope-divider"></div>
+
+    <!-- ══ SHELL CONVERTER ══ -->
+    <section id="converter">
+        <div class="inner">
+            <div class="converter-wrap">
+                <div class="reveal">
+                    <p class="section-tag">Kalkulator Interaktif</p>
+                    <h2 class="section-title serif">Berapa Shell<br>yang Kamu Butuhkan?</h2>
+                    <p class="section-desc">Rencanakan belanjamu di Pasar Segoro. Masukkan nominal Rupiah dan kami hitung Shell-nya!</p>
+                </div>
+                <div class="converter-box reveal">
+                    <h3 class="serif">🐚 Konversi Shell Segoro</h3>
+                    <p class="sub">1 Shell = Rp 2.000</p>
+                    <input type="number" class="conv-input" id="idr-input" placeholder="Masukkan Rupiah, contoh: 20000" min="0">
+                    <button class="conv-btn" onclick="convertShell()">Hitung Shell 🐚</button>
+                    <div class="conv-result" id="conv-result"><span>Masukkan nominal IDR di atas 👆</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ REOG PANTURA — MASONRY GALLERY ══ -->
+    <section id="reog">
+        <div class="inner">
+            <div class="reveal" style="text-align:center;margin-bottom:2.5rem;">
+                <p class="section-tag">Kesenian Pesisir</p>
+                <h2 class="section-title serif" style="text-align:center;">Galeri Reog Pantura<br><em style="font-size:70%;color:var(--teal);">& Seni Pesisir</em></h2>
+                <p class="section-desc" style="margin:0 auto;">Kesenian khas pesisir utara Jawa yang memadukan tari, musik, dan kostum megah — warisan yang terus hidup di Campurejo.</p>
+            </div>
+            <div class="masonry-grid reveal">
+                <div class="polaroid" onclick="openLightbox('🎭','Penari Reog Pantura — Kostum Bulu Merak')">
+                    <div class="polaroid-img" style="background:linear-gradient(135deg,#4c1d95,#7c3aed);">🎭</div>
+                    <div class="polaroid-caption">Tari Reog Pantura</div>
+                </div>
+                <div class="polaroid" onclick="openLightbox('⛵','Armada Perahu Hias — Petik Laut 2025')">
+                    <div class="polaroid-img" style="background:linear-gradient(135deg,#1e3a5f,#0a5a5a);">⛵</div>
+                    <div class="polaroid-caption">Parade Perahu Hias</div>
+                </div>
+                <div class="polaroid" onclick="openLightbox('🥁','Gamelan Pesisir — Irama Laut')">
+                    <div class="polaroid-img" style="background:linear-gradient(135deg,#78350f,#d97706);">🥁</div>
+                    <div class="polaroid-caption">Gamelan Pesisir</div>
+                </div>
+                <div class="polaroid" onclick="openLightbox('🙏','Doa Sesaji — Dipimpin Tokoh Agama')">
+                    <div class="polaroid-img" style="background:linear-gradient(135deg,#14532d,#16a34a);" style="aspect-ratio:3/4;">🙏</div>
+                    <div class="polaroid-caption">Ritual Sesaji Laut</div>
+                </div>
+                <div class="polaroid" onclick="openLightbox('🎆','Malam Pesta Pantai — Penutupan Petik Laut')">
+                    <div class="polaroid-img" style="background:linear-gradient(135deg,#0c4a6e,#0284c7);">🎆</div>
+                    <div class="polaroid-caption">Malam Pantai</div>
+                </div>
+                <div class="polaroid" onclick="openLightbox('👘','Pakaian Adat Pesisir Campurejo')">
+                    <div class="polaroid-img" style="background:linear-gradient(135deg,#881337,#e11d48);">👘</div>
+                    <div class="polaroid-caption">Pakaian Adat</div>
+                </div>
+                <div class="polaroid" onclick="openLightbox('🎋','Sesaji ke Laut — Tradisi Tahunan')">
+                    <div class="polaroid-img" style="background:linear-gradient(135deg,#1e3a1e,#22c55e);">🎋</div>
+                    <div class="polaroid-caption">Hanyut Sesaji</div>
+                </div>
+                <div class="polaroid" onclick="openLightbox('🚢','Perahu Kepala Desa — Memimpin Armada')">
+                    <div class="polaroid-img" style="background:linear-gradient(135deg,#312e81,#6d28d9);">🚢</div>
+                    <div class="polaroid-caption">Kapal Pemimpin</div>
+                </div>
+            </div>
+            <p style="text-align:center;margin-top:1.5rem;font-size:.83rem;opacity:.5;">✨ Klik foto untuk melihat penuh</p>
+        </div>
+    </section>
+
+    <div class="rope-divider"></div>
+
+    <!-- ══ KIRAB & SLAMETAN — TIMELINE ══ -->
+    <section id="kirab">
+        <div class="inner">
+            <div class="reveal" style="margin-bottom:2.5rem;">
+                <p class="section-tag" style="color:var(--gold-light);">Perjalanan Satu Hari</p>
+                <h2 class="section-title serif" style="color:#fff;">Kirab &amp; Slametan<br><em style="font-size:75%;opacity:.8;">Jadwal Hari Petik Laut</em></h2>
+                <p class="section-desc" style="color:rgba(255,255,255,.7);">Dari fajar hingga tengah malam, inilah ritme sakral hari Petik Laut Campurejo. Geser ke kanan →</p>
+            </div>
+            <div class="timeline-scroll-wrapper reveal">
+                <div class="timeline-track">
+                    <div class="tl-item">
+                        <div class="tl-time">04.00</div>
+                        <div class="tl-dot">🕓</div>
+                        <div class="tl-label">Subuh Bersama & Persiapan Sesaji</div>
+                    </div>
+                    <div class="tl-item">
+                        <div class="tl-time">07.00</div>
+                        <div class="tl-dot">🕌</div>
+                        <div class="tl-label">Doa Lintas Agama di Tepi Pantai</div>
+                    </div>
+                    <div class="tl-item">
+                        <div class="tl-time">09.00</div>
+                        <div class="tl-dot">🎎</div>
+                        <div class="tl-label">Kirab Adat — Perahu & Warga Berpakaian Tradisional</div>
+                    </div>
+                    <div class="tl-item">
+                        <div class="tl-time">11.00</div>
+                        <div class="tl-dot">⛵</div>
+                        <div class="tl-label">Parade Perahu Hias di Laut Jawa</div>
+                    </div>
+                    <div class="tl-item">
+                        <div class="tl-time">13.00</div>
+                        <div class="tl-dot">🍚</div>
+                        <div class="tl-label">Slametan Bersama — Nasi Tumpeng & Kenduri</div>
+                    </div>
+                    <div class="tl-item">
+                        <div class="tl-time">15.00</div>
+                        <div class="tl-dot">🎭</div>
+                        <div class="tl-label">Pertunjukan Reog Pantura & Seni Pesisir</div>
+                    </div>
+                    <div class="tl-item">
+                        <div class="tl-time">18.00</div>
+                        <div class="tl-dot">🌅</div>
+                        <div class="tl-label">Senja di Pantai — Doa Penutup & Syukuran</div>
+                    </div>
+                    <div class="tl-item">
+                        <div class="tl-time">20.00</div>
+                        <div class="tl-dot">🎆</div>
+                        <div class="tl-label">Pesta Pantai — Musik, Lampion & Kembang Api</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ NGAYOM JAGAD ══ -->
+    <section id="ngayom">
+        <div class="inner">
+            <div class="ngayom-wrap">
+                <div class="ngayom-visual reveal">
+                    <div class="ngayom-orbit" style="top:10%;left:10%;right:10%;bottom:10%;">
+                        <span class="ngayom-orbit-item" style="top:0;left:50%;">🌊</span>
+                        <span class="ngayom-orbit-item" style="top:50%;right:0;">🌿</span>
+                        <span class="ngayom-orbit-item" style="bottom:0;left:50%;">🎭</span>
+                        <span class="ngayom-orbit-item" style="top:50%;left:0;">🛒</span>
+                    </div>
+                    <div class="ngayom-big-icon">🧑‍🤝‍🧑</div>
+                </div>
+                <div class="reveal">
+                    <p class="section-tag">Gerakan Karang Taruna</p>
+                    <h2 class="section-title serif">Ngayom Jagad</h2>
+                    <p class="section-desc">Komunitas pemuda Karang Taruna Desa Campurejo yang aktif menjaga budaya, lingkungan, dan ekonomi kreatif pesisir. Dari Pasar Segoro hingga program Zero-Plastik.</p>
+                    <div class="ngayom-tags">
+                        <span class="ngayom-tag">🌊 Bersih Pantai</span>
+                        <span class="ngayom-tag">🎪 Pasar Segoro</span>
+                        <span class="ngayom-tag">🌿 Zero Plastik</span>
+                        <span class="ngayom-tag">🎭 Reog Pantura</span>
+                        <span class="ngayom-tag">📸 Dokumentasi Budaya</span>
+                        <span class="ngayom-tag">🐟 Kelompok Nelayan Muda</span>
+                    </div>
+                    <a href="index.html" class="cta-btn">🤝 Bergabung Sekarang</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
     <footer>
-        <p>© 2026 Desa Campurejo · <a href="index.html">Kembali ke Beranda</a> · <span style="color:var(--gold)">Maju,
-                Mandiri, Berbudaya</span></p>
+        <div class="footer-wave"></div>
+        <p>© 2026 Desa Campurejo · <a href="index.html">Kembali ke Beranda</a> · <span style="color:var(--gold);">Maju, Mandiri, Berbudaya</span></p>
     </footer>
 
-    <script>
-        // Compass FAB
-        const fabBtn = document.getElementById('compass-btn'), overlay = document.getElementById('compass-overlay'), closeBtn = document.getElementById('overlay-close');
-        fabBtn.addEventListener('click', () => overlay.classList.add('open'));
-        closeBtn.addEventListener('click', () => overlay.classList.remove('open'));
-        overlay.addEventListener('click', e => { if (e.target === overlay) overlay.classList.remove('open'); });
-
-        // Reveal
-        const reveals = document.querySelectorAll('.reveal');
-        const obs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }), { threshold: .1 });
-        reveals.forEach(r => obs.observe(r));
-
-        // Shell Converter
-        function convertShell() {
-            const idr = parseFloat(document.getElementById('idr-input').value);
-            const res = document.getElementById('conv-result');
-            if (!idr || idr <= 0) { res.innerHTML = '<span>Masukkan nominal yang valid!</span>'; return; }
-            const shells = Math.floor(idr / 2000);
-            const remainder = idr % 2000;
-            res.innerHTML = `🐚 <strong>${shells} Shell</strong>${remainder > 0 ? ' + Rp ' + remainder.toLocaleString('id-ID') + ' kembalian' : ''}`;
-        }
-        document.getElementById('idr-input').addEventListener('keydown', e => { if (e.key === 'Enter') convertShell(); });
-
-        // Lightbox
-        function openLightbox(emoji, label) {
-            document.getElementById('lb-content').textContent = emoji;
-            document.getElementById('lb-label').textContent = label;
-            document.getElementById('lightbox').classList.add('open');
-        }
-        document.getElementById('lb-close').addEventListener('click', () => document.getElementById('lightbox').classList.remove('open'));
-        document.getElementById('lightbox').addEventListener('click', e => { if (e.target === document.getElementById('lightbox')) document.getElementById('lightbox').classList.remove('open'); });
-
-        // Plastic Counter
-        let plasticDone = false;
-        const plasticObs = new IntersectionObserver(entries => {
-            if (entries[0].isIntersecting && !plasticDone) {
-                plasticDone = true; let n = 0; const target = 4800;
-                const iv = setInterval(() => {
-                    n += 120; if (n >= target) { n = target; clearInterval(iv); }
-                    document.getElementById('plastic-count').textContent = n.toLocaleString('id-ID');
-                }, 30);
-            }
-        }, { threshold: .3 });
-        plasticObs.observe(document.getElementById('plastic-count'));
-    </script>
-    <!-- ── BOTTOM NAVIGATION SWITCH ── -->
-    <style>
-        .bottom-switch-container {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--white, #ffffff);
-            padding: 6px;
-            border-radius: 50px;
-            box-shadow: 0 10px 30px rgba(0, 35, 102, 0.15);
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            z-index: 1000;
-            border: 1px solid rgba(0, 35, 102, 0.05);
-        }
-
-        .bottom-switch-btn {
-            padding: 10px 24px;
-            border-radius: 40px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--navy, #002366);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .bottom-switch-btn.active {
-            background: var(--navy, #002366);
-            color: var(--white, #ffffff);
-            box-shadow: 0 4px 15px rgba(0, 35, 102, 0.2);
-        }
-
-        .bottom-switch-btn:not(.active):hover {
-            background: rgba(0, 35, 102, 0.05);
-        }
-    </style>
+    <!-- BOTTOM NAV SWITCH -->
     <div class="bottom-switch-container">
         <a href="index.html" class="bottom-switch-btn active">Campurejo</a>
         <a href="future_campurejo.html" class="bottom-switch-btn">The Future</a>
     </div>
-</body>
 
+    <script>
+        // FAB
+        const fabBtn=document.getElementById('compass-btn'),overlay=document.getElementById('compass-overlay'),closeBtn=document.getElementById('overlay-close');
+        fabBtn.addEventListener('click',()=>overlay.classList.add('open'));
+        closeBtn.addEventListener('click',()=>overlay.classList.remove('open'));
+        overlay.addEventListener('click',e=>{if(e.target===overlay)overlay.classList.remove('open');});
+
+        // Reveal
+        const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}}),{threshold:.1});
+        document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
+
+        // Shell Converter
+        function convertShell(){
+            const idr=parseFloat(document.getElementById('idr-input').value);
+            const res=document.getElementById('conv-result');
+            if(!idr||idr<=0){res.innerHTML='<span>Masukkan nominal yang valid!</span>';return;}
+            const shells=Math.floor(idr/2000);
+            const remainder=idr%2000;
+            res.innerHTML=`🐚 <strong>${shells} Shell</strong>${remainder>0?' + Rp '+remainder.toLocaleString('id-ID')+' kembalian':''}`;
+        }
+        document.getElementById('idr-input').addEventListener('keydown',e=>{if(e.key==='Enter')convertShell();});
+
+        // Lightbox
+        function openLightbox(emoji,label){
+            document.getElementById('lb-content').textContent=emoji;
+            document.getElementById('lb-label').textContent=label;
+            document.getElementById('lightbox').classList.add('open');
+        }
+        document.getElementById('lb-close').addEventListener('click',()=>document.getElementById('lightbox').classList.remove('open'));
+        document.getElementById('lightbox').addEventListener('click',e=>{if(e.target===document.getElementById('lightbox'))document.getElementById('lightbox').classList.remove('open');});
+
+        // Flip card on mobile (touch)
+        const flipScene=document.querySelector('.flip-card-scene');
+        if(flipScene){
+            flipScene.addEventListener('click',()=>{
+                flipScene.querySelector('.flip-card-inner').style.transform=
+                    flipScene.querySelector('.flip-card-inner').style.transform==='rotateY(180deg)'?'':'rotateY(180deg)';
+            });
+        }
+    </script>
+</body>
 </html>

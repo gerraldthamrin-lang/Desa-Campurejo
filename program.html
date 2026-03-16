@@ -1,821 +1,585 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ekonomi Biru — Desa Campurejo</title>
-    <meta name="description"
-        content="UMKM dan ekonomi biru Desa Campurejo: produk lokal, TPI, dan 198 perahu nelayan tradisional.">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Inter:wght@300;400;500;600&display=swap"
-        rel="stylesheet">
-    <style>
-        :root {
-            --navy: #002366;
-            --navy-light: #003580;
-            --sand: #F5F5F0;
-            --gold: #FFBF00;
-            --teal: #0096A0;
-            --white: #fff;
-            --dark: #0a0f1e;
-            --glass: rgba(255, 255, 255, .08);
-            --glass-border: rgba(255, 255, 255, .18);
-        }
-
-        *,
-        *::before,
-        *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--sand);
-            color: var(--navy);
-            overflow-x: hidden;
-        }
-
-        .serif {
-            font-family: 'Playfair Display', serif;
-        }
-
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 9000;
-            background: rgba(0, 35, 102, .95);
-            backdrop-filter: blur(12px);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: .9rem 5%;
-            border-bottom: 1px solid rgba(255, 191, 0, .2);
-        }
-
-        .nav-logo {
-            color: #fff;
-            text-decoration: none;
-            font-size: 1.5rem;
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 1.8rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: rgba(255, 255, 255, .8);
-            text-decoration: none;
-            font-size: .92rem;
-            font-weight: 500;
-            transition: color .2s;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--gold);
-        }
-
-        .nav-back {
-            color: var(--gold);
-            text-decoration: none;
-            font-size: .9rem;
-            font-weight: 600;
-        }
-
-        .page-hero {
-            min-height: 50vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(160deg, #002200 0%, #003a00 40%, #006644 70%, #0096A0 100%);
-            padding: 8rem 5% 4rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .page-hero::after {
-            content: '🐟';
-            font-size: 18rem;
-            position: absolute;
-            bottom: -4rem;
-            right: -2rem;
-            opacity: .05;
-            pointer-events: none;
-        }
-
-        .page-hero-content {
-            position: relative;
-            z-index: 2;
-            color: #fff;
-        }
-
-        .page-eyebrow {
-            font-size: .82rem;
-            letter-spacing: .22em;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 1rem;
-        }
-
-        .page-title {
-            font-size: clamp(2.5rem, 6vw, 5rem);
-            line-height: 1.1;
-            margin-bottom: 1rem;
-        }
-
-        .page-desc {
-            font-size: 1.05rem;
-            max-width: 560px;
-            margin: 0 auto;
-            opacity: .8;
-            line-height: 1.8;
-        }
-
-        .wave-divider {
-            line-height: 0;
-        }
-
-        .wave-divider svg {
-            display: block;
-            width: 100%;
-        }
-
-        section {
-            padding: 5rem 5%;
-        }
-
-        .inner {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .section-tag {
-            font-size: .8rem;
-            letter-spacing: .2em;
-            text-transform: uppercase;
-            color: var(--teal);
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .section-title {
-            font-size: clamp(2rem, 4vw, 3.2rem);
-            color: var(--navy);
-            margin-bottom: 1rem;
-        }
-
-        .section-desc {
-            font-size: 1.05rem;
-            line-height: 1.8;
-            opacity: .8;
-            max-width: 600px;
-            margin-bottom: 2.5rem;
-        }
-
-        /* UMKM GRID */
-        .umkm-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .umkm-card {
-            background: #fff;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 35, 102, .07);
-            transition: transform .3s, box-shadow .3s;
-        }
-
-        .umkm-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 16px 40px rgba(0, 35, 102, .12);
-        }
-
-        .umkm-img {
-            height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 5rem;
-            position: relative;
-        }
-
-        .umkm-badge {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: var(--gold);
-            color: var(--navy);
-            font-size: .75rem;
-            font-weight: 700;
-            padding: .3rem .8rem;
-            border-radius: 50px;
-        }
-
-        .umkm-body {
-            padding: 1.5rem;
-        }
-
-        .umkm-body h3 {
-            font-size: 1.25rem;
-            margin-bottom: .5rem;
-            color: var(--navy);
-        }
-
-        .umkm-body p {
-            font-size: .9rem;
-            line-height: 1.7;
-            opacity: .75;
-            margin-bottom: .8rem;
-        }
-
-        .umkm-price {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--teal);
-            margin-bottom: 1rem;
-        }
-
-        .wa-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: .5rem;
-            width: 100%;
-            padding: .85rem;
-            background: #25D366;
-            color: #fff;
-            border: none;
-            border-radius: 12px;
-            font-weight: 700;
-            font-size: .95rem;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all .3s;
-        }
-
-        .wa-btn:hover {
-            background: #1da851;
-            transform: translateY(-1px);
-        }
-
-        /* FISHERMAN MAP */
-        .fish-map-wrap {
-            background: linear-gradient(135deg, #001a4d, #002a6b, #003d7a);
-            border-radius: 24px;
-            padding: 2.5rem;
-            color: #fff;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .fish-map-title {
-            margin-bottom: .5rem;
-            font-size: 1.8rem;
-        }
-
-        .fish-map-sub {
-            opacity: .7;
-            margin-bottom: 2rem;
-        }
-
-        .boats-sea {
-            position: relative;
-            width: 100%;
-            height: 280px;
-            background: radial-gradient(ellipse at center, rgba(0, 100, 140, .4) 0%, transparent 70%);
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, .1);
-            overflow: hidden;
-        }
-
-        .boat-dot {
-            position: absolute;
-            font-size: 1rem;
-            cursor: default;
-            animation: boatFloat var(--dur, 4s) ease-in-out infinite;
-            animation-delay: var(--delay, 0s);
-        }
-
-        @keyframes boatFloat {
-
-            0%,
-            100% {
-                transform: translateY(0)
-            }
-
-            50% {
-                transform: translateY(-5px)
-            }
-        }
-
-        .fleet-stats {
-            display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            margin-top: 1.5rem;
-        }
-
-        .fleet-stat {
-            text-align: center;
-            flex: 1;
-            min-width: 120px;
-        }
-
-        .fleet-stat-num {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--gold);
-        }
-
-        .fleet-stat-label {
-            font-size: .82rem;
-            opacity: .7;
-        }
-
-        /* POKLASAR */
-        .poklasar-wrap {
-            background: #fff;
-            border-radius: 24px;
-            padding: 2.5rem;
-            box-shadow: 0 4px 20px rgba(0, 35, 102, .07);
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .poklasar-icon {
-            font-size: 5rem;
-            flex: 0 0 auto;
-        }
-
-        .poklasar-info {
-            flex: 1;
-            min-width: 200px;
-        }
-
-        .poklasar-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: .5rem;
-            margin-top: 1.2rem;
-            background: var(--navy);
-            color: #fff;
-            text-decoration: none;
-            padding: .8rem 1.8rem;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all .3s;
-        }
-
-        .poklasar-cta:hover {
-            background: var(--gold);
-            color: var(--navy);
-        }
-
-        /* COMPASS FAB */
-        #compass-btn {
-            position: fixed;
-            top: 72px;
-            right: 24px;
-            z-index: 8500;
-            width: 52px;
-            height: 52px;
-            background: var(--navy);
-            border: 2px solid var(--gold);
-            border-radius: 50%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-            cursor: pointer;
-            box-shadow: 0 4px 20px rgba(0, 35, 102, .45);
-            transition: transform .3s;
-        }
-
-        #compass-btn:hover {
-            transform: scale(1.1);
-        }
-
-        .c-line {
-            width: 22px;
-            height: 2px;
-            background: var(--gold);
-            border-radius: 2px;
-        }
-
-        .c-line.mid {
-            width: 14px;
-        }
-
-        #compass-overlay {
-            position: fixed;
-            inset: 0;
-            z-index: 8400;
-            background: rgba(0, 10, 30, .82);
-            backdrop-filter: blur(18px);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-        }
-
-        #compass-overlay.open {
-            display: flex;
-        }
-
-        .compass-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            max-width: 760px;
-            width: 100%;
-        }
-
-        .compass-wing {
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 2rem;
-            transition: background .3s, transform .3s;
-        }
-
-        .compass-wing:hover {
-            background: rgba(255, 255, 255, .14);
-            transform: translateY(-4px);
-        }
-
-        .compass-wing h3 {
-            color: var(--gold);
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .compass-wing a {
-            display: block;
-            color: rgba(255, 255, 255, .8);
-            text-decoration: none;
-            padding: .4rem 0;
-            font-size: .95rem;
-            border-bottom: 1px solid rgba(255, 255, 255, .08);
-            transition: color .2s;
-        }
-
-        .compass-wing a:hover {
-            color: var(--gold);
-        }
-
-        .compass-wing a:last-child {
-            border-bottom: none;
-        }
-
-        #overlay-close {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            background: transparent;
-            border: 1px solid var(--glass-border);
-            color: #fff;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            font-size: 1.2rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all .8s cubic-bezier(.25, .8, .25, 1);
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        footer {
-            background: var(--dark);
-            color: rgba(255, 255, 255, .7);
-            padding: 3rem 5% 1.5rem;
-            text-align: center;
-        }
-
-        footer a {
-            color: var(--gold);
-            text-decoration: none;
-        }
-
-        @media(max-width:768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .compass-grid {
-                grid-template-columns: 1fr;
-                max-width: 360px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Program Unggulan — Desa Campurejo</title>
+<meta name="description" content="Program pembangunan unggulan Desa Campurejo: DAK PPKT 2025, Rumah Layak Huni, Pasar Segoro, dan Sanitasi Pesisir.">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#003366;--navy-mid:#004080;--navy-dark:#001a33;
+  --orange:#F2994A;--orange-light:#F7B977;--orange-dark:#d4732a;
+  --green:#1a9e6e;--green-light:#22c98d;
+  --white:#fff;--off-white:#f8fafc;--border:#e2e8f0;
+  --text:#1e3a5f;--text-muted:#64748b;
+  --dark:#050e1f;--gold:#c8a84b;
+  --glass:rgba(255,255,255,.07);--glass-border:rgba(255,255,255,.14);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--text);overflow-x:hidden;}
+h1,h2,h3,.sans-bold{font-family:'Montserrat',sans-serif;}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;width:100%;z-index:9000;background:rgba(0,51,102,.97);backdrop-filter:blur(14px);display:flex;align-items:center;justify-content:space-between;padding:.85rem 5%;border-bottom:1px solid rgba(242,153,74,.25);}
+.nav-logo{color:#fff;text-decoration:none;font-size:1.4rem;font-family:'Montserrat',sans-serif;font-weight:800;letter-spacing:-.01em;}
+.nav-links{display:flex;gap:1.8rem;list-style:none;}
+.nav-links a{color:rgba(255,255,255,.75);text-decoration:none;font-size:.88rem;font-weight:500;transition:color .2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--orange-light);}
+.nav-back{color:var(--orange-light);text-decoration:none;font-size:.88rem;font-weight:600;}
+
+/* ── HERO / DASHBOARD ── */
+.hero{min-height:92vh;background:linear-gradient(150deg,var(--navy-dark) 0%,var(--navy) 50%,#004d40 100%);position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding-top:72px;}
+.hero-bp{position:absolute;inset:0;background-image:linear-gradient(rgba(242,153,74,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(242,153,74,.06) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;}
+.hero-glow{position:absolute;top:-20%;right:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(242,153,74,.12) 0%,transparent 70%);pointer-events:none;}
+.hero-inner{position:relative;z-index:2;padding:3rem 5% 0;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.6rem;background:rgba(242,153,74,.15);border:1px solid rgba(242,153,74,.35);color:var(--orange-light);font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;padding:.45rem 1.1rem;border-radius:50px;margin-bottom:1.4rem;font-weight:600;}
+.hero-title{font-size:clamp(2.4rem,5.5vw,5rem);color:#fff;line-height:1.08;margin-bottom:1.2rem;font-weight:800;}
+.hero-title span{color:var(--orange-light);}
+.hero-sub{font-size:1.05rem;color:rgba(255,255,255,.72);max-width:560px;line-height:1.8;margin-bottom:2.5rem;}
+/* stat dashboard strip */
+.stat-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:rgba(255,255,255,.06);border-top:1px solid rgba(255,255,255,.1);border-radius:0;margin-top:auto;}
+.stat-cell{padding:1.8rem 2rem;border-right:1px solid rgba(255,255,255,.08);position:relative;}
+.stat-cell:last-child{border-right:none;}
+.stat-cell::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--orange),var(--orange-light));transform:scaleX(0);transform-origin:left;transition:transform .4s;border-radius:0 0 2px 2px;}
+.stat-cell:hover::before{transform:scaleX(1);}
+.stat-num{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:800;color:var(--orange-light);font-family:'Montserrat',sans-serif;line-height:1;}
+.stat-label{font-size:.78rem;color:rgba(255,255,255,.6);margin-top:.4rem;text-transform:uppercase;letter-spacing:.08em;}
+.stat-sub{font-size:.72rem;color:rgba(255,255,255,.4);margin-top:.2rem;}
+
+/* ── SHARED ── */
+section{padding:5.5rem 5%;}
+.inner{max-width:1140px;margin:0 auto;}
+.section-tag{font-size:.73rem;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);font-weight:700;margin-bottom:.8rem;display:flex;align-items:center;gap:.5rem;}
+.section-tag::before{content:'';width:20px;height:2px;background:var(--orange);border-radius:1px;}
+.section-title{font-size:clamp(1.8rem,3.5vw,2.8rem);color:var(--navy);margin-bottom:1rem;font-weight:800;line-height:1.15;}
+.section-desc{font-size:1rem;line-height:1.85;color:var(--text-muted);max-width:580px;margin-bottom:2.5rem;}
+.reveal{opacity:0;transform:translateY(32px);transition:all .8s cubic-bezier(.25,.8,.25,1);}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* ── DAK PPKT SECTION ── */
+#dak{background:var(--white);}
+.dak-layout{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
+.dak-feature-card{background:linear-gradient(145deg,var(--navy) 0%,var(--navy-mid) 100%);border-radius:24px;padding:2.8rem;color:#fff;position:relative;overflow:hidden;box-shadow:0 20px 60px rgba(0,51,102,.25);}
+.dak-feature-card::after{content:'🏗️';position:absolute;bottom:-2rem;right:-1rem;font-size:10rem;opacity:.06;pointer-events:none;}
+.dak-budget{font-size:clamp(2rem,4vw,3.2rem);font-weight:800;color:var(--orange-light);margin:.5rem 0;}
+.dak-badge{display:inline-block;background:rgba(242,153,74,.2);border:1px solid rgba(242,153,74,.4);color:var(--orange-light);font-size:.75rem;padding:.35rem .9rem;border-radius:50px;font-weight:600;margin-bottom:1rem;letter-spacing:.05em;}
+.rw-pins{display:flex;gap:.7rem;flex-wrap:wrap;margin:1.5rem 0;}
+.rw-pin{display:flex;align-items:center;gap:.4rem;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);padding:.45rem 1rem;border-radius:50px;font-size:.82rem;}
+.rw-pin::before{content:'📍';font-size:.9rem;}
+/* Progress bars */
+.prog-list{display:flex;flex-direction:column;gap:1.8rem;}
+.prog-item{}
+.prog-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem;}
+.prog-label{font-weight:600;font-size:.9rem;color:var(--navy);}
+.prog-pct{font-weight:800;font-size:.95rem;color:var(--orange);font-family:'Montserrat',sans-serif;}
+.prog-track{width:100%;height:10px;background:rgba(0,51,102,.1);border-radius:6px;overflow:hidden;}
+.prog-fill{height:100%;border-radius:6px;background:linear-gradient(90deg,var(--orange),var(--orange-light));transform:scaleX(0);transform-origin:left;transition:transform 1.2s cubic-bezier(.25,.8,.25,1);}
+.prog-fill.green{background:linear-gradient(90deg,var(--green),var(--green-light));}
+.prog-fill.animated{transform:scaleX(1);}
+.prog-note{font-size:.78rem;color:var(--text-muted);margin-top:.4rem;}
+.timeline-steps{display:flex;flex-direction:column;gap:1.2rem;margin-top:2rem;position:relative;padding-left:1.5rem;}
+.timeline-steps::before{content:'';position:absolute;left:.35rem;top:.6rem;bottom:.6rem;width:2px;background:linear-gradient(180deg,var(--orange),rgba(242,153,74,.2));}
+.tl-step{position:relative;padding-left:1rem;}
+.tl-step::before{content:'';position:absolute;left:-1.15rem;top:.35rem;width:10px;height:10px;border-radius:50%;background:var(--orange);border:2px solid #fff;box-shadow:0 0 0 2px var(--orange);}
+.tl-step-label{font-weight:600;font-size:.88rem;color:var(--navy);}
+.tl-step-desc{font-size:.8rem;color:var(--text-muted);margin-top:.1rem;}
+
+/* ── CSR / RUMAH LAYAK ── */
+#rumah{background:var(--off-white);}
+.csr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem;}
+.csr-card{background:var(--white);border-radius:20px;overflow:hidden;box-shadow:0 4px 24px rgba(0,51,102,.07);border:1px solid var(--border);transition:transform .3s,box-shadow .3s;}
+.csr-card:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(0,51,102,.12);}
+.csr-img-wrap{position:relative;height:180px;display:flex;align-items:center;justify-content:center;font-size:4.5rem;}
+.csr-img-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(0,0,0,.35));}
+.before-after{position:absolute;bottom:.8rem;right:.8rem;z-index:2;display:flex;gap:.4rem;}
+.ba-tag{font-size:.68rem;font-weight:700;padding:.3rem .7rem;border-radius:50px;}
+.ba-before{background:rgba(200,50,50,.85);color:#fff;}
+.ba-after{background:rgba(26,158,110,.85);color:#fff;}
+.csr-body{padding:1.4rem;}
+.csr-partner{font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;color:var(--orange);font-weight:700;margin-bottom:.4rem;}
+.csr-title{font-weight:700;color:var(--navy);font-size:1rem;margin-bottom:.5rem;}
+.csr-desc{font-size:.84rem;color:var(--text-muted);line-height:1.6;}
+.csr-stat{display:flex;align-items:center;gap:.5rem;margin-top:.9rem;padding:.7rem 1rem;background:rgba(0,51,102,.04);border-radius:10px;font-size:.82rem;font-weight:600;color:var(--navy);}
+.impact-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+.impact-card{background:var(--navy);color:#fff;border-radius:20px;padding:2rem;text-align:center;}
+.impact-num{font-size:2.6rem;font-weight:800;color:var(--orange-light);font-family:'Montserrat',sans-serif;}
+.impact-lbl{font-size:.8rem;opacity:.7;margin-top:.3rem;line-height:1.4;}
+
+/* ── ECONOMIC SPLIT ── */
+#ekonomi{background:var(--white);}
+.eco-split{display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
+.eco-card{border-radius:24px;padding:2.5rem;position:relative;overflow:hidden;}
+.eco-card.left{background:linear-gradient(145deg,var(--navy) 0%,var(--navy-mid) 100%);color:#fff;}
+.eco-card.right{background:linear-gradient(145deg,#0a5440 0%,var(--green) 100%);color:#fff;}
+.eco-icon{font-size:3.5rem;margin-bottom:1.2rem;display:block;}
+.eco-badge{display:inline-flex;align-items:center;gap:.4rem;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);padding:.4rem .9rem;border-radius:50px;font-size:.76rem;font-weight:600;margin-bottom:1rem;letter-spacing:.06em;}
+.eco-title{font-size:1.5rem;font-weight:800;margin-bottom:.8rem;}
+.eco-desc{font-size:.9rem;line-height:1.75;opacity:.82;margin-bottom:1.5rem;}
+.eco-list{list-style:none;display:flex;flex-direction:column;gap:.6rem;}
+.eco-list li{display:flex;align-items:flex-start;gap:.7rem;font-size:.88rem;opacity:.9;}
+.eco-list li::before{content:'▸';color:var(--orange-light);flex-shrink:0;}
+.eco-card.right .eco-list li::before{color:#a8f5d8;}
+.eco-card::before{position:absolute;bottom:-2rem;right:-1.5rem;font-size:10rem;opacity:.06;pointer-events:none;}
+.eco-card.left::before{content:'🐚';}
+.eco-card.right::before{content:'🐟';}
+
+/* ── UMKM STRIP ── */
+#umkm{background:var(--off-white);}
+.umkm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2rem;}
+.umkm-card{background:var(--white);border-radius:18px;overflow:hidden;box-shadow:0 4px 20px rgba(0,51,102,.07);border:1px solid var(--border);transition:transform .3s,box-shadow .3s;}
+.umkm-card:hover{transform:translateY(-6px);box-shadow:0 14px 40px rgba(0,51,102,.12);}
+.umkm-img{height:160px;display:flex;align-items:center;justify-content:center;font-size:4rem;position:relative;}
+.umkm-badge-pill{position:absolute;top:.8rem;right:.8rem;background:var(--orange);color:#fff;font-size:.68rem;font-weight:700;padding:.28rem .75rem;border-radius:50px;}
+.umkm-body{padding:1.3rem;}
+.umkm-name{font-weight:700;font-size:.95rem;color:var(--navy);margin-bottom:.35rem;}
+.umkm-desc{font-size:.82rem;color:var(--text-muted);line-height:1.55;margin-bottom:.7rem;}
+.umkm-price{font-size:.9rem;font-weight:700;color:var(--green);margin-bottom:.9rem;}
+.wa-btn{display:flex;align-items:center;justify-content:center;gap:.45rem;width:100%;padding:.78rem;background:#25D366;color:#fff;border:none;border-radius:10px;font-weight:700;font-size:.88rem;cursor:pointer;text-decoration:none;transition:all .3s;}
+.wa-btn:hover{background:#1da851;transform:translateY(-1px);}
+
+/* ── SANITASI / HEALTH ── */
+#sanitasi{background:linear-gradient(160deg,#003d2e 0%,#005244 50%,#001a33 100%);color:#fff;position:relative;overflow:hidden;}
+#sanitasi::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;}
+.health-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:2.5rem;}
+.health-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:2rem;text-align:center;transition:background .3s,transform .3s;}
+.health-card:hover{background:rgba(255,255,255,.14);transform:translateY(-4px);}
+.health-icon{font-size:2.8rem;margin-bottom:1rem;display:block;}
+.health-num{font-size:2rem;font-weight:800;color:#6ee7b7;font-family:'Montserrat',sans-serif;}
+.health-label{font-size:.82rem;opacity:.75;margin-top:.4rem;line-height:1.45;}
+.health-bar-wrap{margin-top:3rem;}
+.health-bar-title{font-size:1rem;font-weight:600;margin-bottom:1.2rem;opacity:.9;}
+.hb-item{margin-bottom:1.2rem;}
+.hb-header{display:flex;justify-content:space-between;margin-bottom:.5rem;font-size:.85rem;}
+.hb-name{opacity:.85;}
+.hb-pct{font-weight:700;color:#6ee7b7;}
+.hb-track{height:8px;background:rgba(255,255,255,.12);border-radius:4px;overflow:hidden;}
+.hb-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,#1a9e6e,#6ee7b7);transform:scaleX(0);transform-origin:left;transition:transform 1.2s cubic-bezier(.25,.8,.25,1);}
+.hb-fill.animated{transform:scaleX(1);}
+
+/* ── TPI ARMADA ── */
+#tpi{background:var(--white);}
+.tpi-layout{display:grid;grid-template-columns:1fr 1.4fr;gap:3rem;align-items:center;}
+.boats-sea{width:100%;height:260px;background:linear-gradient(180deg,#001833 0%,#002B5B 40%,#003d6b 100%);border-radius:20px;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.08);}
+.boat-dot{position:absolute;font-size:.9rem;animation:boatFloat var(--dur,4s) ease-in-out infinite;animation-delay:var(--delay,0s);}
+@keyframes boatFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-5px);}}
+.fleet-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:1.5rem;}
+.fleet-stat{background:var(--off-white);border-radius:14px;padding:1.2rem;text-align:center;border:1px solid var(--border);}
+.fleet-num{font-size:1.8rem;font-weight:800;color:var(--orange);font-family:'Montserrat',sans-serif;}
+.fleet-lbl{font-size:.78rem;color:var(--text-muted);margin-top:.2rem;}
+
+/* ── FAB ── */
+#compass-btn{position:fixed;top:72px;right:24px;z-index:8500;width:52px;height:52px;background:var(--navy);border:2px solid var(--orange);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;box-shadow:0 4px 20px rgba(0,51,102,.45);transition:transform .3s;}
+#compass-btn:hover{transform:scale(1.1);}
+.c-line{width:22px;height:2px;background:var(--orange);border-radius:2px;}
+.c-line.mid{width:14px;}
+#compass-overlay{position:fixed;inset:0;z-index:8400;background:rgba(0,10,30,.85);backdrop-filter:blur(18px);display:none;align-items:center;justify-content:center;padding:2rem;}
+#compass-overlay.open{display:flex;}
+.compass-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;max-width:760px;width:100%;}
+.compass-wing{background:var(--glass);border:1px solid var(--glass-border);border-radius:20px;padding:2rem;transition:background .3s,transform .3s;}
+.compass-wing:hover{background:rgba(255,255,255,.12);transform:translateY(-4px);}
+.compass-wing h3{color:var(--orange-light);font-size:1rem;font-weight:600;margin-bottom:1rem;}
+.compass-wing a{display:block;color:rgba(255,255,255,.8);text-decoration:none;padding:.4rem 0;font-size:.93rem;border-bottom:1px solid rgba(255,255,255,.08);transition:color .2s;}
+.compass-wing a:hover{color:var(--orange-light);}
+.compass-wing a:last-child{border-bottom:none;}
+#overlay-close{position:absolute;top:1.5rem;right:1.5rem;background:transparent;border:1px solid var(--glass-border);color:#fff;width:40px;height:40px;border-radius:50%;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+
+/* ── FOOTER ── */
+footer{background:var(--dark);color:rgba(255,255,255,.6);padding:3rem 5% 2rem;text-align:center;position:relative;}
+footer::before{content:'';position:absolute;top:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,transparent,var(--orange),transparent);}
+footer a{color:var(--orange-light);text-decoration:none;}
+
+/* ── BOTTOM SWITCH ── */
+.bottom-switch-container{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:#fff;padding:6px;border-radius:50px;box-shadow:0 10px 30px rgba(0,51,102,.15);display:flex;align-items:center;gap:5px;z-index:1000;border:1px solid rgba(0,51,102,.06);}
+.bottom-switch-btn{padding:10px 24px;border-radius:40px;font-size:.95rem;font-weight:600;color:var(--navy);text-decoration:none;transition:all .3s;}
+.bottom-switch-btn.active{background:var(--navy);color:#fff;box-shadow:0 4px 15px rgba(0,51,102,.2);}
+.bottom-switch-btn:not(.active):hover{background:rgba(0,51,102,.06);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:960px){
+  .stat-strip{grid-template-columns:repeat(2,1fr);}
+  .dak-layout,.tpi-layout,.eco-split{grid-template-columns:1fr;}
+  .csr-grid,.health-grid{grid-template-columns:repeat(2,1fr);}
+  .umkm-grid{grid-template-columns:repeat(2,1fr);}
+  .impact-row{grid-template-columns:repeat(2,1fr);}
+  .nav-links{display:none;}
+  .compass-grid{grid-template-columns:1fr;max-width:360px;}
+}
+@media(max-width:560px){
+  .stat-strip{grid-template-columns:1fr;}
+  .stat-cell{border-right:none;border-bottom:1px solid rgba(255,255,255,.08);}
+  .csr-grid,.health-grid,.umkm-grid,.impact-row{grid-template-columns:1fr;}
+  .fleet-stats{grid-template-columns:1fr;}
+}
+</style>
 </head>
-
 <body>
-    <nav>
-        <a href="index.html" class="nav-logo">Campurejo</a>
-        <ul class="nav-links">
-            <li><a href="budaya.html">Segoro & Tradisi</a></li>
-            <li><a href="program.html" class="active">Ekonomi Biru</a></li>
-            <li><a href="jelajah.html">Jelajah</a></li>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Campurejo</a>
+  <ul class="nav-links">
+    <li><a href="budaya.html">Budaya &amp; Tradisi</a></li>
+    <li><a href="program.html" class="active">Program Desa</a></li>
+    <li><a href="jelajah.html">Jelajah</a></li>
+  </ul>
+  <a href="index.html" class="nav-back">← Beranda</a>
+</nav>
+
+<!-- FAB -->
+<div id="compass-btn"><div class="c-line"></div><div class="c-line mid"></div><div class="c-line"></div></div>
+<div id="compass-overlay">
+  <button id="overlay-close">✕</button>
+  <div class="compass-grid">
+    <div class="compass-wing"><h3>🏛️ PEMERINTAHAN</h3><a href="index.html">Beranda</a><a href="index.html#data">Data Demografis</a><a href="index.html">Tentang Desa</a></div>
+    <div class="compass-wing"><h3>👥 WARGA</h3><a href="jelajah.html#borderline">13 Rumah Batas</a><a href="budaya.html#ngayom">Ngayom Jagad</a><a href="index.html#data">Data Demografis</a></div>
+    <div class="compass-wing"><h3>🛒 PASAR / UMKM</h3><a href="budaya.html#pasar">Pasar Segoro</a><a href="budaya.html#converter">Kalkulator Shell</a><a href="#umkm">Katalog UMKM</a></div>
+    <div class="compass-wing"><h3>🌊 PLESIR</h3><a href="jelajah.html">Pantai Hippo</a><a href="jelajah.html#mangrove">Jalur Mangrove</a><a href="#tpi">TPI Campurejo</a></div>
+  </div>
+</div>
+
+<!-- ══ HERO / DASHBOARD ══ -->
+<div class="hero">
+  <div class="hero-bp"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">📋 Amanah &amp; Progres Pembangunan</div>
+    <h1 class="hero-title">Program <span>Unggulan</span><br>Desa Campurejo</h1>
+    <p class="hero-sub">Transparansi nyata: dari anggaran pembangunan hingga dampak sosial yang terukur untuk masyarakat pesisir Campurejo.</p>
+  </div>
+  <div class="stat-strip">
+    <div class="stat-cell">
+      <div class="stat-num" id="stat1">0</div>
+      <div class="stat-label">Rumah Dibangun</div>
+      <div class="stat-sub">Target Program DAK PPKT</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">229 Ha</div>
+      <div class="stat-label">Luas Wilayah</div>
+      <div class="stat-sub">Area Pembangunan Aktif</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Jalan Terbangun</div>
+      <div class="stat-sub">Infrastruktur Lingkungan</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">Rp 24,7M</div>
+      <div class="stat-label">Anggaran DAK</div>
+      <div class="stat-sub">Dana Alokasi Khusus 2025</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ DAK PPKT 2025 ══ -->
+<section id="dak">
+  <div class="inner">
+    <div class="dak-layout">
+      <div class="reveal">
+        <div class="section-tag">Prioritas Pembangunan</div>
+        <h2 class="section-title">Proyek DAK PPKT<br>2025</h2>
+        <p class="section-desc">Dana Alokasi Khusus Percepatan Penanganan Kawasan Terpencil — transformasi nyata dari kawasan kumuh menuju permukiman pesisir yang layak dan berkelanjutan.</p>
+        <div class="timeline-steps">
+          <div class="tl-step"><div class="tl-step-label">Asesmen &amp; Pemetaan Kawasan</div><div class="tl-step-desc">Identifikasi 4 RW prioritas dengan 145 unit rumah tidak layak huni</div></div>
+          <div class="tl-step"><div class="tl-step-label">Kick-off Konstruksi — Q1 2025</div><div class="tl-step-desc">Pembangunan fisik dimulai, koordinasi kontraktor &amp; warga</div></div>
+          <div class="tl-step"><div class="tl-step-label">Fase Infrastruktur Pendukung</div><div class="tl-step-desc">Jalan lingkungan, saluran drainase, dan sanitasi komunal</div></div>
+          <div class="tl-step"><div class="tl-step-label">Serah Terima &amp; Hunian — Q4 2025</div><div class="tl-step-desc">145 KK penerima manfaat resmi menempati rumah layak</div></div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="dak-feature-card">
+          <div class="dak-badge">🏗️ DAK PPKT 2025</div>
+          <div class="dak-budget">Rp 24,7 Miliar</div>
+          <p style="opacity:.7;font-size:.9rem;margin-bottom:1.5rem;">Investasi pemerintah untuk 145 rumah layak di 4 RW pesisir Campurejo.</p>
+          <div class="rw-pins">
+            <span class="rw-pin">RW 01</span>
+            <span class="rw-pin">RW 02</span>
+            <span class="rw-pin">RW 03</span>
+            <span class="rw-pin">RW 04</span>
+          </div>
+          <div class="prog-list">
+            <div class="prog-item">
+              <div class="prog-header"><span class="prog-label">Rumah Layak Huni</span><span class="prog-pct">73%</span></div>
+              <div class="prog-track"><div class="prog-fill" data-pct=".73"></div></div>
+              <div class="prog-note" style="color:rgba(255,255,255,.5);">106 dari 145 unit selesai</div>
+            </div>
+            <div class="prog-item">
+              <div class="prog-header"><span class="prog-label">Jalan Lingkungan</span><span class="prog-pct" style="color:#6ee7b7;">100%</span></div>
+              <div class="prog-track"><div class="prog-fill green" data-pct="1"></div></div>
+              <div class="prog-note" style="color:rgba(255,255,255,.5);">Seluruh jalan RW 1–4 selesai</div>
+            </div>
+            <div class="prog-item">
+              <div class="prog-header"><span class="prog-label">Drainase &amp; Sanitasi</span><span class="prog-pct">85%</span></div>
+              <div class="prog-track"><div class="prog-fill" data-pct=".85" style="width:85%;"></div></div>
+              <div class="prog-note" style="color:rgba(255,255,255,.5);">Tahap akhir instalasi IPAL komunal</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ RUMAH LAYAK HUNI / CSR ══ -->
+<section id="rumah">
+  <div class="inner">
+    <div class="reveal">
+      <div class="section-tag">Kemitraan CSR</div>
+      <h2 class="section-title">Rumah Layak Huni<br>Bersama Mitra</h2>
+      <p class="section-desc">Program kolaborasi pemerintah desa dengan mitra CSR nasional dan internasional untuk mewujudkan hunian manusiawi bagi warga pesisir.</p>
+    </div>
+    <div class="csr-grid reveal">
+      <div class="csr-card">
+        <div class="csr-img-wrap" style="background:linear-gradient(135deg,#1a3a5e,#2d6a9f);">🏘️
+          <div class="before-after"><span class="ba-tag ba-before">Sebelum</span><span class="ba-tag ba-after">Sesudah</span></div>
+        </div>
+        <div class="csr-body">
+          <div class="csr-partner">Habitat for Humanity</div>
+          <div class="csr-title">Rumah Swadaya Pesisir</div>
+          <div class="csr-desc">Pembangunan 40 unit rumah tipe 36 dengan material tahan abrasi dan angin laut untuk keluarga nelayan RW 01–02.</div>
+          <div class="csr-stat">🏠 40 Unit Terbangun</div>
+        </div>
+      </div>
+      <div class="csr-card">
+        <div class="csr-img-wrap" style="background:linear-gradient(135deg,#2d4a1e,#4a8a2e);">🌿
+          <div class="before-after"><span class="ba-tag ba-before">Kumuh</span><span class="ba-tag ba-after">Layak</span></div>
+        </div>
+        <div class="csr-body">
+          <div class="csr-partner">Program BSPS Pemerintah</div>
+          <div class="csr-title">Bantuan Stimulan Perumahan</div>
+          <div class="csr-desc">Renovasi 45 unit rumah swadaya masyarakat dengan bantuan material dan pendampingan teknis dari Dinas Perumahan.</div>
+          <div class="csr-stat">🔨 45 Unit Direnovasi</div>
+        </div>
+      </div>
+      <div class="csr-card">
+        <div class="csr-img-wrap" style="background:linear-gradient(135deg,#4a2000,#a05020);">🔑
+          <div class="before-after"><span class="ba-tag ba-before">Lama</span><span class="ba-tag ba-after">Baru</span></div>
+        </div>
+        <div class="csr-body">
+          <div class="csr-partner">CSR Pertamina EP</div>
+          <div class="csr-title">Rumah Nelayan Modern</div>
+          <div class="csr-desc">60 unit rumah baru dengan fasilitas lengkap: listrik surya, air bersih, dan ruang produksi UMKM untuk nelayan aktif.</div>
+          <div class="csr-stat">⚡ 60 Unit + Panel Surya</div>
+        </div>
+      </div>
+    </div>
+    <div class="impact-row reveal">
+      <div class="impact-card">
+        <div class="impact-num">145</div>
+        <div class="impact-lbl">Total Unit Rumah Layak Program 2025</div>
+      </div>
+      <div class="impact-card">
+        <div class="impact-num">580+</div>
+        <div class="impact-lbl">Jiwa Penerima Manfaat Langsung</div>
+      </div>
+      <div class="impact-card">
+        <div class="impact-num">4 RW</div>
+        <div class="impact-lbl">Kawasan Prioritas Pembangunan</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ EKONOMI SPLIT ══ -->
+<section id="ekonomi">
+  <div class="inner">
+    <div class="reveal" style="text-align:center;margin-bottom:2.5rem;">
+      <div class="section-tag" style="justify-content:center;">Sinergi Ekonomi</div>
+      <h2 class="section-title" style="text-align:center;">Ekonomi &amp; Kesejahteraan<br>Masyarakat</h2>
+    </div>
+    <div class="eco-split reveal">
+      <div class="eco-card left">
+        <span class="eco-icon">🐚</span>
+        <div class="eco-badge">🏪 Ekonomi Kreatif</div>
+        <h3 class="eco-title">Pasar Segoro</h3>
+        <p class="eco-desc">Pasar budaya tematik pesisir dengan mata uang eksklusif "Shell". Wadah UMKM lokal menjual produk autentik Campurejo kepada wisatawan dan warga.</p>
+        <ul class="eco-list">
+          <li>40+ lapak UMKM aktif setiap event</li>
+          <li>Sistem Shell (1 Shell = Rp 2.000)</li>
+          <li>Menu khas: Sego Karak &amp; Klepon Pisang</li>
+          <li>Pertunjukan Reog Pantura terintegrasi</li>
+          <li>Zero plastik — pakai pincuk daun pisang</li>
         </ul>
-        <a href="index.html" class="nav-back">← Beranda</a>
-    </nav>
-
-    <div id="compass-btn">
-        <div class="c-line"></div>
-        <div class="c-line mid"></div>
-        <div class="c-line"></div>
+      </div>
+      <div class="eco-card right">
+        <span class="eco-icon">🎣</span>
+        <div class="eco-badge">🤝 Bantuan Nelayan</div>
+        <h3 class="eco-title">Program Bantuan Nelayan</h3>
+        <p class="eco-desc">Program perlindungan sosial dan pemberdayaan ekonomi nelayan tradisional Campurejo — dari asuransi jiwa hingga pelatihan digitalisasi hasil laut.</p>
+        <ul class="eco-list">
+          <li>198 perahu terdaftar &amp; diasuransikan</li>
+          <li>BPJS Ketenagakerjaan ~600 nelayan</li>
+          <li>Pelatihan budidaya &amp; pascapanen</li>
+          <li>Akses KUR BRI untuk modal usaha</li>
+          <li>Platform digital pemasaran hasil laut</li>
+        </ul>
+      </div>
     </div>
-    <div id="compass-overlay">
-        <button id="overlay-close">✕</button>
-        <div class="compass-grid">
-            <div class="compass-wing">
-                <h3>🏛️ PEMERINTAHAN</h3>
-                <a href="index.html">Beranda</a><a href="index.html#data">Data Demografis</a><a
-                    href="index.html">Tentang Desa</a>
-            </div>
-            <div class="compass-wing">
-                <h3>👥 WARGA</h3><a href="jelajah.html#borderline">13 Rumah Batas</a><a href="budaya.html#ngayom">Ngayom
-                    Jagad</a><a href="index.html#data">Data Demografis</a>
-            </div>
-            <div class="compass-wing">
-                <h3>🛒 PASAR / UMKM</h3><a href="budaya.html">Pasar Segoro</a><a href="budaya.html#converter">Kalkulator
-                    Shell</a><a href="#umkm">Katalog UMKM</a>
-            </div>
-            <div class="compass-wing">
-                <h3>🌊 PLESIR</h3><a href="jelajah.html">Pantai Hippo</a><a href="jelajah.html#mangrove">Jalur
-                    Mangrove</a><a href="#tpi">TPI Campurejo</a>
-            </div>
-        </div>
+  </div>
+</section>
+
+<!-- ══ UMKM KATALOG ══ -->
+<section id="umkm">
+  <div class="inner">
+    <div class="reveal">
+      <div class="section-tag">Produk Lokal</div>
+      <h2 class="section-title">Katalog UMKM<br>Desa Campurejo</h2>
+      <p class="section-desc">Produk asli pesisir Campurejo. Pesan langsung ke produsen via WhatsApp.</p>
     </div>
-
-    <div class="page-hero">
-        <div class="page-hero-content">
-            <div class="page-eyebrow">Usaha & Perikanan</div>
-            <h1 class="page-title serif">Ekonomi Biru</h1>
-            <p class="page-desc">UMKM lokal, hasil laut segar, dan 198 perahu tradisional yang menghidupi ribuan
-                keluarga pesisir.</p>
-        </div>
+    <div class="umkm-grid">
+      <div class="umkm-card reveal">
+        <div class="umkm-img" style="background:linear-gradient(135deg,#fde68a,#fbbf24);">🦐<div class="umkm-badge-pill">BEST SELLER</div></div>
+        <div class="umkm-body"><div class="umkm-name">Kerupuk Gajah</div><div class="umkm-desc">Kerupuk ikan laut crispy khas Campurejo. Gurih, renyah, tanpa pengawet.</div><div class="umkm-price">Rp 15.000 / bungkus</div><a href="https://wa.me/6281234567890?text=Saya+ingin+memesan+Kerupuk+Gajah+Campurejo" class="wa-btn" target="_blank">💬 Pesan via WhatsApp</a></div>
+      </div>
+      <div class="umkm-card reveal">
+        <div class="umkm-img" style="background:linear-gradient(135deg,#d97706,#7c2d12);">🫙<div class="umkm-badge-pill">ORIGINAL</div></div>
+        <div class="umkm-body"><div class="umkm-name">Petis Cap Truck</div><div class="umkm-desc">Petis udang premium fermentasi tradisional. Kemasan higienis siap kirim.</div><div class="umkm-price">Rp 25.000 / 250gr</div><a href="https://wa.me/6281234567891?text=Saya+ingin+memesan+Petis+Cap+Truck+Campurejo" class="wa-btn" target="_blank">💬 Pesan via WhatsApp</a></div>
+      </div>
+      <div class="umkm-card reveal">
+        <div class="umkm-img" style="background:linear-gradient(135deg,#14532d,#16a34a);">🥬<div class="umkm-badge-pill">FRESH</div></div>
+        <div class="umkm-body"><div class="umkm-name">Greenhouse Veggies</div><div class="umkm-desc">Sayuran hidroponik segar dari Greenhouse modern desa. Bebas pestisida.</div><div class="umkm-price">Rp 8.000 – 20.000 / pack</div><a href="https://wa.me/6281234567892?text=Saya+ingin+memesan+Sayuran+Greenhouse+Campurejo" class="wa-btn" target="_blank">💬 Pesan via WhatsApp</a></div>
+      </div>
+      <div class="umkm-card reveal">
+        <div class="umkm-img" style="background:linear-gradient(135deg,#0c4a6e,#0284c7);">🐠</div>
+        <div class="umkm-body"><div class="umkm-name">Ikan Segar TPI</div><div class="umkm-desc">Tongkol, kerapu, dan berbagai ikan segar langsung dari TPI Campurejo.</div><div class="umkm-price">Rp 30.000 – 80.000 / kg</div><a href="https://wa.me/6281234567893?text=Saya+ingin+memesan+ikan+segar+TPI+Campurejo" class="wa-btn" target="_blank">💬 Pesan via WhatsApp</a></div>
+      </div>
+      <div class="umkm-card reveal">
+        <div class="umkm-img" style="background:linear-gradient(135deg,#4c1d95,#7c3aed);">🧴</div>
+        <div class="umkm-body"><div class="umkm-name">Poklasar Melati</div><div class="umkm-desc">Abon ikan, ikan asap, dan dendeng laut khas Campurejo oleh kelompok Melati.</div><div class="umkm-price">Rp 20.000 – 45.000</div><a href="https://wa.me/6281234567894?text=Saya+ingin+memesan+produk+Poklasar+Melati" class="wa-btn" target="_blank" id="poklasar">💬 Pesan via WhatsApp</a></div>
+      </div>
+      <div class="umkm-card reveal">
+        <div class="umkm-img" style="background:linear-gradient(135deg,#78350f,#d97706);">🎁</div>
+        <div class="umkm-body"><div class="umkm-name">Souvenir Pesisir</div><div class="umkm-desc">Kerajinan tangan berbahan jaring, kerang, dan bambu hasil karya ibu PKK.</div><div class="umkm-price">Rp 10.000 – 75.000</div><a href="https://wa.me/6281234567895?text=Saya+ingin+memesan+souvenir+pesisir+Campurejo" class="wa-btn" target="_blank">💬 Pesan via WhatsApp</a></div>
+      </div>
     </div>
-    <div class="wave-divider"><svg viewBox="0 0 1440 60" preserveAspectRatio="none">
-            <path d="M0,30 C360,60 1080,0 1440,40 L1440,60 L0,60Z" fill="#F5F5F0" />
-        </svg></div>
+  </div>
+</section>
 
-    <!-- UMKM CATALOG -->
-    <section id="umkm">
-        <div class="inner">
-            <div class="reveal">
-                <p class="section-tag">Produk Lokal</p>
-                <h2 class="section-title serif">Katalog UMKM<br>Desa Campurejo</h2>
-                <p class="section-desc">Produk asli pesisir Campurejo. Klik tombol WhatsApp untuk pesan langsung ke
-                    produsen.</p>
-            </div>
-            <div class="umkm-grid">
-                <div class="umkm-card reveal">
-                    <div class="umkm-img" style="background:linear-gradient(135deg,#fde68a,#fbbf24);">
-                        🦐<div class="umkm-badge">BEST SELLER</div>
-                    </div>
-                    <div class="umkm-body">
-                        <h3 class="serif">Kerupuk Gajah</h3>
-                        <p>Kerupuk ikan laut crispy khas Campurejo. Dibuat dari ikan segar TPI dengan resep
-                            turun-temurun. Gurih, renyah, tanpa pengawet.</p>
-                        <div class="umkm-price">Rp 15.000 / bungkus</div>
-                        <a href="https://wa.me/6281234567890?text=Halo,%20saya%20ingin%20memesan%20Kerupuk%20Gajah%20dari%20Desa%20Campurejo"
-                            class="wa-btn" target="_blank">
-                            💬 Pesan via WhatsApp
-                        </a>
-                    </div>
-                </div>
-                <div class="umkm-card reveal">
-                    <div class="umkm-img" style="background:linear-gradient(135deg,#d97706,#7c2d12);">
-                        🫙<div class="umkm-badge">ORIGINAL</div>
-                    </div>
-                    <div class="umkm-body">
-                        <h3 class="serif">Petis Cap Truck</h3>
-                        <p>Petis udang premium hasil fermentasi tradisional. Cita rasa khas pesisir Jawa Timur yang
-                            autentik. Kemasan higienis siap kirim.</p>
-                        <div class="umkm-price">Rp 25.000 / 250gr</div>
-                        <a href="https://wa.me/6281234567891?text=Halo,%20saya%20ingin%20memesan%20Petis%20Cap%20Truck%20Campurejo"
-                            class="wa-btn" target="_blank">
-                            💬 Pesan via WhatsApp
-                        </a>
-                    </div>
-                </div>
-                <div class="umkm-card reveal">
-                    <div class="umkm-img" style="background:linear-gradient(135deg,#14532d,#16a34a);">
-                        🥬<div class="umkm-badge">FRESH</div>
-                    </div>
-                    <div class="umkm-body">
-                        <h3 class="serif">Greenhouse Veggies</h3>
-                        <p>Sayuran hidroponik segar dari Greenhouse modern Desa Campurejo. Kangkung, selada, bayam —
-                            tanpa tanah, bebas pestisida tinggi.</p>
-                        <div class="umkm-price">Rp 8.000 – 20.000 / pack</div>
-                        <a href="https://wa.me/6281234567892?text=Halo,%20saya%20ingin%20memesan%20Sayuran%20Greenhouse%20Campurejo"
-                            class="wa-btn" target="_blank">
-                            💬 Pesan via WhatsApp
-                        </a>
-                    </div>
-                </div>
-                <div class="umkm-card reveal">
-                    <div class="umkm-img" style="background:linear-gradient(135deg,#0c4a6e,#0284c7);">
-                        🐠
-                    </div>
-                    <div class="umkm-body">
-                        <h3 class="serif">Ikan Segar TPI</h3>
-                        <p>Tongkol, kerapu, dan berbagai ikan segar langsung dari TPI Campurejo. Ditangkap hari ini,
-                            sampai segar ke tangan Anda.</p>
-                        <div class="umkm-price">Rp 30.000 – 80.000 / kg</div>
-                        <a href="https://wa.me/6281234567893?text=Halo,%20saya%20ingin%20memesan%20ikan%20segar%20TPI%20Campurejo"
-                            class="wa-btn" target="_blank">
-                            💬 Pesan via WhatsApp
-                        </a>
-                    </div>
-                </div>
-                <div class="umkm-card reveal">
-                    <div class="umkm-img" style="background:linear-gradient(135deg,#4c1d95,#7c3aed);">
-                        🧴
-                    </div>
-                    <div class="umkm-body">
-                        <h3 class="serif">Produk Poklasar Melati</h3>
-                        <p>Aneka produk olahan laut dari kelompok Poklasar Melati: abon ikan, ikan asap, dan dendeng
-                            laut khas Campurejo.</p>
-                        <div class="umkm-price">Rp 20.000 – 45.000</div>
-                        <a href="https://wa.me/6281234567894?text=Halo,%20saya%20ingin%20memesan%20produk%20Poklasar%20Melati%20Campurejo"
-                            class="wa-btn" target="_blank" id="poklasar">
-                            💬 Pesan via WhatsApp
-                        </a>
-                    </div>
-                </div>
-                <div class="umkm-card reveal">
-                    <div class="umkm-img" style="background:linear-gradient(135deg,#78350f,#d97706);">
-                        🎁
-                    </div>
-                    <div class="umkm-body">
-                        <h3 class="serif">Souvenir Pesisir</h3>
-                        <p>Kerajinan tangan berbahan jaring, kerang, dan bambu. Hasil karya ibu-ibu PKK Campurejo. Cocok
-                            untuk oleh-oleh asli.</p>
-                        <div class="umkm-price">Rp 10.000 – 75.000</div>
-                        <a href="https://wa.me/6281234567895?text=Halo,%20saya%20ingin%20memesan%20souvenir%20pesisir%20Campurejo"
-                            class="wa-btn" target="_blank">
-                            💬 Pesan via WhatsApp
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FISHERMAN MAP -->
-    <section id="tpi" style="background:#fff;padding:5rem 5%;">
-        <div class="inner">
-            <div class="reveal">
-                <p class="section-tag">Armada Nelayan</p>
-                <h2 class="section-title serif">Peta Armada<br>198 Perahu Campurejo</h2>
-                <p class="section-desc">Setiap titik adalah satu perahu tradisional aktif yang menghidupi keluarga
-                    nelayan Desa Campurejo.</p>
-            </div>
-            <div class="fish-map-wrap reveal">
-                <h3 class="serif fish-map-title">🌊 Laut Jawa — Wilayah Tangkap TPI Campurejo</h3>
-                <p class="fish-map-sub">Arahkan kursor ke perahu untuk melihat informasi armada</p>
-                <div class="boats-sea" id="boats-sea"></div>
-                <div class="fleet-stats">
-                    <div class="fleet-stat">
-                        <div class="fleet-stat-num" id="fc1">0</div>
-                        <div class="fleet-stat-label">Total Perahu</div>
-                    </div>
-                    <div class="fleet-stat">
-                        <div class="fleet-stat-num">3</div>
-                        <div class="fleet-stat-label">Jenis Kapal</div>
-                    </div>
-                    <div class="fleet-stat">
-                        <div class="fleet-stat-num">~600</div>
-                        <div class="fleet-stat-label">Nelayan Aktif</div>
-                    </div>
-                    <div class="fleet-stat">
-                        <div class="fleet-stat-num">24/7</div>
-                        <div class="fleet-stat-label">Operasi TPI</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p>© 2026 Desa Campurejo · <a href="index.html">Kembali ke Beranda</a> · <span style="color:var(--gold)">Maju,
-                Mandiri, Berbudaya</span></p>
-    </footer>
-
-    <script>
-        // Compass FAB
-        const fab = document.getElementById('compass-btn'), ov = document.getElementById('compass-overlay'), cl = document.getElementById('overlay-close');
-        fab.addEventListener('click', () => ov.classList.add('open'));
-        cl.addEventListener('click', () => ov.classList.remove('open'));
-        ov.addEventListener('click', e => { if (e.target === ov) ov.classList.remove('open'); });
-
-        // Reveal
-        const reveals = document.querySelectorAll('.reveal');
-        const obs = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }), { threshold: .1 });
-        reveals.forEach(r => obs.observe(r));
-
-        // Boat map
-        const sea = document.getElementById('boats-sea');
-        const boatTypes = ['⛵', '🚤', '🛥️'];
-        for (let i = 0; i < 198; i++) {
-            const el = document.createElement('div');
-            el.className = 'boat-dot';
-            el.textContent = boatTypes[i % 3];
-            el.title = `Perahu #${i + 1} — ${['Kursin', 'Jukung', 'ABC'][i % 3]}`;
-            el.style.cssText = `left:${1 + Math.random() * 96}%;top:${5 + Math.random() * 85}%;--dur:${3 + Math.random() * 4}s;--delay:${Math.random() * 3}s;`;
-            sea.appendChild(el);
-        }
-
-        // Count-up
-        let fc1done = false;
-        const fcObs = new IntersectionObserver(es => {
-            if (es[0].isIntersecting && !fc1done) {
-                fc1done = true; let n = 0;
-                const iv = setInterval(() => {
-                    n += 5; if (n >= 198) { n = 198; clearInterval(iv); }
-                    document.getElementById('fc1').textContent = n;
-                }, 20);
-            }
-        }, { threshold: .3 });
-        fcObs.observe(document.getElementById('boats-sea'));
-    </script>
-    <!-- ── BOTTOM NAVIGATION SWITCH ── -->
-    <style>
-        .bottom-switch-container {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--white, #ffffff);
-            padding: 6px;
-            border-radius: 50px;
-            box-shadow: 0 10px 30px rgba(0, 35, 102, 0.15);
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            z-index: 1000;
-            border: 1px solid rgba(0, 35, 102, 0.05);
-        }
-
-        .bottom-switch-btn {
-            padding: 10px 24px;
-            border-radius: 40px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--navy, #002366);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .bottom-switch-btn.active {
-            background: var(--navy, #002366);
-            color: var(--white, #ffffff);
-            box-shadow: 0 4px 15px rgba(0, 35, 102, 0.2);
-        }
-
-        .bottom-switch-btn:not(.active):hover {
-            background: rgba(0, 35, 102, 0.05);
-        }
-    </style>
-    <div class="bottom-switch-container">
-        <a href="index.html" class="bottom-switch-btn active">Campurejo</a>
-        <a href="future_campurejo.html" class="bottom-switch-btn">The Future</a>
+<!-- ══ SANITASI & KESEHATAN ══ -->
+<section id="sanitasi">
+  <div class="inner">
+    <div class="reveal">
+      <div class="section-tag" style="color:rgba(255,255,255,.6);">Sanitasi &amp; Layanan Publik</div>
+      <h2 class="section-title" style="color:#fff;">Sanitasi, Air Bersih<br>&amp; Kesehatan Warga</h2>
+      <p class="section-desc" style="color:rgba(255,255,255,.65);">Infrastruktur dasar yang menjamin kualitas hidup masyarakat pesisir Campurejo — dari air bersih hingga pengelolaan sampah modern.</p>
     </div>
+    <div class="health-grid reveal">
+      <div class="health-card">
+        <span class="health-icon">💧</span>
+        <div class="health-num">94%</div>
+        <div class="health-label">Akses Air Bersih PDAM &amp; Sumur Artetis</div>
+      </div>
+      <div class="health-card">
+        <span class="health-icon">♻️</span>
+        <div class="health-num">TPS 3R</div>
+        <div class="health-label">Bank Sampah Aktif — Reduce, Reuse, Recycle</div>
+      </div>
+      <div class="health-card">
+        <span class="health-icon">🏥</span>
+        <div class="health-num">2</div>
+        <div class="health-label">Posyandu Aktif + 1 Puskesmas Pembantu</div>
+      </div>
+      <div class="health-card">
+        <span class="health-icon">🚽</span>
+        <div class="health-num">IPAL</div>
+        <div class="health-label">Instalasi Pengolahan Air Limbah Komunal</div>
+      </div>
+    </div>
+    <div class="health-bar-wrap reveal">
+      <div class="health-bar-title">📊 Cakupan Layanan Sanitasi 2025</div>
+      <div class="hb-item"><div class="hb-header"><span class="hb-name">Air Bersih Layak</span><span class="hb-pct">94%</span></div><div class="hb-track"><div class="hb-fill" data-pct=".94"></div></div></div>
+      <div class="hb-item"><div class="hb-header"><span class="hb-name">Jamban Sehat</span><span class="hb-pct">88%</span></div><div class="hb-track"><div class="hb-fill" data-pct=".88"></div></div></div>
+      <div class="hb-item"><div class="hb-header"><span class="hb-name">Pengelolaan Sampah Terpadu</span><span class="hb-pct">76%</span></div><div class="hb-track"><div class="hb-fill" data-pct=".76"></div></div></div>
+      <div class="hb-item"><div class="hb-header"><span class="hb-name">Rumah Tangga ODF (Open Defecation Free)</span><span class="hb-pct">100%</span></div><div class="hb-track"><div class="hb-fill" data-pct="1"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TPI — ARMADA NELAYAN ══ -->
+<section id="tpi">
+  <div class="inner">
+    <div class="tpi-layout">
+      <div class="reveal">
+        <div class="section-tag">Armada Pesisir</div>
+        <h2 class="section-title">198 Perahu<br>Campurejo</h2>
+        <p class="section-desc">Setiap perahu adalah sumber kehidupan keluarga nelayan. TPI Campurejo beroperasi 24/7 untuk menampung hasil tangkapan dan menjaga stabilitas harga.</p>
+        <div class="fleet-stats">
+          <div class="fleet-stat"><div class="fleet-num" id="fc1">0</div><div class="fleet-lbl">Total Perahu Aktif</div></div>
+          <div class="fleet-stat"><div class="fleet-num">3</div><div class="fleet-lbl">Jenis Kapal</div></div>
+          <div class="fleet-stat"><div class="fleet-num">~600</div><div class="fleet-lbl">Nelayan Aktif</div></div>
+          <div class="fleet-stat"><div class="fleet-num">24/7</div><div class="fleet-lbl">Operasi TPI</div></div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="boats-sea" id="boats-sea"></div>
+        <p style="text-align:center;font-size:.78rem;color:var(--text-muted);margin-top:.8rem;">Setiap titik = 1 perahu aktif TPI Campurejo</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Desa Campurejo · <a href="index.html">Kembali ke Beranda</a> · <span style="color:var(--orange-light);">Maju, Mandiri, Berbudaya</span></p>
+</footer>
+
+<!-- BOTTOM SWITCH -->
+<div class="bottom-switch-container">
+  <a href="index.html" class="bottom-switch-btn active">Campurejo</a>
+  <a href="future_campurejo.html" class="bottom-switch-btn">The Future</a>
+</div>
+
+<script>
+// FAB
+const fab=document.getElementById('compass-btn'),ov=document.getElementById('compass-overlay'),cl=document.getElementById('overlay-close');
+fab.addEventListener('click',()=>ov.classList.add('open'));
+cl.addEventListener('click',()=>ov.classList.remove('open'));
+ov.addEventListener('click',e=>{if(e.target===ov)ov.classList.remove('open');});
+
+// Reveal
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
+
+// Progress bars animate on view
+const progObs=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){
+    e.target.querySelectorAll('.prog-fill[data-pct]').forEach(f=>{
+      f.style.width=(parseFloat(f.dataset.pct)*100)+'%';
+      setTimeout(()=>f.classList.add('animated'),50);
+    });
+    e.target.querySelectorAll('.hb-fill[data-pct]').forEach(f=>{
+      f.style.width=(parseFloat(f.dataset.pct)*100)+'%';
+      setTimeout(()=>f.classList.add('animated'),80);
+    });
+    progObs.unobserve(e.target);
+  }
+}),{threshold:.2});
+document.querySelectorAll('.dak-feature-card,.health-bar-wrap').forEach(el=>progObs.observe(el));
+
+// Counter stat1
+let s1done=false;
+new IntersectionObserver(es=>{
+  if(es[0].isIntersecting&&!s1done){s1done=true;let n=0;const iv=setInterval(()=>{n+=3;if(n>=145){n=145;clearInterval(iv);}document.getElementById('stat1').textContent=n;},20);}
+},{threshold:.3}).observe(document.querySelector('.stat-strip'));
+
+// Boat map
+const sea=document.getElementById('boats-sea');
+['⛵','🚤','🛥️'].forEach((t,i)=>{});
+for(let i=0;i<198;i++){
+  const el=document.createElement('div');
+  el.className='boat-dot';
+  el.textContent=['⛵','🚤','🛥️'][i%3];
+  el.title=`Perahu #${i+1}`;
+  el.style.cssText=`left:${1+Math.random()*95}%;top:${5+Math.random()*85}%;--dur:${3+Math.random()*4}s;--delay:${Math.random()*3}s;`;
+  sea.appendChild(el);
+}
+
+// Count-up fc1
+let fc1done=false;
+new IntersectionObserver(es=>{
+  if(es[0].isIntersecting&&!fc1done){fc1done=true;let n=0;const iv=setInterval(()=>{n+=5;if(n>=198){n=198;clearInterval(iv);}document.getElementById('fc1').textContent=n;},20);}
+},{threshold:.3}).observe(sea);
+</script>
 </body>
-
 </html>
