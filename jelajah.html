@@ -6,69 +6,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jelajah Campurejo — Wisata Pesisir</title>
     <meta name="description"
-        content="Wisata Desa Campurejo: Pantai Hippo, jalur mangrove, dan fenomena rumah di batas dua kabupaten.">
+        content="Eksplorasi destinasi wisata bahari dan edukasi pesisir di Campurejo: Pantai Hippo Sidorejo, Pasir Putih Dalegan, Wisata Mangrove, dan Kuliner BBC.">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Inter:wght@300;400;500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        navy: '#002B5B',
+                        'navy-mid': '#003a7a',
+                        teal: '#1a7a7a',
+                        'teal-light': '#2da5a5',
+                        sand: '#f5efd8',
+                        'sand-light': '#faf6ec',
+                        gold: '#c8a84b',
+                        'gold-light': '#e8c96a',
+                        coral: '#d4604a',
+                        wood: '#6b4423',
+                        dark: '#050e1f'
+                    }
+                }
+            }
+        }
+    </script>
     <style>
         :root {
-            --navy: #002366;
-            --navy-light: #003580;
-            --sand: #F5F5F0;
-            --gold: #FFBF00;
-            --teal: #0096A0;
+            --navy: #002B5B;
+            --navy-mid: #003a7a;
+            --teal: #1a7a7a;
+            --teal-light: #2da5a5;
+            --sand: #f5efd8;
+            --sand-light: #faf6ec;
+            --gold: #c8a84b;
+            --gold-light: #e8c96a;
+            --coral: #d4604a;
             --white: #ffffff;
-            --dark: #0a0f1e;
-            --glass: rgba(255, 255, 255, 0.08);
-            --glass-border: rgba(255, 255, 255, 0.18);
-        }
-
-        *,
-        *::before,
-        *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--sand);
-            color: var(--navy);
-            overflow-x: hidden;
+            --dark: #050e1f;
+            --wood: #6b4423;
+            --glass: rgba(255, 255, 255, 0.07);
+            --glass-border: rgba(255, 255, 255, 0.15);
         }
 
         .serif {
             font-family: 'Playfair Display', serif;
         }
 
-        /* NAV */
+        /* ── NAV ── */
         nav {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 9000;
-            background: rgba(0, 35, 102, .95);
-            backdrop-filter: blur(12px);
+            background: rgba(0, 43, 91, .96);
+            backdrop-filter: blur(14px);
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: .9rem 5%;
-            border-bottom: 1px solid rgba(255, 191, 0, .2);
+            padding: .85rem 5%;
+            border-bottom: 1px solid rgba(200, 168, 75, .25);
         }
 
         .nav-logo {
             color: #fff;
             text-decoration: none;
-            font-size: 1.5rem;
+            font-size: 1.45rem;
             font-family: 'Playfair Display', serif;
             font-weight: 700;
+            letter-spacing: .02em;
         }
 
         .nav-links {
@@ -78,709 +95,270 @@
         }
 
         .nav-links a {
-            color: rgba(255, 255, 255, .8);
+            color: rgba(255, 255, 255, .75);
             text-decoration: none;
-            font-size: .92rem;
+            font-size: .9rem;
             font-weight: 500;
             transition: color .2s;
         }
 
         .nav-links a:hover,
         .nav-links a.active {
-            color: var(--gold);
+            color: var(--gold-light);
         }
 
         .nav-back {
-            color: var(--gold);
+            color: var(--gold-light);
             text-decoration: none;
-            font-size: .9rem;
+            font-size: .88rem;
             font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: .4rem;
         }
 
-        /* HIPPO HERO */
-        .hippo-hero {
-            min-height: 55vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(160deg, #001a4d 0%, #002a6b 50%, #0d5c5c 100%);
-            padding: 8rem 5% 4rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hippo-waves {
+        /* ── HERO WAVES ── */
+        .hero-wave-bottom {
             position: absolute;
-            inset: 0;
-            overflow: hidden;
-            pointer-events: none;
-        }
-
-        .hippo-wave {
-            position: absolute;
-            width: 200%;
-            height: 100%;
-            top: 0;
+            bottom: -1px;
             left: 0;
-        }
-
-        .hippo-hero::after {
-            content: '🏖️';
-            font-size: 18rem;
-            position: absolute;
-            bottom: -4rem;
-            right: -2rem;
-            opacity: .04;
-            pointer-events: none;
-        }
-
-        .hippo-content {
-            position: relative;
-            z-index: 2;
-            color: #fff;
-            max-width: 800px;
-        }
-
-        .page-eyebrow {
-            font-size: .82rem;
-            letter-spacing: .22em;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 1rem;
-        }
-
-        .hippo-title {
-            font-size: clamp(2.5rem, 6vw, 5rem);
-            line-height: 1.1;
-            margin-bottom: 1rem;
-        }
-
-        .hippo-desc {
-            font-size: 1.05rem;
-            line-height: 1.8;
-            opacity: .9;
-            max-width: 620px;
-            margin: 0 auto 2rem;
-        }
-
-        .hippo-btns {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .btn-primary,
-        .btn-outline {
-            display: inline-flex;
-            align-items: center;
-            gap: .5rem;
-            padding: .9rem 1.4rem;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: transform .2s, background .2s, color .2s;
-        }
-
-        .btn-primary {
-            background: var(--navy);
-            color: #fff;
-            border: 2px solid rgba(255, 255, 255, .15);
-        }
-
-        .btn-outline {
-            background: rgba(255, 255, 255, .12);
-            color: #fff;
-            border: 2px solid rgba(255, 255, 255, .35);
-        }
-
-        .btn-primary:hover,
-        .btn-outline:hover {
-            transform: translateY(-2px);
-        }
-
-        .btn-primary:hover {
-            background: var(--gold);
-            color: var(--navy);
-        }
-
-        .btn-outline:hover {
-            background: rgba(255, 255, 255, .25);
-        }
-
-        /* SECTIONS */
-        section {
-            padding: 5rem 5%;
-        }
-
-        .inner {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .section-tag {
-            font-size: .8rem;
-            letter-spacing: .2em;
-            text-transform: uppercase;
-            color: var(--teal);
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .section-title {
-            font-size: clamp(2rem, 4vw, 3.2rem);
-            color: var(--navy);
-            margin-bottom: 1rem;
-        }
-
-        .section-desc {
-            font-size: 1.05rem;
-            line-height: 1.8;
-            opacity: .8;
-            max-width: 600px;
-            margin-bottom: 2.5rem;
-        }
-
-        .wave-divider {
+            width: 100%;
             line-height: 0;
-            position: relative;
-            z-index: 2;
+            z-index: 20;
         }
 
-        .wave-divider svg {
+        .hero-wave-bottom svg {
             display: block;
             width: 100%;
         }
 
-        /* PRICE TOGGLE */
-        .price-section {
-            background: var(--sand);
-        }
-
-        .price-toggle-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: .5rem;
-            padding: 1rem 1.5rem;
-            border-radius: 999px;
-            border: 2px solid var(--navy);
-            background: rgba(255, 255, 255, .9);
-            color: var(--navy);
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform .2s, background .2s;
-        }
-
-        .price-toggle-btn:hover {
-            transform: translateY(-2px);
-            background: rgba(255, 255, 255, 1);
-        }
-
-        .price-list {
-            max-height: 0;
-            overflow: hidden;
-            opacity: 0;
-            transition: max-height .4s ease, opacity .4s ease;
-        }
-
-        .price-list.open {
-            max-height: 1000px;
-            opacity: 1;
-        }
-
-        .price-item {
-            display: flex;
-            justify-content: space-between;
-            gap: 1rem;
-            padding: .9rem 1rem;
-            border-bottom: 1px solid rgba(0, 0, 0, .08);
-        }
-
-        .price-item:last-child {
-            border-bottom: none;
-        }
-
-        .price-item-name {
-            font-weight: 600;
-        }
-
-        .price-item-val {
-            font-weight: 700;
-            color: var(--navy);
-        }
-
-        .free-badge {
-            color: var(--gold);
-        }
-
-        /* MANGROVE GRID */
-        .mangrove-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .mangrove-card {
-            background: #fff;
-            border-radius: 20px;
-            padding: 1.8rem;
-            box-shadow: 0 8px 20px rgba(0, 35, 102, .08);
-            text-align: center;
-        }
-
-        .mangrove-icon {
-            font-size: 2.8rem;
-            margin-bottom: 1rem;
-        }
-
-        /* BORDERLINE */
-        .borderline-section {
-            background: rgba(0, 150, 160, .08);
-        }
-
-        .split-card {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.5rem;
-            background: #fff;
-            border-radius: 20px;
-            box-shadow: 0 8px 20px rgba(0, 35, 102, .08);
-            padding: 2.5rem;
-        }
-
-        .split-side {
-            padding: 1.8rem;
-            border-radius: 16px;
-        }
-
-        .split-side.gresik {
-            background: rgba(0, 56, 117, .08);
-        }
-
-        .split-side.lamongan {
-            background: rgba(0, 136, 160, .08);
-        }
-
-        .split-title {
-            margin: 1rem 0 .7rem;
-        }
-
-        .split-label {
-            font-weight: 700;
-            color: var(--navy);
-        }
-
-        .split-emoji {
-            font-size: 3rem;
-        }
-
-        .borderline-info {
-            margin-top: 2rem;
-            padding: 1.5rem;
-            background: rgba(255, 255, 255, .85);
-            border-left: 4px solid var(--gold);
-            border-radius: 16px;
-            color: var(--navy);
-        }
-
-        /* REVEAL */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all .8s cubic-bezier(.25, .8, .25, 1);
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* FAB */
-        #compass-btn {
-            position: fixed;
-            top: 72px;
-            right: 24px;
-            z-index: 8500;
-            width: 52px;
-            height: 52px;
-            background: var(--navy);
-            border: 2px solid var(--gold);
-            border-radius: 50%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-            cursor: pointer;
-            box-shadow: 0 4px 20px rgba(0, 35, 102, .45);
-            transition: transform .3s;
-        }
-
-        #compass-btn:hover {
-            transform: scale(1.1);
-        }
-
-        .c-line {
-            width: 22px;
-            height: 2px;
-            background: var(--gold);
-            border-radius: 2px;
-        }
-
-        .c-line.mid {
-            width: 14px;
-        }
-
-        #compass-overlay {
-            position: fixed;
-            inset: 0;
-            z-index: 8400;
-            background: rgba(0, 10, 30, .82);
-            backdrop-filter: blur(18px);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-        }
-
-        #compass-overlay.open {
-            display: flex;
-        }
-
-        .compass-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            max-width: 760px;
+        /* ── ROPE DIVIDER ── */
+        .rope-divider {
             width: 100%;
+            height: 28px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='28'%3E%3Cpath d='M0 14 Q10 4 20 14 Q30 24 40 14' stroke='%23c8a84b' stroke-width='1.5' fill='none' opacity='.35'/%3E%3C/svg%3E") repeat-x center;
+            opacity: .7;
         }
 
-        .compass-wing {
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 2rem;
-            transition: background .3s, transform .3s;
-        }
-
-        .compass-wing:hover {
-            background: rgba(255, 255, 255, .14);
-            transform: translateY(-4px);
-        }
-
-        .compass-wing h3 {
-            color: var(--gold);
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .compass-wing a {
-            display: block;
-            color: rgba(255, 255, 255, .8);
-            text-decoration: none;
-            padding: .4rem 0;
-            font-size: .95rem;
-            border-bottom: 1px solid rgba(255, 255, 255, .08);
-            transition: color .2s;
-        }
-
-        .compass-wing a:hover {
-            color: var(--gold);
-        }
-
-        .compass-wing a:last-child {
-            border-bottom: none;
-        }
-
-        #overlay-close {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            background: transparent;
-            border: 1px solid var(--glass-border);
-            color: #fff;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            font-size: 1.2rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        footer {
-            background: var(--dark);
-            color: rgba(255, 255, 255, .7);
-            padding: 3rem 5% 1.5rem;
-            text-align: center;
-        }
-
-        footer a {
-            color: var(--gold);
-            text-decoration: none;
+        /* ── FOOTER WAVE ── */
+        .footer-wave {
+            width: 100%;
+            height: 32px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='32'%3E%3Cpath d='M0 16 Q15 4 30 16 Q45 28 60 16' stroke='rgba(200,168,75,0.2)' stroke-width='1.5' fill='none'/%3E%3C/svg%3E") repeat-x center;
+            margin-bottom: 1.5rem;
         }
 
         @media(max-width:768px) {
-            .compass-grid {
-                grid-template-columns: 1fr;
-                max-width: 360px;
-            }
-
             .nav-links {
                 display: none;
             }
-
-            .hippo-title {
-                font-size: 2.4rem;
-            }
-
-            .hippo-desc {
-                font-size: 1rem;
-            }
         }
-    </style>
-</head>
 
-<body>
-    <nav>
-        <a href="index.html" class="nav-logo">Campurejo</a>
-        <ul class="nav-links">
-            <li><a href="budaya.html">Segoro & Tradisi</a></li>
-            <li><a href="program.html">Ekonomi Biru</a></li>
-            <li><a href="jelajah.html" class="active">Jelajah</a></li>
-        </ul>
-        <a href="index.html" class="nav-back">← Beranda</a>
-    </nav>
-
-    <div id="compass-btn">
-        <div class="c-line"></div>
-        <div class="c-line mid"></div>
-        <div class="c-line"></div>
-    </div>
-    <div id="compass-overlay">
-        <button id="overlay-close">✕</button>
-        <div class="compass-grid">
-            <div class="compass-wing">
-                <h3>🏛️ PEMERINTAHAN</h3>
-                <a href="index.html">Beranda</a><a href="index.html#data">Data Demografis</a><a
-                    href="index.html">Tentang Desa</a>
-            </div>
-            <div class="compass-wing">
-                <h3>👥 WARGA</h3><a href="#borderline">13 Rumah Batas</a><a href="budaya.html#ngayom">Ngayom Jagad</a><a
-                    href="index.html#data">Data Demografis</a>
-            </div>
-            <div class="compass-wing">
-                <h3>🛒 PASAR / UMKM</h3><a href="budaya.html">Pasar Segoro</a><a href="budaya.html#converter">Kalkulator
-                    Shell</a><a href="program.html">Katalog UMKM</a>
-            </div>
-            <div class="compass-wing">
-                <h3>🌊 PLESIR</h3><a href="#">Pantai Hippo</a><a href="#mangrove">Jalur Mangrove</a><a
-                    href="program.html#tpi">TPI Campurejo</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- PANTAI HIPPO HERO -->
-    <section class="hippo-hero" id="hippo">
-        <div class="hippo-waves">
-            <svg class="hippo-wave" viewBox="0 0 1440 60" preserveAspectRatio="none">
-                <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60Z" />
-            </svg>
-            <svg class="hippo-wave hippo-wave2" viewBox="0 0 1440 60" preserveAspectRatio="none">
-                <path d="M0,20 C480,55 960,5 1440,25 L1440,60 L0,60Z" fill="rgba(0,120,160,.25)" />
-            </svg>
-        </div>
-        <div class="hippo-content">
-            <div class="page-eyebrow">Wisata Unggulan</div>
-            <h1 class="hippo-title serif">Pantai Hippo<br><em style="color:var(--gold)">Campurejo</em></h1>
-            <p class="hippo-desc">Hamparan pasir putih, jalur mangrove yang rindang, dan panorama sunset Laut Jawa yang
-                memukau. Surga tersembunyi di pesisir Gresik.</p>
-            <div class="hippo-btns">
-                <a href="#harga" class="btn-primary">🎫 Lihat Harga Tiket</a>
-                <a href="#mangrove" class="btn-outline">🌿 Jalur Mangrove</a>
-            </div>
-        </div>
-    </section>
-    <div class="wave-divider"><svg viewBox="0 0 1440 60" preserveAspectRatio="none">
-            <path d="M0,30 C360,60 1080,0 1440,40 L1440,60 L0,60Z" fill="#F5F5F0" />
-        </svg></div>
-
-    <!-- PRICE TOGGLE -->
-    <section id="harga" class="price-section">
-        <div class="inner">
-            <div class="reveal">
-                <p class="section-tag">Informasi Wisata</p>
-                <h2 class="section-title serif">Apa yang Bisa<br>Kamu Dapatkan?</h2>
-                <p class="section-desc">Satu kunjungan ke Pantai Hippo menawarkan pengalaman lengkap. Klik tombol untuk
-                    melihat rincian paket wisata.</p>
-            </div>
-            <button class="price-toggle-btn" onclick="togglePrice()">
-                <span id="price-toggle-icon">🎫</span> <span id="price-toggle-text">Tampilkan Paket Wisata</span>
-            </button>
-            <div class="price-list" id="price-list">
-                <div class="price-item"><span class="price-item-name">🅿️ Parkir Motor</span><span
-                        class="price-item-val">Rp 5.000</span></div>
-                <div class="price-item"><span class="price-item-name">🅿️ Parkir Mobil</span><span
-                        class="price-item-val">Rp 10.000</span></div>
-                <div class="price-item"><span class="price-item-name">🎡 Ayunan Pantai (Swings)</span><span
-                        class="price-item-val">Rp 5.000</span></div>
-                <div class="price-item"><span class="price-item-name">🌿 Jalur Trekking Mangrove</span><span
-                        class="price-item-val">Rp 5.000</span></div>
-                <div class="price-item"><span class="price-item-name">🌅 Spot Foto Sunset</span><span
-                        class="price-item-val free-badge">GRATIS</span></div>
-                <div class="price-item"><span class="price-item-name">📸 Foto bersama Maskot Hippo</span><span
-                        class="price-item-val free-badge">GRATIS</span></div>
-                <div class="price-item"><span class="price-item-name">🍽️ Area Kuliner Pesisir</span><span
-                        class="price-item-val">Mulai Rp 15.000</span></div>
-                <div class="price-item"><span class="price-item-name">🏕️ Sewa Gazebo Pinggir Laut</span><span
-                        class="price-item-val">Rp 50.000 / 2 jam</span></div>
-            </div>
-            <div
-                style="margin-top:1.5rem;padding:1.2rem;background:rgba(0,150,160,.1);border-radius:12px;border-left:4px solid var(--teal);">
-                <p style="font-size:.9rem;">⏰ <strong>Jam Buka:</strong> 06:00 – 18:00 WIB setiap hari &nbsp;|&nbsp; 📍
-                    Desa Campurejo, Kec. Panceng, Gresik</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- MANGROVE -->
-    <section id="mangrove">
-        <div class="inner">
-            <div class="reveal">
-                <p class="section-tag">Ekowisata</p>
-                <h2 class="section-title serif">Jalur Mangrove<br>Campurejo</h2>
-                <p class="section-desc">Berjalan di antara akar mangrove yang kokoh, mendengar suara burung camar, dan
-                    melihat ekosistem pesisir yang terjaga.</p>
-            </div>
-            <div class="mangrove-grid reveal">
-                <div class="mangrove-card">
-                    <div class="mangrove-icon">🦜</div>
-                    <h4>Biodiversitas</h4>
-                    <p>Lebih dari 20 spesies burung pesisir dapat ditemukan di jalur mangrove ini.</p>
-                </div>
-                <div class="mangrove-card">
-                    <div class="mangrove-icon">🌊</div>
-                    <h4>Panjang Jalur</h4>
-                    <p>±800 meter jalur trekking kayu di atas air, cocok untuk semua usia.</p>
-                </div>
-                <div class="mangrove-card">
-                    <div class="mangrove-icon">📸</div>
-                    <h4>Spot Foto</h4>
-                    <p>5 spot foto instagrammable dengan latar mangrove dan horizon laut yang memukau.</p>
-                </div>
-                <div class="mangrove-card">
-                    <div class="mangrove-icon">♻️</div>
-                    <h4>Zona Konservasi</h4>
-                    <p>Dikelola oleh Karang Taruna Ngayom Jagad untuk menjaga kelestarian ekosistem.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- BORDERLINE HOUSES -->
-    <section id="borderline" class="borderline-section">
-        <div class="inner">
-            <div class="reveal" style="text-align:center;max-width:700px;margin:0 auto 3rem;">
-                <p class="section-tag">Fenomena Unik</p>
-                <h2 class="section-title serif">13 Rumah di Batas<br>Dua Kabupaten</h2>
-                <p class="section-desc" style="margin:0 auto;">Di Dusun Karangtumpuk, ada 13 rumah yang dapur dan ruang
-                    tamunya berada di kabupaten yang berbeda — half Gresik, half Lamongan. Unik di Indonesia!</p>
-            </div>
-            <div class="split-card reveal">
-                <div class="split-side gresik">
-                    <div class="split-emoji">🍳</div>
-                    <div class="split-label">Kabupaten Gresik</div>
-                    <h3 class="split-title">Dapur & Kamar Mandi</h3>
-                    <p class="split-detail">Bagian belakang rumah — tempat memasak dan mandi — berada di wilayah
-                        administratif Kabupaten Gresik, Kecamatan Panceng.</p>
-                </div>
-                <div class="split-divider"></div>
-                <div class="split-side lamongan">
-                    <div class="split-emoji">🛋️</div>
-                    <div class="split-label">Kabupaten Lamongan</div>
-                    <h3 class="split-title">Ruang Tamu & Teras</h3>
-                    <p class="split-detail">Bagian depan rumah — ruang menerima tamu dan teras — berada di wilayah
-                        administratif Kabupaten Lamongan.</p>
-                </div>
-            </div>
-            <div class="borderline-info reveal">
-                <strong>🏷️ Fakta Unik:</strong> Penghuni rumah ini membayar pajak bumi ke dua kabupaten berbeda, dan
-                secara hukum bisa dianggap warga dari dua daerah sekaligus. Ini adalah warisan dari pemetaan batas
-                wilayah era kolonial yang tidak pernah diperbarui.
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p>© 2026 Desa Campurejo · <a href="index.html">Kembali ke Beranda</a> · <span style="color:var(--gold)">Maju,
-                Mandiri, Berbudaya</span></p>
-    </footer>
-
-    <script>
-        const fab = document.getElementById('compass-btn'), ov = document.getElementById('compass-overlay'), cl = document.getElementById('overlay-close');
-        fab.addEventListener('click', () => ov.classList.add('open'));
-        cl.addEventListener('click', () => ov.classList.remove('open'));
-        ov.addEventListener('click', e => { if (e.target === ov) ov.classList.remove('open'); });
-        const reveals = document.querySelectorAll('.reveal');
-        const obs = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }), { threshold: .1 });
-        reveals.forEach(r => obs.observe(r));
-        let priceOpen = false;
-        function togglePrice() {
-            priceOpen = !priceOpen;
-            document.getElementById('price-list').classList.toggle('open', priceOpen);
-            document.getElementById('price-toggle-text').textContent = priceOpen ? 'Sembunyikan Paket' : 'Tampilkan Paket Wisata';
-            document.getElementById('price-toggle-icon').textContent = priceOpen ? '✕' : '🎫';
-        }
-    </script>
-    <!-- ── BOTTOM NAVIGATION SWITCH ── -->
-    <style>
+        /* ── BOTTOM NAVIGATION SWITCH ── */
         .bottom-switch-container {
             position: fixed;
             bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
-            background: var(--white, #ffffff);
+            background: #fff;
             padding: 6px;
             border-radius: 50px;
-            box-shadow: 0 10px 30px rgba(0, 35, 102, 0.15);
+            box-shadow: 0 10px 30px rgba(0, 43, 91, .15);
             display: flex;
             align-items: center;
             gap: 5px;
             z-index: 1000;
-            border: 1px solid rgba(0, 35, 102, 0.05);
+            border: 1px solid rgba(0, 43, 91, .06);
         }
 
         .bottom-switch-btn {
             padding: 10px 24px;
             border-radius: 40px;
-            font-size: 0.95rem;
+            font-size: .95rem;
             font-weight: 600;
-            color: var(--navy, #002366);
+            color: var(--navy);
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: all .3s;
             cursor: pointer;
+            white-space: nowrap;
         }
 
         .bottom-switch-btn.active {
-            background: var(--navy, #002366);
-            color: var(--white, #ffffff);
-            box-shadow: 0 4px 15px rgba(0, 35, 102, 0.2);
+            background: var(--navy);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(0, 43, 91, .2);
         }
 
         .bottom-switch-btn:not(.active):hover {
-            background: rgba(0, 35, 102, 0.05);
+            background: rgba(0, 43, 91, .06);
         }
     </style>
+</head>
+
+<body class="bg-sand-light font-sans text-navy antialiased overflow-x-hidden">
+
+    <!-- NAV -->
+    <nav>
+        <a href="index.html" class="nav-logo">Campurejo</a>
+        <ul class="nav-links">
+            <li><a href="budaya.html">Budaya & Tradisi</a></li>
+            <li><a href="program.html">Program Desa</a></li>
+            <li><a href="jelajah.html" class="active">Jelajah</a></li>
+        </ul>
+        <a href="index.html" class="nav-back">← Beranda</a>
+    </nav>
+
+    <!-- HERO SECTION (Interactive Unicorn Studio) -->
+    <header class="relative w-full h-screen overflow-hidden bg-navy">
+        <!-- Unicorn Studio Canvas Container -->
+        <div style="width: 100%; height: 100vh; position: absolute; inset: 0;" data-us-project="W3yRui43tBbAiCa87FJk">
+        </div>
+        <script
+            type="text/javascript">!function () { var u = window.UnicornStudio; if (u && u.init) { if (document.readyState === "loading") { document.addEventListener("DOMContentLoaded", function () { u.init() }) } else { u.init() } } else { window.UnicornStudio = { isInitialized: !1 }; var i = document.createElement("script"); i.src = "https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v2.1.4/dist/unicornStudio.umd.js", i.onload = function () { if (document.readyState === "loading") { document.addEventListener("DOMContentLoaded", function () { UnicornStudio.init() }) } else { UnicornStudio.init() } }, (document.head || document.body).appendChild(i) } }();</script>
+
+        <!-- Dark Gradient Overlay for text readability -->
+        <div class="absolute inset-0 bg-black/30 pointer-events-none"></div>
+
+        <!-- Hero Content Overlay -->
+        <div class="relative z-10 w-full h-full flex flex-col justify-center items-center text-center px-4 md:px-8">
+            <h1 class="text-white text-5xl md:text-7xl font-bold tracking-tight drop-shadow-lg mb-4 serif">
+                Eksplorasi <span style="color:#e8c96a;"><em>Campurejo</em></span>
+            </h1>
+            <p class="text-white/90 text-xl md:text-2xl max-w-2xl font-medium drop-shadow-md">
+                Gerbang Wisata Desa Campurejo
+            </p>
+        </div>
+
+        <div class="hero-wave-bottom">
+            <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0,40 C240,80 480,0 720,50 C960,80 1200,10 1440,50 L1440,80 L0,80Z" fill="#faf6ec" />
+            </svg>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="max-w-7xl mx-auto px-6 py-20 pb-40">
+
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-navy mb-4 serif">Destinasi Pilihan</h2>
+            <p class="text-navy/70 max-w-2xl mx-auto text-lg leading-relaxed">Temukan keindahan alam yang asri, dari
+                pantai berpasir
+                putih hingga rimbunnya hutan mangrove di pesisir utara.</p>
+        </div>
+
+        <!-- Full Width Vertical List for Destinations -->
+        <div class="flex flex-col gap-10">
+
+            <!-- Destination 1 -->
+            <article
+                class="bg-white rounded-2xl shadow-[0_10px_30px_rgba(0,43,91,0.06)] border border-navy/5 flex flex-col md:flex-row overflow-hidden transition-all hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(0,43,91,0.1)]">
+                <div class="md:w-5/12 h-64 md:h-auto bg-sand relative">
+                    <!-- Image Placeholder -->
+                    <div class="absolute inset-0 flex items-center justify-center text-slate-400">
+                        <img src="Images/P9/PantaiHippo.jpeg" alt="" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="md:w-7/12 p-8 md:p-10 flex flex-col justify-center">
+                    <h3 class="text-3xl font-bold text-navy mb-4 serif">Pantai Hippo Sidorejo</h3>
+                    <p class="text-navy/80 leading-relaxed text-lg">
+                        Destinasi wisata bahari yang terletak di Dusun Sidorejo, Desa Campurejo, menawarkan perpaduan
+                        indah antara hamparan pasir putih yang luas, air laut jernih, dan hutan mangrove rimbun yang
+                        asri. Sebagai tempat wisata ramah keluarga dengan nuansa edukatif tentang ekosistem pesisir dan
+                        kelautan, pengunjung dapat menikmati pemandangan sunset yang memukau, menjelajahi jalur
+                        mangrove, mengamati keanekaragaman hayati seperti burung dan ikan kecil, serta bermain di
+                        spot-spot menarik seperti ayunan kayu dan wahana bertema. Suasana tenang dan hijau membuatnya
+                        ideal untuk liburan akhir pekan, fotografi alam, rekreasi keluarga, serta kegiatan santai di
+                        tepi pantai yang masih alami.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Destination 2 -->
+            <article
+                class="bg-white rounded-2xl shadow-[0_10px_30px_rgba(0,43,91,0.06)] border border-navy/5 flex flex-col md:flex-row overflow-hidden transition-all hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(0,43,91,0.1)]">
+                <div class="md:w-5/12 h-64 md:h-auto bg-sand relative md:order-last">
+                    <!-- Image Placeholder -->
+                    <div class="absolute inset-0 flex items-center justify-center text-slate-400">
+                        <img src="Images/P9/PantaiDelegan.jpg" alt="" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="md:w-7/12 p-8 md:p-10 flex flex-col justify-center">
+                    <h3 class="text-3xl font-bold text-navy mb-4 serif">Pantai Pasir Putih Dalegan</h3>
+                    <p class="text-navy/80 leading-relaxed text-lg">
+                        Terletak di wilayah Delegan, Desa Campurejo, pantai bahari ini dikenal dengan hamparan pasir
+                        putih halus yang luas dan ombak yang stabil serta tenang, menciptakan suasana aman dan nyaman
+                        untuk berbagai aktivitas. Pengunjung dapat berenang, bermain pasir, memancing, atau sekadar
+                        bersantai menikmati panorama laut yang menyegarkan. Pantai ini menyatu dengan kehidupan pesisir
+                        lokal, termasuk edukasi budidaya kerang hijau di sekitar desa, serta deretan spot kuliner dan
+                        area rekreasi yang mendukung liburan keluarga atau kelompok. Daya tarik utamanya adalah
+                        keindahan alam sederhana yang alami dan cocok untuk rekreasi bahari sehari-hari.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Destination 3 -->
+            <article
+                class="bg-white rounded-2xl shadow-[0_10px_30px_rgba(0,43,91,0.06)] border border-navy/5 flex flex-col md:flex-row overflow-hidden transition-all hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(0,43,91,0.1)]">
+                <div class="md:w-5/12 h-64 md:h-auto bg-sand relative">
+                    <!-- Image Placeholder / Existing Image -->
+                    <img src="Images/P9/Mangrove.webp" alt="Wisata Mangrove Campurejo"
+                        class="w-full h-full object-cover">
+                </div>
+                <div class="md:w-7/12 p-8 md:p-10 flex flex-col justify-center">
+                    <h3 class="text-3xl font-bold text-navy mb-4 serif">Wisata Mangrove Campurejo</h3>
+                    <p class="text-navy/80 leading-relaxed text-lg">
+                        Kawasan konservasi hutan mangrove yang terintegrasi langsung dengan area Pantai Hippo Sidorejo
+                        di Desa Campurejo, berperan sebagai pelindung ekosistem pesisir sekaligus destinasi wisata alam
+                        yang edukatif. Pengunjung dapat menelusuri jalur-jalur hijau di tengah hutan mangrove yang
+                        rimbun, mengamati keanekaragaman flora dan fauna pesisir seperti burung liar, ikan kecil, serta
+                        berbagai tanaman mangrove yang mendukung lingkungan laut. Suasana tenang dan sejuk ini
+                        memberikan pengalaman ekowisata yang mendalam, cocok untuk kegiatan observasi alam, fotografi,
+                        pendidikan lingkungan, serta relaksasi yang menyatu dengan pemandangan pasir putih dan laut di
+                        sekitarnya.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Destination 4 -->
+            <article
+                class="bg-white rounded-2xl shadow-[0_10px_30px_rgba(0,43,91,0.06)] border border-navy/5 flex flex-col md:flex-row overflow-hidden transition-all hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(0,43,91,0.1)]">
+                <div class="md:w-5/12 h-64 md:h-auto bg-sand relative md:order-last">
+                    <!-- Image Placeholder -->
+                    <div class="absolute inset-0 flex items-center justify-center text-slate-400">
+                        <img src="Images/P9/WisataKulinerBBC.jpg" alt="" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="md:w-7/12 p-8 md:p-10 flex flex-col justify-center">
+                    <h3 class="text-3xl font-bold text-navy mb-4 serif">Wisata Kuliner BBC</h3>
+                    <p class="text-navy/80 leading-relaxed text-lg">
+                        Tempat nongkrong dan wisata kuliner tepi laut yang populer di Desa Campurejo, menawarkan suasana
+                        santai dengan pemandangan pantai indah, angin sepoi-sepoi, serta panorama sunset yang romantis
+                        di sore dan malam hari. Pengunjung dapat menikmati berbagai olahan seafood segar khas pesisir
+                        utara Gresik, seperti cumi, udang, kerang hijau, kepiting, dan menu laut lainnya, sambil
+                        bersantai di area yang nyaman. Selain kuliner, tersedia spot foto menarik, vibe kekeluargaan,
+                        serta suasana yang cocok untuk berkumpul bersama keluarga, pasangan, atau teman-teman,
+                        menjadikannya pelengkap sempurna setelah menjelajahi pantai-pantai di sekitar Campurejo.
+                    </p>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <div class="rope-divider"></div>
+
+    <!-- FOOTER -->
+    <footer class="bg-dark text-white/60 py-12 pb-24 text-center relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-gold to-transparent">
+        </div>
+        <div class="footer-wave"></div>
+        <p class="text-sm">© 2026 Desa Campurejo · <a href="index.html"
+                class="text-gold hover:text-gold-light transition-colors">Kembali ke Beranda</a> · <span
+                style="color:var(--gold);">Maju, Mandiri, Berbudaya</span></p>
+    </footer>
+
+    <!-- BOTTOM NAVIGATION SWITCH -->
     <div class="bottom-switch-container">
         <a href="index.html" class="bottom-switch-btn active">Campurejo</a>
         <a href="future_campurejo.html" class="bottom-switch-btn">The Future</a>
     </div>
+
 </body>
 
 </html>
