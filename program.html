@@ -1049,120 +1049,6 @@
             margin-top: .2rem;
         }
 
-        /* ── FAB ── */
-        #compass-btn {
-            position: fixed;
-            top: 72px;
-            right: 24px;
-            z-index: 8500;
-            width: 52px;
-            height: 52px;
-            background: var(--navy);
-            border: 2px solid var(--orange);
-            border-radius: 50%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-            cursor: pointer;
-            box-shadow: 0 4px 20px rgba(0, 51, 102, .45);
-            transition: transform .3s;
-        }
-
-        #compass-btn:hover {
-            transform: scale(1.1);
-        }
-
-        .c-line {
-            width: 22px;
-            height: 2px;
-            background: var(--orange);
-            border-radius: 2px;
-        }
-
-        .c-line.mid {
-            width: 14px;
-        }
-
-        #compass-overlay {
-            position: fixed;
-            inset: 0;
-            z-index: 8400;
-            background: rgba(0, 10, 30, .85);
-            backdrop-filter: blur(18px);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-        }
-
-        #compass-overlay.open {
-            display: flex;
-        }
-
-        .compass-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            max-width: 760px;
-            width: 100%;
-        }
-
-        .compass-wing {
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 2rem;
-            transition: background .3s, transform .3s;
-        }
-
-        .compass-wing:hover {
-            background: rgba(255, 255, 255, .12);
-            transform: translateY(-4px);
-        }
-
-        .compass-wing h3 {
-            color: var(--orange-light);
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .compass-wing a {
-            display: block;
-            color: rgba(255, 255, 255, .8);
-            text-decoration: none;
-            padding: .4rem 0;
-            font-size: .93rem;
-            border-bottom: 1px solid rgba(255, 255, 255, .08);
-            transition: color .2s;
-        }
-
-        .compass-wing a:hover {
-            color: var(--orange-light);
-        }
-
-        .compass-wing a:last-child {
-            border-bottom: none;
-        }
-
-        #overlay-close {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            background: transparent;
-            border: 1px solid var(--glass-border);
-            color: #fff;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            font-size: 1.2rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
 
         /* ── FOOTER ── */
         footer {
@@ -1296,33 +1182,6 @@
         <a href="index.html" class="nav-back">← Beranda</a>
     </nav>
 
-    <!-- FAB -->
-    <div id="compass-btn">
-        <div class="c-line"></div>
-        <div class="c-line mid"></div>
-        <div class="c-line"></div>
-    </div>
-    <div id="compass-overlay">
-        <button id="overlay-close">✕</button>
-        <div class="compass-grid">
-            <div class="compass-wing">
-                <h3>🏛️ PEMERINTAHAN</h3><a href="index.html">Beranda</a><a href="index.html#data">Data Demografis</a><a
-                    href="index.html">Tentang Desa</a>
-            </div>
-            <div class="compass-wing">
-                <h3>👥 WARGA</h3><a href="jelajah.html#borderline">13 Rumah Batas</a><a href="budaya.html#ngayom">Ngayom
-                    Jagad</a><a href="index.html#data">Data Demografis</a>
-            </div>
-            <div class="compass-wing">
-                <h3>🛒 PASAR / UMKM</h3><a href="budaya.html#pasar">Pasar Segoro</a><a
-                    href="budaya.html#converter">Kalkulator Shell</a><a href="#umkm">Katalog UMKM</a>
-            </div>
-            <div class="compass-wing">
-                <h3>🌊 PLESIR</h3><a href="jelajah.html">Pantai Hippo</a><a href="jelajah.html#mangrove">Jalur
-                    Mangrove</a><a href="#tpi">TPI Campurejo</a>
-            </div>
-        </div>
-    </div>
 
     <!-- ══ HERO / DASHBOARD ══ -->
     <div class="hero" id="hero-section">
@@ -1626,11 +1485,6 @@
     </div>
 
     <script>
-        // FAB
-        const fab = document.getElementById('compass-btn'), ov = document.getElementById('compass-overlay'), cl = document.getElementById('overlay-close');
-        fab.addEventListener('click', () => ov.classList.add('open'));
-        cl.addEventListener('click', () => ov.classList.remove('open'));
-        ov.addEventListener('click', e => { if (e.target === ov) ov.classList.remove('open'); });
 
         // Reveal
         const obs = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }), { threshold: .1 });

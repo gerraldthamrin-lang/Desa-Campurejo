@@ -446,8 +446,8 @@
       position: relative;
       z-index: 2;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2px;
+      grid-template-columns: 1fr;
+      gap: 2rem;
       max-width: 1000px;
       width: 100%;
     }
@@ -455,10 +455,11 @@
     .vision-col {
       color: #fff;
       padding: 2.5rem;
+      text-align: center;
     }
 
     .vision-col:first-child {
-      border-right: 1px solid rgba(255, 255, 255, .15);
+      border-bottom: 1px solid rgba(255, 255, 255, .15);
     }
 
     .vision-col .col-tag {
@@ -484,40 +485,35 @@
       font-size: 1rem;
       opacity: .85;
       line-height: 1.8;
+      max-width: 800px;
+      margin: 0 auto;
     }
 
     .vision-col ul {
       list-style: none;
-      margin-top: 1rem;
+      margin-top: 1.5rem;
       display: flex;
       flex-direction: column;
-      gap: .6rem;
+      gap: 1rem;
     }
 
     .vision-col ul li {
-      display: flex;
-      align-items: flex-start;
-      gap: .6rem;
       font-size: .95rem;
       opacity: .85;
-      line-height: 1.5;
+      line-height: 1.6;
+      text-align: center;
     }
 
     .vision-col ul li::before {
       content: '→';
       color: var(--gold);
-      flex-shrink: 0;
-      margin-top: .1rem;
+      margin-right: 0.5rem;
+      font-weight: bold;
     }
 
     @media(max-width:700px) {
-      .vision-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .vision-col:first-child {
-        border-right: none;
-        border-bottom: 1px solid rgba(255, 255, 255, .15);
+      .vision-col {
+        padding: 1.5rem;
       }
     }
 
@@ -864,7 +860,7 @@
   <div id="compass-overlay" role="dialog" aria-label="Direktori Desa Campurejo">
     <button id="overlay-close" aria-label="Tutup">✕</button>
     <div class="compass-menu">
-      <a href="#vision" onclick="document.getElementById('compass-overlay').classList.remove('open')">Visi Misi</a>
+      <a href="index.html">Beranda</a>
       <a href="budaya.html">Budaya</a>
       <a href="program.html">Program</a>
       <a href="jelajah.html">Jelajahi</a>
@@ -985,20 +981,37 @@
     <div class="vision-grid reveal">
       <div class="vision-col">
         <p class="col-tag">Visi Desa</p>
-        <h2 class="serif">"<span>Maju</span>, Mandiri,<br><span>Berbudaya</span>"</h2>
-        <p>Desa Campurejo berdiri di garis batas dua kabupaten, namun identitasnya tunggal — pesisir, kuat, dan
-          berbudaya. Didirikan sejak 1940, kini melangkah menuju 2030.</p>
+        <h2 class="serif">"<span>Visi Desa</span>"</h2>
+        <p>TERWUJUDNYA DESA CAMPUREJO YANG MAJU, AMAN, SEHAT, CERDAS, MANDIRI, BERBUDAYA DAN BERAKHLAK MULIA BERNUANSA
+          ISLAMI</p>
       </div>
       <div class="vision-col">
         <p class="col-tag">Misi Desa</p>
-        <h2 class="serif">Langkah Nyata <span>Menuju</span> 2030</h2>
-        <ul>
-          <li>Meningkatkan kualitas SDM melalui pendidikan dan pelatihan vokasional nelayan</li>
-          <li>Mengembangkan ekonomi lokal berbasis potensi pesisir dan UMKM</li>
-          <li>Mewujudkan infrastruktur desa yang layak dan merata (air bersih, jalan, sanitasi)</li>
-          <li>Melestarikan budaya dan tradisi pesisir sebagai identitas desa</li>
-          <li>Mendorong partisipasi aktif pemuda melalui Karang Taruna Ngayom Jagad</li>
-        </ul>
+        <h2 class="serif">"<span>Misi Desa</span>"</h2>
+        <center>
+          <div style="width: 60vh;">
+            <ul style="text-align: left;">
+              <li>1. MEWUJUDKAN KEAMANAN DAN KETERTIBAN DI LINGKUNGAN DESA CAMPUREJO.</li>
+              <li>2. MENINGKATKAN KESEHATAN, KEBERSIHAN DESA, SERTA MENGUSAHAKAN JAMINAN KESEHATAN MASYARAKAT MELALUI
+                PROGRAM
+                PEMERINTAH.</li>
+              <li>3. MEWUJUDKAN DAN MENINGKATKAN SERTA MENERUSKAN TATA KELOLA PEMERINTAHAN DESA YANG BAIK.</li>
+              <li>4. MENINGKATKAN PELAYANAN YANG MAKSIMAL KEPADA MASYARAKAT DESA DAN DAYA SAING DESA.</li>
+              <li>5. MENINGKATKAN KESEJAHTERAAN MASYARAKAT DESA DENGAN PEMBERDAYAAN BADAN USAHA MILIK DESA (BUMDES) DAN
+                PROGAM
+                LAIN UNTUK MEMBUKA LAPANGAN KERJA BAGI MASYARAKAT DESA SERTA MENINGKATKAN PRODUKSI RUMAH TANGGA KECIL.
+              </li>
+              <li>6. MENINGKATKAN SARANA DAN PRASARANA DARI SEGI FISIK, EKONOMI, PENDIDIKAN, KESEHATAN DAN KEBUDAYAAN DI
+                DESA.</li>
+              <li>7. MENINGKATKAN KEHIDUPAN YANG HARMONIS, TOLERAN, SALING MENGHORMATI DALAM KEHIDUPAN BERBUDAYA DAN
+                BERAGAMA DI
+                DESA CAMPUREJO.</li>
+              <li>8. MENGEDEPANKAN KEJUJURAN, KEADILAN, TRANPARANSI DALAM KEHIDUPAN SEHARI-HARI BAIK DALAM PEMERINTAHAN
+                MAUPUN
+                DENGAN MASYARAKAT DESA.</li>
+            </ul>
+          </div>
+        </center>
       </div>
     </div>
   </section>

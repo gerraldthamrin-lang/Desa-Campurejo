@@ -4,65 +4,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Future</title>
+    <title>The Future - Campurejo</title>
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Inter:wght@300;400;500;600&display=swap"
         rel="stylesheet">
     <style>
         :root {
-            --navy: #002366;
-            --gold: #FFBF00;
-            --sand: #F5F5F0;
+            --navy: #002B5B;
+            --gold: #c8a84b;
+            --gold-light: #e8c96a;
             --white: #ffffff;
-            --teal: #0096A0;
             --dark: #0a0f1e;
+            /* Original Background Color */
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(200, 168, 75, 0.3);
         }
 
         body {
             margin: 0;
+            padding: 0;
             font-family: 'Inter', sans-serif;
-            background: var(--dark, #0a0f1e);
+            background-color: var(--dark);
             color: var(--white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            text-align: center;
+            /* Removed flex-center to allow scrolling */
+            line-height: 1.6;
         }
 
         .serif {
             font-family: 'Playfair Display', serif;
         }
 
-        h1 {
-            font-size: clamp(3rem, 8vw, 5rem);
-            margin-bottom: 1rem;
-            color: var(--gold);
+        /* --- NAV --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 9000;
+            background: rgba(10, 15, 30, 0.95);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 5%;
+            box-sizing: border-box;
+            border-bottom: 1px solid rgba(200, 168, 75, 0.2);
         }
 
-        p {
+        .nav-logo {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
             font-size: 1.2rem;
-            opacity: 0.8;
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.6;
         }
 
-        /* BOTTOM SWITCH CSS */
+        .nav-back {
+            color: var(--gold-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* --- CONTENT CONTAINER --- */
+        .main-content {
+            max-width: 1100px;
+            margin: 120px auto 150px;
+            /* Space for nav and switch */
+            padding: 0 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        header h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+
+        header p {
+            opacity: 0.7;
+            font-size: 1.1rem;
+        }
+
+        /* --- CARD SYSTEM --- */
+        .future-card {
+            display: flex;
+            min-height: 400px;
+            margin-bottom: 50px;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            /* The Card Outline */
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .future-card:hover {
+            border-color: var(--gold);
+            box-shadow: 0 0 30px rgba(200, 168, 75, 0.1);
+        }
+
+        /* Alternating Logic */
+        .future-card:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        /* Image Placeholder Half */
+        .card-image {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.02);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: stretch;
+            justify-content: stretch;
+            border-right: 1px solid var(--glass-border);
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .future-card:nth-child(even) .card-image {
+            border-right: none;
+            border-left: 1px solid var(--glass-border);
+        }
+
+        /* Text Content Half */
+        .card-content {
+            flex: 1;
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .card-content h2 {
+            color: var(--gold-light);
+            font-size: 2rem;
+            margin-top: 0;
+        }
+
+        .card-content p {
+            font-size: 1.05rem;
+            opacity: 0.8;
+            margin-bottom: 0;
+            max-width: 100% !important;
+        }
+
+        /* --- BOTTOM SWITCH --- */
         .bottom-switch-container {
             position: fixed;
             bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
-            background: var(--white, #ffffff);
+            background: var(--white);
             padding: 6px;
             border-radius: 50px;
-            box-shadow: 0 10px 30px rgba(0, 35, 102, 0.15);
             display: flex;
-            align-items: center;
             gap: 5px;
             z-index: 1000;
-            border: 1px solid rgba(0, 35, 102, 0.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
         .bottom-switch-btn {
@@ -70,34 +177,159 @@
             border-radius: 40px;
             font-size: 0.95rem;
             font-weight: 600;
-            color: var(--navy, #002366);
+            color: var(--navy);
             text-decoration: none;
-            transition: all 0.3s ease;
-            cursor: pointer;
+            transition: 0.3s;
         }
 
         .bottom-switch-btn.active {
-            background: var(--navy, #002366);
-            color: var(--white, #ffffff);
-            box-shadow: 0 4px 15px rgba(0, 35, 102, 0.2);
+            background: var(--navy);
+            color: var(--white);
         }
 
-        .bottom-switch-btn:not(.active):hover {
-            background: rgba(0, 35, 102, 0.05);
+        /* Responsive */
+        @media (max-width: 800px) {
+
+            /* --- THE CARD CONTAINER --- */
+            .future-card {
+                display: flex;
+                min-height: 400px;
+                margin-bottom: 50px;
+                background: var(--glass);
+                border: 1px solid var(--glass-border);
+                border-radius: 24px;
+                /* Matches the curve of the card */
+                overflow: hidden;
+                /* CRITICAL: This crops the image to the card's shape */
+                transition: all 0.4s ease;
+            }
+
+            /* --- THE IMAGE HALF --- */
+            .card-image {
+                flex: 1;
+                position: relative;
+                /* This ensures the placeholder/image fills the space exactly */
+                display: flex;
+                align-items: stretch;
+                justify-content: stretch;
+            }
+
+            /* Placeholder or Actual Image Styling */
+            .card-image img {
+                width: 100%;
+                height: 100%;
+                display: block;
+                /* Removes tiny bottom gap common in images */
+                object-fit: cover;
+                /* CRITICAL: Crops the image to fill the half-card without stretching */
+                object-position: center;
+                /* Keeps the middle of the photo visible */
+            }
+
+            /* Separator Line Logic */
+            .card-image {
+                border-right: 1px solid var(--glass-border);
+            }
+
+            .future-card:nth-child(even) .card-image {
+                border-right: none;
+                border-left: 1px solid var(--glass-border);
+            }
+
+            .card-image img {
+                width: 100%;
+                height: 100%;
+                display: block;
+                /* Removes tiny bottom gap common in images */
+                object-fit: cover;
+                /* CRITICAL: Crops the image to fill the half-card without stretching */
+                object-position: center;
+                /* Keeps the middle of the photo visible */
+            }
+
+            /* --- THE TEXT HALF --- */
+            .card-content {
+                flex: 1;
+                padding: 60px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                background: rgba(10, 15, 30, 0.4);
+                /* Darker backing for text readability */
+            }
+
+            /* Mobile Fix */
+            @media (max-width: 800px) {
+
+                .future-card,
+                .future-card:nth-child(even) {
+                    flex-direction: column;
+                }
+
+                .card-image {
+                    height: 300px;
+                    /* Fixed height for mobile */
+                    border: none !important;
+                    border-bottom: 1px solid var(--glass-border) !important;
+                }
+            }
         }
     </style>
 </head>
 
 <body>
-    <div>
-        <h1 class="serif">The Future</h1>
-        <p>This is the futuristic portal of Desa Campurejo. The journey to 2030 begins here.</p>
-    </div>
 
+    <nav>
+        <a href="#" class="nav-logo serif">Future Campurejo</a>
+        <a href="index.html" class="nav-back">← Back to Home</a>
+    </nav>
+
+    <div class="main-content">
+        <header>
+            <h1 class="serif">The Future</h1>
+            <p>Exploring St.louis XF's ideas</p>
+        </header>
+
+        <div class="future-card">
+            <div class="card-image">
+                <img src="Images/future/FutureRaf.png" alt="Description of future campurejo">
+            </div>
+            <div class="card-content">
+                <h2 class="serif">Yayasan Green Future Indonesia</h2>
+                <p>Kami percaya perubahan dimulai dari diri sendiri. Dengan mengajak generasi muda dan masyarakat untuk
+                    terlibat langsung, kami menghadirkan gerakan lingkungan yang aktif, kolaboratif, dan berdampak
+                    nyata.
+                </p>
+                <a href="https://www.canva.com/design/DAHD761ig3s/_Vo9SHDvvqTPR_E6NPRHcw/view" class="nav-back"
+                    rel="noopener noreferrer" target="_blank">See
+                    More</a>
+
+            </div>
+        </div>
+
+        <div class="future-card">
+            <div class="card-image">
+                <div class="w-full h-full flex items-center justify-center bg-white/5">
+                    <span style="color: var(--gold); opacity: 0.5; font-size: 0.8rem; letter-spacing: 2px;">DIGITAL
+                        FISHERY</span>
+                </div>
+            </div>
+            <div class="card-content">
+                <h2 class="serif">Digital Fishery</h2>
+                <p>Equipping our local fleet with real-time sonar technology and digital marketplace access to modernize
+                    the heartbeat of Campurejo.</p>
+            </div>
+        </div>
+
+
+
+
+    </div>
     <div class="bottom-switch-container">
         <a href="index.html" class="bottom-switch-btn">Campurejo</a>
         <a href="future_campurejo.html" class="bottom-switch-btn active">The Future</a>
     </div>
+
 </body>
 
 </html>
