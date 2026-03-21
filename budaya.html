@@ -1370,6 +1370,9 @@
         <a href="future_campurejo.html" class="bottom-switch-btn">The Future</a>
     </div>
 
+    <!-- SOUNDSCAPE BUTTON -->
+    <div id="sound-btn" title="Suara Nelayan — aktifkan suara laut">🐚</div>
+
     <script>
 
         // Reveal
@@ -1409,6 +1412,60 @@
                     flipScene.querySelector('.flip-card-inner').style.transform === 'rotateY(180deg)' ? '' : 'rotateY(180deg)';
             });
         }
+
+        // ── SOUNDSCAPE ──
+        (function () {
+            let audioCtx = null, gainNode = null, playing = false;
+            const soundBtn = document.getElementById('sound-btn');
+
+            function createOceanSound() {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                gainNode = audioCtx.createGain();
+                gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
+                gainNode.gain.linearRampToValueAtTime(0.12, audioCtx.currentTime + 2);
+
+                const bufLen = audioCtx.sampleRate * 3;
+                const buf = audioCtx.createBuffer(1, bufLen, audioCtx.sampleRate);
+                const data = buf.getChannelData(0);
+                for (let i = 0; i < bufLen; i++) data[i] = Math.random() * 2 - 1;
+
+                const noise = audioCtx.createBufferSource();
+                noise.buffer = buf; noise.loop = true;
+
+                const filter = audioCtx.createBiquadFilter();
+                filter.type = 'lowpass'; filter.frequency.value = 600;
+
+                noise.connect(filter); filter.connect(gainNode); gainNode.connect(audioCtx.destination);
+                noise.start();
+
+                const osc = audioCtx.createOscillator();
+                const oscGain = audioCtx.createGain();
+                osc.frequency.value = 55; osc.type = 'sine';
+                oscGain.gain.value = 0.04;
+                osc.connect(oscGain); oscGain.connect(audioCtx.destination);
+                osc.start();
+            }
+
+            soundBtn.addEventListener('click', () => {
+                if (!playing) {
+                    if (!audioCtx) createOceanSound();
+                    else {
+                        if (audioCtx.state === 'suspended') audioCtx.resume();
+                        gainNode.gain.linearRampToValueAtTime(0.12, audioCtx.currentTime + 1.5);
+                    }
+                    playing = true;
+                    soundBtn.classList.add('playing');
+                    soundBtn.textContent = '🔊';
+                } else {
+                    if (gainNode) {
+                        gainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 1.5);
+                    }
+                    playing = false;
+                    soundBtn.classList.remove('playing');
+                    soundBtn.textContent = '🐚';
+                }
+            });
+        })();
     </script>
 </body>
 

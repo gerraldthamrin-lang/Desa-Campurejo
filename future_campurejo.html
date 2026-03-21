@@ -187,6 +187,51 @@
             color: var(--white);
         }
 
+        .bottom-switch-btn:not(.active):hover {
+            background: rgba(0, 35, 102, 0.05);
+        }
+
+        /* ── SOUNDSCAPE BTN ── */
+        #sound-btn {
+            position: fixed;
+            bottom: 28px;
+            left: 24px;
+            z-index: 8000;
+            width: 48px;
+            height: 48px;
+            background: var(--navy);
+            border: 1px solid var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.3rem;
+            box-shadow: 0 4px 16px rgba(0, 35, 102, .4);
+            transition: background .3s, transform .3s;
+        }
+
+        #sound-btn:hover {
+            background: #003a7a;
+            transform: scale(1.1);
+        }
+
+        #sound-btn.playing {
+            animation: soundPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes soundPulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(200, 168, 75, .4)
+            }
+
+            50% {
+                box-shadow: 0 0 0 10px rgba(200, 168, 75, 0)
+            }
+        }
+
         /* Responsive */
         @media (max-width: 800px) {
 
@@ -287,7 +332,7 @@
     <div class="main-content">
         <header>
             <h1 class="serif">The Future</h1>
-            <p>Exploring St.louis XF's ideas</p>
+            <p>Exploring St.louis XF's ideas to make a better Campurejo</p>
         </header>
 
         <div class="future-card">
@@ -300,9 +345,9 @@
                     terlibat langsung, kami menghadirkan gerakan lingkungan yang aktif, kolaboratif, dan berdampak
                     nyata.
                 </p>
+                <br>
                 <a href="https://www.canva.com/design/DAHELAuB3BA/LvERuo-h5GSCsPQwQYG1zg/view" class="nav-back"
-                    rel="noopener noreferrer" target="_blank">See
-                    More</a>
+                    rel="noopener noreferrer" target="_blank">Buka Presentasi</a>
 
             </div>
         </div>
@@ -330,6 +375,64 @@
         <a href="future_campurejo.html" class="bottom-switch-btn active">The Future</a>
     </div>
 
+    <!-- SOUNDSCAPE BUTTON -->
+    <div id="sound-btn" title="Suara Nelayan — aktifkan suara laut">🐚</div>
+
+    <!-- SOUNDSCAPE LOGIC -->
+    <script>
+        (function () {
+            let audioCtx = null, gainNode = null, playing = false;
+            const soundBtn = document.getElementById('sound-btn');
+
+            function createOceanSound() {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                gainNode = audioCtx.createGain();
+                gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
+                gainNode.gain.linearRampToValueAtTime(0.12, audioCtx.currentTime + 2);
+
+                const bufLen = audioCtx.sampleRate * 3;
+                const buf = audioCtx.createBuffer(1, bufLen, audioCtx.sampleRate);
+                const data = buf.getChannelData(0);
+                for (let i = 0; i < bufLen; i++) data[i] = Math.random() * 2 - 1;
+
+                const noise = audioCtx.createBufferSource();
+                noise.buffer = buf; noise.loop = true;
+
+                const filter = audioCtx.createBiquadFilter();
+                filter.type = 'lowpass'; filter.frequency.value = 600;
+
+                noise.connect(filter); filter.connect(gainNode); gainNode.connect(audioCtx.destination);
+                noise.start();
+
+                const osc = audioCtx.createOscillator();
+                const oscGain = audioCtx.createGain();
+                osc.frequency.value = 55; osc.type = 'sine';
+                oscGain.gain.value = 0.04;
+                osc.connect(oscGain); oscGain.connect(audioCtx.destination);
+                osc.start();
+            }
+
+            soundBtn.addEventListener('click', () => {
+                if (!playing) {
+                    if (!audioCtx) createOceanSound();
+                    else {
+                        if (audioCtx.state === 'suspended') audioCtx.resume();
+                        gainNode.gain.linearRampToValueAtTime(0.12, audioCtx.currentTime + 1.5);
+                    }
+                    playing = true;
+                    soundBtn.classList.add('playing');
+                    soundBtn.textContent = '🔊';
+                } else {
+                    if (gainNode) {
+                        gainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 1.5);
+                    }
+                    playing = false;
+                    soundBtn.classList.remove('playing');
+                    soundBtn.textContent = '🐚';
+                }
+            });
+        })();
+    </script>
 </body>
 
 </html>

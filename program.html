@@ -57,6 +57,47 @@
             font-family: 'Montserrat', sans-serif;
         }
 
+        /* ── SOUNDSCAPE BTN ── */
+        #sound-btn {
+            position: fixed;
+            bottom: 28px;
+            left: 24px;
+            z-index: 8000;
+            width: 48px;
+            height: 48px;
+            background: var(--navy);
+            border: 1px solid var(--orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.3rem;
+            box-shadow: 0 4px 16px rgba(0, 51, 102, .4);
+            transition: background .3s, transform .3s;
+        }
+
+        #sound-btn:hover {
+            background: var(--navy-mid);
+            transform: scale(1.1);
+        }
+
+        #sound-btn.playing {
+            animation: soundPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes soundPulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(242, 153, 74, .4)
+            }
+
+            50% {
+                box-shadow: 0 0 0 10px rgba(242, 153, 74, 0)
+            }
+        }
+
         /* ── NAV ── */
         nav {
             position: fixed;
@@ -76,10 +117,10 @@
         .nav-logo {
             color: #fff;
             text-decoration: none;
-            font-size: 1.4rem;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            letter-spacing: -.01em;
+            font-size: 1.45rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            letter-spacing: .02em;
         }
 
         .nav-links {
@@ -1484,6 +1525,9 @@
         <a href="future_campurejo.html" class="bottom-switch-btn">The Future</a>
     </div>
 
+    <!-- SOUNDSCAPE BUTTON -->
+    <div id="sound-btn" title="Suara Nelayan — aktifkan suara laut">🐚</div>
+
     <script>
 
         // Reveal
@@ -1559,6 +1603,60 @@
         new IntersectionObserver(es => {
             if (es[0].isIntersecting && !fc1done) { fc1done = true; let n = 0; const iv = setInterval(() => { n += 5; if (n >= 198) { n = 198; clearInterval(iv); } document.getElementById('fc1').textContent = n; }, 20); }
         }, { threshold: .3 }).observe(sea);
+
+        // ── SOUNDSCAPE ──
+        (function () {
+            let audioCtx = null, gainNode = null, playing = false;
+            const soundBtn = document.getElementById('sound-btn');
+
+            function createOceanSound() {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                gainNode = audioCtx.createGain();
+                gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
+                gainNode.gain.linearRampToValueAtTime(0.12, audioCtx.currentTime + 2);
+
+                const bufLen = audioCtx.sampleRate * 3;
+                const buf = audioCtx.createBuffer(1, bufLen, audioCtx.sampleRate);
+                const data = buf.getChannelData(0);
+                for (let i = 0; i < bufLen; i++) data[i] = Math.random() * 2 - 1;
+
+                const noise = audioCtx.createBufferSource();
+                noise.buffer = buf; noise.loop = true;
+
+                const filter = audioCtx.createBiquadFilter();
+                filter.type = 'lowpass'; filter.frequency.value = 600;
+
+                noise.connect(filter); filter.connect(gainNode); gainNode.connect(audioCtx.destination);
+                noise.start();
+
+                const osc = audioCtx.createOscillator();
+                const oscGain = audioCtx.createGain();
+                osc.frequency.value = 55; osc.type = 'sine';
+                oscGain.gain.value = 0.04;
+                osc.connect(oscGain); oscGain.connect(audioCtx.destination);
+                osc.start();
+            }
+
+            soundBtn.addEventListener('click', () => {
+                if (!playing) {
+                    if (!audioCtx) createOceanSound();
+                    else {
+                        if (audioCtx.state === 'suspended') audioCtx.resume();
+                        gainNode.gain.linearRampToValueAtTime(0.12, audioCtx.currentTime + 1.5);
+                    }
+                    playing = true;
+                    soundBtn.classList.add('playing');
+                    soundBtn.textContent = '🔊';
+                } else {
+                    if (gainNode) {
+                        gainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 1.5);
+                    }
+                    playing = false;
+                    soundBtn.classList.remove('playing');
+                    soundBtn.textContent = '🐚';
+                }
+            });
+        })();
     </script>
 </body>
 
