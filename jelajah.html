@@ -125,22 +125,6 @@
             font-weight: 600;
         }
 
-        /* ── ROPE DIVIDER ── */
-        .rope-divider {
-            width: 100%;
-            height: 28px;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='28'%3E%3Cpath d='M0 14 Q10 4 20 14 Q30 24 40 14' stroke='%23c8a84b' stroke-width='1.5' fill='none' opacity='.35'/%3E%3C/svg%3E") repeat-x center;
-            opacity: .7;
-        }
-
-        /* ── FOOTER WAVE ── */
-        .footer-wave {
-            width: 100%;
-            height: 32px;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='32'%3E%3Cpath d='M0 16 Q15 4 30 16 Q45 28 60 16' stroke='rgba(200,168,75,0.2)' stroke-width='1.5' fill='none'/%3E%3C/svg%3E") repeat-x center;
-            margin-bottom: 1.5rem;
-        }
-
         @media(max-width:768px) {
             .nav-links {
                 display: none;
@@ -224,6 +208,78 @@
 
             50% {
                 box-shadow: 0 0 0 10px rgba(200, 168, 75, 0)
+            }
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--dark);
+            color: rgba(255, 255, 255, .7);
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-brand h2 {
+            color: #fff;
+            font-size: 2rem;
+            margin-bottom: .8rem;
+        }
+
+        .footer-brand p {
+            line-height: 1.7;
+            font-size: .92rem;
+        }
+
+        .footer-links {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .footer-links h4 {
+            color: #fff;
+            margin-bottom: 1rem;
+            font-size: .9rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+        }
+
+        .footer-links a {
+            display: block;
+            color: rgba(255, 255, 255, .6);
+            text-decoration: none;
+            margin-bottom: .5rem;
+            font-size: .9rem;
+            transition: color .2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, .08);
+            padding-top: 1.5rem;
+            text-align: center;
+            font-size: .82rem;
+            margin-bottom: 5rem;
+        }
+
+        @media(max-width:900px) {
+            .footer-inner {
+                flex-direction: column;
             }
         }
     </style>
@@ -378,16 +434,23 @@
         </div>
     </main>
 
-    <div class="rope-divider"></div>
-
-    <!-- FOOTER -->
-    <footer class="bg-dark text-white/60 py-12 pb-24 text-center relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-gold to-transparent">
+    <!-- ── FOOTER ── -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <h2 class="serif">Campurejo</h2>
+                <p>Portal digital Desa Campurejo, Kecamatan Panceng, Kabupaten Gresik. Pesisir Jawa Timur.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Navigasi</h4>
+                <a href="budaya.html">Budaya Campurejo</a>
+                <a href="program.html">Program Campurejo</a>
+                <a href="jelajah.html">Jelajah Campurejo</a>
+            </div>
         </div>
-        <div class="footer-wave"></div>
-        <p class="text-sm">© 2026 Desa Campurejo · <a href="index.html"
-                class="text-gold hover:text-gold-light transition-colors">Kembali ke Beranda</a> · <span
-                style="color:var(--gold);">Maju, Mandiri, Berbudaya</span></p>
+        <div class="footer-bottom">
+            <p>2026 Desa Campurejo · Dibuat dengan ❤️ oleh X-F</p>
+        </div>
     </footer>
 
     <!-- BOTTOM NAVIGATION SWITCH -->
