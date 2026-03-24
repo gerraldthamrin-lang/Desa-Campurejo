@@ -124,19 +124,24 @@
         /* Image Placeholder Half */
         .card-image {
             flex: 1;
-            background: rgba(255, 255, 255, 0.02);
+            background: rgba(255, 255, 255, 0.05);
+            /* Slightly darker for contrast */
             position: relative;
             overflow: hidden;
             display: flex;
-            align-items: stretch;
-            justify-content: stretch;
+            align-items: center;
+            /* Center vertically if 1:1 contains empty space */
+            justify-content: center;
+            /* Center horizontally if 1:1 contains empty space */
             border-right: 1px solid var(--glass-border);
+            aspect-ratio: 1 / 1;
         }
 
         .card-image img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
+            /* Show whole picture */
             display: block;
         }
 
@@ -261,12 +266,15 @@
 
             /* --- THE IMAGE HALF --- */
             .card-image {
-                flex: 1;
+                flex: none;
+                /* Don't grow/shrink based on flex, use aspect-ratio */
+                width: 100%;
+                aspect-ratio: 1 / 1;
                 position: relative;
-                /* This ensures the placeholder/image fills the space exactly */
                 display: flex;
-                align-items: stretch;
-                justify-content: stretch;
+                align-items: center;
+                justify-content: center;
+                background: rgba(255, 255, 255, 0.05);
             }
 
             /* Placeholder or Actual Image Styling */
@@ -274,32 +282,8 @@
                 width: 100%;
                 height: 100%;
                 display: block;
-                /* Removes tiny bottom gap common in images */
-                object-fit: cover;
-                /* CRITICAL: Crops the image to fill the half-card without stretching */
+                object-fit: contain;
                 object-position: center;
-                /* Keeps the middle of the photo visible */
-            }
-
-            /* Separator Line Logic */
-            .card-image {
-                border-right: 1px solid var(--glass-border);
-            }
-
-            .future-card:nth-child(even) .card-image {
-                border-right: none;
-                border-left: 1px solid var(--glass-border);
-            }
-
-            .card-image img {
-                width: 100%;
-                height: 100%;
-                display: block;
-                /* Removes tiny bottom gap common in images */
-                object-fit: cover;
-                /* CRITICAL: Crops the image to fill the half-card without stretching */
-                object-position: center;
-                /* Keeps the middle of the photo visible */
             }
 
             /* --- THE TEXT HALF --- */
@@ -322,8 +306,8 @@
                 }
 
                 .card-image {
-                    height: 300px;
-                    /* Fixed height for mobile */
+                    height: auto;
+                    /* Let aspect-ratio handle it */
                     border: none !important;
                     border-bottom: 1px solid var(--glass-border) !important;
                 }
@@ -418,11 +402,13 @@
             <p>Exploring St.louis XF's ideas to make a better Campurejo</p>
         </header>
 
+        <!--Smart Green Village-->
         <div class="future-card">
             <div class="card-image">
-                <img src="Images/future/FutureRaf.png" alt="Description of future campurejo">
+                <img src="Images/future/green.png" alt="green">
             </div>
             <div class="card-content">
+                <h5 style="margin: 0px; color: var(--gold);">Smart Green Village</h5>
                 <h2 class="serif">Yayasan Green Future Indonesia</h2>
                 <p>Kami percaya perubahan dimulai dari diri sendiri. Dengan mengajak generasi muda dan masyarakat untuk
                     terlibat langsung, kami menghadirkan gerakan lingkungan yang aktif, kolaboratif, dan berdampak
@@ -434,18 +420,58 @@
 
             </div>
         </div>
-
+        <!--Smart Economic Village-->
         <div class="future-card">
             <div class="card-image">
-                <div class="w-full h-full flex items-center justify-center bg-white/5">
-                    <span style="color: var(--gold); opacity: 0.5; font-size: 0.8rem; letter-spacing: 2px;">DIGITAL
-                        FISHERY</span>
-                </div>
+                <img src="Images/future/ekonomi.png" alt="ekonomi">
             </div>
             <div class="card-content">
-                <h2 class="serif">Digital Fishery</h2>
-                <p>Equipping our local fleet with real-time sonar technology and digital marketplace access to modernize
-                    the heartbeat of Campurejo.</p>
+                <h5 style="margin: 0px; color: var(--gold);">Smart Economic Village</h5>
+                <h2 class="serif">Yayasan Green Future Indonesia</h2>
+                <p>Kami percaya perubahan dimulai dari diri sendiri. Dengan mengajak generasi muda dan masyarakat untuk
+                    terlibat langsung, kami menghadirkan gerakan lingkungan yang aktif, kolaboratif, dan berdampak
+                    nyata.
+                </p>
+                <br>
+                <a href="https://www.canva.com/design/DAHE2wWwQV8/N05q35B2ukjC451cfeh5vQ/view" class="nav-back"
+                    rel="noopener noreferrer" target="_blank">Buka Presentasi</a>
+
+            </div>
+        </div>
+        <!--Smart Technological Village-->
+        <div class="future-card">
+            <div class="card-image">
+                <img src="Images/future/teknologi.png" alt="teknologi">
+            </div>
+            <div class="card-content">
+                <h5 style="margin: 0px; color: var(--gold);">Smart Technological Village</h5>
+                <h2 class="serif">Yayasan Green Future Indonesia</h2>
+                <p>Kami percaya perubahan dimulai dari diri sendiri. Dengan mengajak generasi muda dan masyarakat untuk
+                    terlibat langsung, kami menghadirkan gerakan lingkungan yang aktif, kolaboratif, dan berdampak
+                    nyata.
+                </p>
+                <br>
+                <a href="https://www.canva.com/design/DAHE28w5Euo/w63OnNMixlrBQYR3MJRoUA/view" class="nav-back"
+                    rel="noopener noreferrer" target="_blank">Buka Presentasi</a>
+
+            </div>
+        </div>
+        <!--Smart Healthy Village-->
+        <div class="future-card">
+            <div class="card-image">
+                <img src="Images/future/sehat.png" alt="sehat">
+            </div>
+            <div class="card-content">
+                <h5 style="margin: 0px; color: var(--gold);">Smart Healthy Village</h5>
+                <h2 class="serif">Yayasan Green Future Indonesia</h2>
+                <p>Kami percaya perubahan dimulai dari diri sendiri. Dengan mengajak generasi muda dan masyarakat untuk
+                    terlibat langsung, kami menghadirkan gerakan lingkungan yang aktif, kolaboratif, dan berdampak
+                    nyata.
+                </p>
+                <br>
+                <a href="https://www.canva.com/design/DAHE2_j3iGI/BzLlo18mG9sDhyxL9OfEdw/view" class="nav-back"
+                    rel="noopener noreferrer" target="_blank">Buka Presentasi</a>
+
             </div>
         </div>
 
